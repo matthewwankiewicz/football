@@ -51,7 +51,8 @@ schedule2023$win_prob <- predict(model.prob, newdata = schedule2023,
 schedule2023 -> full_data23
 
 schedule2023 %>% 
-  select(home_team, away_team, home_score, away_score, home_score.pred, away_score.pred, total_estimate, difference_est, win_prob) -> schedule2023
+  select(home_team, away_team, home_score, away_score, spread_line, home_moneyline, home_score_est, visitor_score_est, "total_estimate" = est_total, difference_est, win_prob) %>% 
+  mutate(spread_line = spread_line*-1) -> schedule2023
 
 sheet_write(schedule2023, ss = sheet, sheet = 2)
 
