@@ -1,0 +1,376 @@
+avg_rank,player,aic_rank,bic_rank,spec_rank,tier,proj_rank,adp,cluster
+1,Justin Jefferson,12,9,2,1,1,1,1
+7,Davante Adams,5,3,3,2,8,8,1
+2,Tyreek Hill,16,11,4,1,3,2,1
+4,Stefon Diggs,7,5,6,2,5,5,1
+9,A.J. Brown,35,49,9,2,7,6,1
+5,CeeDee Lamb,6,4,7,2,4,7,1
+10,Jaylen Waddle,25,28,18,2,11,11,1
+8,Amon-Ra St. Brown,3,2,10,2,6,9,1
+12,Amari Cooper,14,13,15,3,16,14,1
+11,DeVonta Smith,21,14,14,3,13,15,1
+25,Christian Kirk,18,23,16,6,35,29,1
+3,Ja'Marr Chase,11,21,5,1,2,3,1
+21,Tyler Lockett,20,15,19,5,28,28,1
+18,Terry McLaurin,10,10,26,5,26,23,1
+20,Brandon Aiyuk,22,20,30,5,22,26,1
+22,Mike Evans,29,16,13,5,29,30,1
+13,Tee Higgins,17,17,17,3,15,13,1
+83,DK Metcalf,19,22,22,3,17,NA,2
+14,Garrett Wilson,38,35,24,2,9,10,1
+19,Chris Godwin,23,12,12,5,25,31,1
+24,Jerry Jeudy,27,18,29,6,33,21,1
+84,DJ Moore,24,19,33,5,20,NA,2
+26,Michael Pittman Jr.,13,6,20,6,30,34,1
+6,Cooper Kupp,4,27,1,2,10,4,1
+16,Chris Olave,53,54,25,3,12,12,1
+42,Zay Jones,44,44,31,10,64,61,3
+85,Gabe Davis,112,91,37,8,45,NA,2
+38,Jakobi Meyers,32,36,32,8,50,57,3
+36,JuJu Smith-Schuster,33,33,39,8,48,49,3
+45,Tyler Boyd,47,42,52,10,63,58,3
+23,Mike Williams,15,24,27,5,27,27,1
+41,Adam Thielen,46,37,42,10,60,55,3
+39,Allen Lazard,31,29,35,9,55,53,3
+53,Curtis Samuel,94,66,47,12,73,71,3
+28,Christian Watson,40,52,44,5,24,22,1
+27,Drake London,57,41,40,5,21,25,1
+35,George Pickens,67,46,54,6,32,35,3
+30,Deebo Samuel,251,109,28,4,19,16,1
+32,Diontae Johnson,101,87,34,6,31,33,3
+49,Donovan Peoples-Jones,62,55,51,11,66,63,3
+86,Joshua Palmer,48,45,41,13,90,NA,4
+15,Keenan Allen,8,8,11,4,18,20,1
+33,Courtland Sutton,34,39,38,7,37,42,3
+59,Mack Hollins,42,50,56,13,83,97,4
+52,K.J. Osborn,77,65,57,11,68,67,3
+29,Marquise Brown,28,34,23,7,36,32,1
+17,DeAndre Hopkins,9,7,8,5,23,24,1
+87,Parris Campbell,85,48,59,12,77,NA,4
+34,Brandin Cooks,52,26,36,7,40,41,3
+31,Jahan Dotson,36,32,46,6,34,36,3
+88,Darius Slayton,68,77,53,13,84,NA,4
+89,Richie James Jr.,167,43,67,15,102,NA,4
+57,Marquez Valdes-Scantling,79,64,73,12,75,69,4
+69,Isaiah McKenzie,50,68,78,17,129,98,5
+90,Russell Gage,69,25,55,NA,NA,NA,4
+91,Devin Duvernay,49,60,74,15,98,NA,4
+92,Marvin Jones Jr.,64,70,69,15,120,NA,4
+67,Noah Brown,83,82,80,15,100,101,5
+93,Kalif Raymond,58,83,86,15,115,NA,6
+54,Alec Pierce,82,76,79,9,58,74,4
+65,Chris Moore,73,57,68,15,104,91,4
+94,Olamide Zaccheaus,86,84,90,NA,NA,NA,6
+95,DeAndre Carter,43,69,88,NA,NA,NA,6
+62,Robert Woods,80,74,76,14,94,75,4
+61,DeVante Parker,75,59,81,13,81,83,4
+96,Greg Dortch,89,75,85,15,112,NA,6
+97,Rashid Shaheed,115,122,84,11,70,NA,6
+50,Michael Gallup,45,63,63,11,69,62,3
+64,Josh Reynolds,66,53,60,15,103,96,4
+98,DJ Chark Jr.,84,56,61,10,61,NA,4
+56,Chase Claypool,71,79,72,12,78,65,4
+99,Isaiah Hodgins,103,31,45,12,72,NA,4
+100,Corey Davis,60,80,71,NA,NA,94,4
+43,Darnell Mooney,56,61,58,10,59,52,3
+101,Mecole Hardman Jr.,2,40,50,13,93,NA,4
+48,Romeo Doubs,70,51,64,9,54,64,3
+70,Demarcus Robinson,100,73,83,17,127,92,5
+40,Nico Collins,51,62,48,8,49,56,3
+102,Marquise Goodwin,72,67,89,NA,NA,80,6
+44,Treylon Burks,214,92,66,7,41,40,7
+72,Kendrick Bourne,87,95,100,15,107,111,5
+103,Nick Westbrook-Ikhine,97,100,102,16,126,NA,8
+47,Elijah Moore,104,90,94,7,42,45,7
+104,Terrace Marshall Jr.,98,81,93,13,91,NA,6
+105,Trent Sherfield,88,106,101,14,95,NA,6
+106,Allen Robinson II,65,58,62,13,89,NA,4
+107,Quez Watkins,74,86,105,17,131,NA,8
+46,Rondale Moore,61,99,43,9,57,59,3
+108,Van Jefferson,76,72,75,13,82,NA,6
+109,Jauan Jennings,95,97,98,17,128,NA,8
+110,Ben Skowronek,113,78,91,NA,NA,NA,6
+68,Randall Cobb,102,85,92,15,122,78,5
+55,Hunter Renfrow,91,47,70,13,87,60,4
+111,Jamal Agnew,160,132,111,15,108,NA,8
+71,Nelson Agholor,107,105,99,15,118,86,5
+112,Laviska Shenault Jr.,92,89,104,16,125,NA,8
+113,Julio Jones,105,94,82,NA,NA,NA,6
+114,Dante Pettis,121,138,114,NA,NA,122,8
+115,Trenton Irwin,150,98,95,NA,NA,NA,8
+116,Tyquan Thornton,54,71,96,13,92,NA,8
+117,Equanimeous St. Brown,99,128,116,NA,NA,118,8
+118,Tutu Atwell,55,30,106,15,106,NA,8
+119,Ray-Ray McCloud III,153,158,128,NA,NA,NA,8
+120,Justin Watson,118,117,123,NA,NA,NA,8
+121,Shi Smith,123,114,118,NA,NA,NA,8
+122,A.J. Green,119,125,103,NA,NA,NA,8
+51,Kadarius Toney,127,112,97,8,52,44,7
+74,Braxton Berrios,39,88,121,15,110,126,5
+123,Jarvis Landry,96,93,87,NA,NA,NA,8
+58,Rashod Bateman,248,250,77,8,51,46,7
+124,Damiere Byrd,120,127,119,NA,NA,113,8
+125,Kendall Hinton,93,96,107,NA,NA,NA,8
+126,Tre'Quan Smith,90,104,110,NA,NA,123,8
+37,Michael Thomas,154,38,21,7,44,48,3
+127,Robbie Chosen,169,147,109,NA,NA,NA,8
+128,Phillip Dorsett II,122,110,120,NA,NA,NA,9
+63,Wan'Dale Robinson,239,150,65,12,76,68,4
+129,Sammy Watkins,156,228,112,NA,NA,NA,8
+130,Brandon Powell,136,232,134,NA,NA,NA,9
+131,Ashton Dulin,124,111,117,NA,NA,NA,9
+132,KhaDarel Hodge,116,124,137,NA,NA,NA,9
+133,David Bell,200,120,127,15,111,NA,9
+60,Skyy Moore,201,154,140,7,43,54,7
+134,Amari Rodgers,174,151,145,NA,NA,NA,9
+135,Scott Miller,170,119,115,NA,NA,NA,9
+136,Byron Pringle,143,116,126,NA,NA,NA,9
+137,Velus Jones Jr.,244,249,142,15,113,NA,9
+138,Dyami Brown,243,243,144,NA,NA,NA,9
+139,Marquez Callaway,141,113,113,NA,NA,NA,9
+140,Khalil Shakir,138,118,132,15,99,NA,9
+141,Zach Pascal,165,129,153,NA,NA,104,9
+142,Jalen Nailor,125,123,129,NA,NA,NA,9
+66,Sterling Shepard,146,247,49,14,97,90,4
+143,River Cracraft,145,108,122,NA,NA,116,9
+144,Keelan Cole Sr.,144,130,150,NA,NA,NA,9
+145,Steven Sims Jr.,219,226,143,NA,NA,NA,9
+146,Lawrence Cager,151,101,108,NA,NA,NA,9
+147,Denzel Mims,142,141,130,NA,NA,NA,9
+148,Jalen Reagor,148,157,162,NA,NA,NA,9
+149,KJ Hamler,246,245,148,17,130,NA,9
+150,N'Keal Harry,140,156,135,NA,NA,NA,9
+151,Cedrick Wilson Jr.,155,144,158,NA,NA,NA,9
+152,DeSean Jackson,111,149,139,NA,NA,NA,9
+153,Breshad Perriman,126,107,138,NA,NA,85,9
+154,Tom Kennedy,128,139,151,NA,NA,NA,9
+155,Jeff Smith,108,146,154,NA,NA,NA,9
+156,Kenny Golladay,137,131,131,NA,NA,NA,9
+157,Anthony Schwartz,242,166,152,NA,NA,NA,9
+158,Samori Toure,238,164,125,NA,NA,NA,9
+159,David Sills V,157,133,136,NA,NA,NA,9
+160,T.Y. Hilton,26,137,124,NA,NA,NA,9
+73,Jameson Williams,252,252,231,9,56,50,10
+161,Marcus Johnson,134,135,147,NA,NA,NA,9
+162,Michael Bandy,203,142,146,NA,NA,NA,9
+163,Cam Sims,162,153,161,NA,NA,NA,11
+164,Dax Milne,209,148,170,NA,NA,NA,11
+165,Jalen Virgil,245,248,195,NA,NA,NA,12
+166,Brandon Johnson,109,103,133,NA,NA,NA,9
+167,John Brown,247,251,247,NA,NA,NA,13
+168,Dee Eskridge,152,160,160,NA,NA,NA,11
+169,Gunner Olszewski,133,220,176,NA,NA,NA,11
+170,Freddie Swain,59,235,171,NA,NA,NA,11
+171,James Proche II,175,152,163,NA,NA,NA,11
+172,Jamison Crowder,159,136,149,NA,NA,88,11
+173,Trent Taylor,164,209,175,NA,NA,99,11
+174,Jake Kumerow,149,219,165,NA,NA,NA,11
+175,Kevin White,173,238,238,NA,NA,NA,13
+176,Deven Thompkins,237,242,156,NA,NA,NA,11
+177,Andre Baccellia,228,140,157,NA,NA,NA,11
+178,Kyle Philips,81,102,155,16,123,NA,11
+179,Jalen Guyton,229,246,251,NA,NA,NA,13
+180,Mike Strachan,205,162,188,NA,NA,NA,12
+181,Laquon Treadwell,166,143,141,NA,NA,89,11
+182,Cody Hollister,171,171,182,NA,NA,NA,12
+183,Mike Thomas,236,229,190,NA,NA,NA,12
+184,Chris Conley,158,210,164,NA,NA,87,11
+185,Cole Beasley,233,145,159,NA,NA,79,11
+186,Michael Woods II,139,134,166,NA,NA,NA,11
+187,Racey McMath,114,121,237,NA,NA,NA,13
+188,Tylan Wallace,207,159,167,NA,NA,NA,11
+189,Tim Jones,208,211,189,NA,NA,NA,12
+190,Simi Fehoko,215,163,172,NA,NA,NA,14
+191,Jaelon Darden,163,169,202,NA,NA,NA,14
+192,Tyrie Cleveland,168,213,197,NA,NA,NA,14
+193,Penny Hart,202,214,169,NA,NA,NA,14
+194,Daylen Baldwin,63,227,248,NA,NA,NA,15
+195,Dezmon Patmon,250,236,252,NA,NA,NA,15
+196,Dareke Young,210,176,200,NA,NA,NA,14
+197,Andy Isabella,37,115,193,NA,NA,NA,14
+198,Montrell Washington,135,231,183,NA,NA,NA,14
+199,Cade Johnson,223,170,235,NA,NA,NA,15
+200,Pharoh Cooper,41,155,177,NA,NA,NA,14
+201,Lil'Jordan Humphrey,206,177,191.5,NA,NA,NA,14
+202,Bryan Edwards,221,167,168,NA,NA,NA,14
+203,Keith Kirkwood,204,221,196,NA,NA,NA,14
+204,Dennis Houston,226,216,204,NA,NA,NA,14
+205,DJ Turner,106,239,185,NA,NA,NA,16
+206,Quintez Cephus,220,172,191.5,NA,NA,NA,14
+207,Danny Gray,147,234,194,NA,NA,NA,14
+208,Nsimba Webster,234,161,244,NA,NA,NA,15
+209,Austin Trammell,225,168,184,NA,NA,NA,16
+210,Juwann Winfree,211,233,246,NA,NA,NA,15
+211,Jalen Tolbert,222,174,186.5,15,109,NA,16
+212,Miles Boykin,212,212,198,NA,NA,NA,16
+213,Frank Darby,78,241,250,NA,NA,NA,15
+214,Tyron Johnson,217,224,234,NA,NA,NA,15
+215,Maurice Alexander,218,218,230,NA,NA,NA,15
+216,Jalen Camp,213,230,245,NA,NA,NA,15
+217,C.J. Board,216,215,205,NA,NA,NA,16
+218,Jason Moore Jr.,235,222,241,NA,NA,NA,15
+219,Mason Kinsey,231,175,199,NA,NA,NA,16
+220,Erik Ezukanma,240,173,201,NA,NA,NA,16
+221,Braylon Sanders,249,223,242,NA,NA,NA,15
+222,Cody White,241,165,186.5,NA,NA,NA,16
+223,Keke Coutee,227,240,239,NA,NA,NA,15
+224,Deonte Harty,232,225,232,15,114,NA,15
+225,Quinton Bell,187.5,193,217.5,NA,NA,NA,17
+226,Tyler Johnson,253,253,253,NA,NA,NA,18
+227,Stanley Morgan Jr.,172,193,203,NA,NA,NA,16
+228,Antoine Wesley,254,254,254,NA,NA,NA,18
+229,Keelan Doss,255,255,255,NA,NA,NA,18
+230,Cody Thompson,187.5,193,217.5,NA,NA,NA,17
+231,Trinity Benson,187.5,193,217.5,NA,NA,NA,17
+232,D.J. Montgomery,256,256,256,NA,NA,NA,18
+233,Alex Bachman,187.5,193,217.5,NA,NA,NA,17
+234,Malik Turner,187.5,193,217.5,NA,NA,NA,17
+235,Kristian Wilkerson,257,257,257,NA,NA,NA,18
+236,Seth Williams,258,258,258,NA,NA,NA,18
+237,Dez Fitzpatrick,259,259,259,NA,NA,NA,18
+238,Dan Chisena,187.5,193,217.5,NA,NA,NA,17
+239,Charleston Rambo,260,260,260,NA,NA,NA,18
+240,Easop Winston Jr.,261,261,261,NA,NA,NA,18
+241,Jaylon Moore,262,262,262,NA,NA,NA,18
+242,Isaiah Zuber,263,263,263,NA,NA,NA,18
+75,Justyn Ross,187.5,193,217.5,14,96,73,10
+243,Kirk Merritt,187.5,193,217.5,NA,NA,NA,17
+244,Trishton Jackson,264,264,264,NA,NA,NA,18
+245,Binjimen Victor,187.5,193,217.5,NA,NA,NA,17
+246,Lynn Bowden Jr.,265,265,265,NA,NA,NA,19
+247,Johnny Johnson III,266,266,266,NA,NA,NA,19
+248,Irvin Charles,267,267,267,NA,NA,NA,19
+249,Kwamie Lassiter II,268,268,268,NA,NA,NA,19
+250,Kaden Davis,269,269,269,NA,NA,NA,19
+251,Demario Douglas,270,270,270,NA,NA,NA,19
+252,Jesse Matthews,271,271,271,NA,NA,NA,19
+253,Bryce Ford-Wheaton,272,272,272,NA,NA,NA,19
+254,Jake Bobo,273,273,273,NA,NA,NA,19
+255,Tre Tucker,274,274,274,NA,NA,NA,19
+256,Charlie Jones,275,275,275,NA,NA,NA,19
+257,Andrei Iosivas,276,276,276,15,117,NA,19
+258,Derius Davis,277,277,277,NA,NA,NA,19
+259,Michael Wilson,278,278,278,11,71,NA,19
+260,Xavier Hutchinson,279,279,279,NA,NA,NA,19
+261,Trey Palmer,280,280,280,16,124,NA,19
+262,Josh Ali,130.5,193,179.5,NA,NA,NA,20
+80,Jalin Hyatt,281,281,281,10,62,76,21
+263,Cedric Tillman,282,282,282,15,116,NA,19
+264,Rodney Williams,283,283,283,NA,NA,NA,19
+265,Lance McCutcheon,117,193,174,NA,NA,NA,20
+266,Tank Dell,284,284,284,13,80,NA,19
+267,Devon Allen,285,285,285,NA,NA,NA,19
+268,A.T. Perry,286,286,286,15,105,NA,19
+269,Dontayvion Wicks,287,287,287,NA,NA,NA,19
+270,Mitchell Tinsley,288,288,288,NA,NA,NA,19
+271,Raleigh Webb,187.5,193,217.5,NA,NA,NA,17
+272,Josh Downs,289,289,289,13,79,NA,19
+273,Chris Pierce Jr.,187.5,193,217.5,NA,NA,NA,17
+274,Jontre Kirklin,290,290,290,NA,NA,NA,22
+275,Derek Wright,291,291,291,NA,NA,NA,22
+276,Ra'Shaun Henry,292,292,292,NA,NA,NA,22
+277,Kyric McGowan,293,293,293,NA,NA,NA,22
+278,Jalen Cropper,294,294,294,NA,NA,NA,22
+279,Sean Ryan,295,295,295,NA,NA,NA,22
+280,Ryan Miller,296,296,296,NA,NA,NA,22
+281,Tre'Shaun Harrison,297,297,297,NA,NA,NA,22
+282,Lucky Jackson,298,298,298,NA,NA,NA,22
+283,Dylan Drummond,299,299,299,NA,NA,NA,22
+284,Bryan Thompson,300,300,300,NA,NA,NA,22
+285,David Durden,301,301,301,NA,NA,NA,22
+286,John Stephens Jr.,302,302,302,NA,NA,NA,22
+287,Tyrell Shavers,303,303,303,NA,NA,NA,22
+288,Tyler Scott,304,304,304,15,121,NA,22
+289,Terrell Bynum,305,305,305,NA,NA,NA,22
+290,Shaquan Davis,306,306,306,NA,NA,NA,23
+291,Cephus Johnson III,307,307,307,NA,NA,NA,23
+292,Thayer Thomas,308,308,308,NA,NA,NA,23
+293,Grant DuBose,309,309,309,NA,NA,NA,23
+294,Jalen Brooks,310,310,310,NA,NA,NA,23
+295,Colton Dowell,311,311,311,NA,NA,NA,23
+296,Antoine Green,312,312,312,NA,NA,NA,23
+297,Matt Landers,313,313,313,NA,NA,NA,23
+298,Elijah Cooks,314,314,314,NA,NA,NA,23
+299,Kazmeir Allen,315,315,315,NA,NA,NA,23
+300,Jason Brownlee,316,316,316,NA,NA,NA,23
+301,T.J. Luther,317,317,317,NA,NA,NA,23
+302,Xavier Gipson,318,318,318,NA,NA,NA,23
+303,Shedrick Jackson,319,319,319,NA,NA,NA,23
+304,Isaiah Winstead,320,320,320,NA,NA,NA,23
+305,Zay Malone,321,321,321,NA,NA,NA,23
+306,Xavier Smith,322,322,322,NA,NA,NA,24
+307,Brycen Tremayne,323,323,323,NA,NA,NA,24
+308,Daniel Arias,324,324,324,NA,NA,NA,24
+309,Malik Heath,325,325,325,NA,NA,NA,24
+310,Cornell Powell,326,326,326,NA,NA,NA,24
+311,Austin Watkins Jr.,327,327,327,NA,NA,NA,24
+82,John Metchie III,328,328,328,13,85,70,21
+78,Zay Flowers,329,329,329,7,39,47,25
+312,Jayden Reed,330,330,330,13,88,NA,24
+313,Ronnie Bell,331,331,331,NA,NA,NA,24
+314,Rakim Jarrett,332,332,332,NA,NA,NA,24
+315,Kayshon Boutte,333,333,333,15,101,NA,24
+316,Kearis Jackson,334,334,334,NA,NA,NA,24
+317,Britain Covey,187.5,193,217.5,NA,NA,NA,26
+318,Emeka Emezie,187.5,193,217.5,NA,NA,NA,26
+319,Joseph Ngata,335,335,335,NA,NA,NA,24
+320,Calvin Austin III,336,336,336,15,119,NA,24
+321,C.J. Saunders,337,337,337,NA,NA,NA,24
+322,Stanley Berryhill III,187.5,193,217.5,NA,NA,NA,26
+323,Tanner Conner,110,193,173,NA,NA,NA,27
+324,Tay Martin,187.5,193,217.5,NA,NA,NA,26
+325,Bo Melton,338,338,338,NA,NA,NA,28
+326,Justin Shorter,339,339,339,NA,NA,NA,28
+327,Rashee Rice,340,340,340,12,74,NA,28
+77,Jordan Addison,341,341,341,7,38,38,25
+328,Parker Washington,342,342,342,NA,NA,NA,28
+329,Marvin Mims Jr.,343,343,343,11,67,NA,28
+330,Jonathan Mingo,344,344,344,10,65,NA,28
+79,Jaxon Smith-Njigba,345,345,345,8,46,39,25
+81,Quentin Johnston,346,346,346,8,47,43,25
+331,Tre Nixon,347,347,347,NA,NA,NA,28
+332,Jacob Harris,230,217,236,NA,NA,NA,26
+333,Puka Nacua,348,348,348,13,86,NA,28
+334,Mathew Sexton,349,349,349,NA,NA,NA,28
+335,Josh Gordon,130.5,193,179.5,NA,NA,NA,27
+336,Eron Riley,350,350,350,NA,NA,NA,28
+337,Demario Ballard,351,351,351,NA,NA,NA,28
+338,Patrick Edwards,352,352,352,NA,NA,NA,28
+339,Albert Wilson,187.5,193,217.5,NA,NA,NA,26
+340,Odell Beckham Jr.,353,353,353,9,53,NA,28
+341,Maurice Purify,354,354,354,NA,NA,NA,28
+342,Matthew Slater,187.5,193,217.5,NA,NA,77,26
+343,Marko Mitchell,355,355,355,NA,NA,NA,28
+344,Kenny McKinley,356,356,356,NA,NA,NA,28
+345,Lance Long,357,357,357,NA,NA,NA,28
+346,Bobby Wade,358,358,358,NA,NA,NA,28
+347,Chris Henry,359,359,359,NA,NA,NA,28
+348,Mike Furrey,360,360,360,NA,NA,NA,28
+349,Onrea Jones,361,361,361,NA,NA,NA,28
+350,Taj Smith,362,362,362,NA,NA,NA,28
+351,Rod Harper,363,363,363,NA,NA,NA,29
+352,Sam Giguere,364,364,364,NA,NA,NA,29
+353,Nate Hughes,365,365,365,NA,NA,NA,29
+354,Andre Roberts,187.5,193,217.5,NA,NA,NA,30
+355,Tanner Gentry,130.5,193,179.5,NA,NA,NA,27
+356,Tim Patrick,366,366,366,NA,NA,105,29
+357,Justin Hardee,187.5,193,217.5,NA,NA,109,30
+358,Marcus Kemp,187.5,193,217.5,NA,NA,106,30
+359,David Moore,367,367,367,NA,NA,100,29
+360,Isaiah Ford,368,368,368,NA,NA,95,29
+361,Marken Michel,187.5,193,217.5,NA,NA,NA,30
+362,Daurice Fountain,369,369,369,NA,NA,125,29
+363,Greg Ward,370,370,370,NA,NA,NA,29
+364,James Washington,130.5,193,179.5,NA,NA,117,27
+76,Calvin Ridley,371,371,371,3,14,18,25
+365,Marcell Ateman,372,372,372,NA,NA,127,29
+366,Brandon Zylstra,187.5,193,217.5,NA,NA,NA,30
+367,Ty Montgomery II,1,1,249,NA,NA,NA,30
+368,Willie Snead IV,373,373,373,NA,NA,NA,29
+369,Diontae Spencer,374,374,374,NA,NA,NA,29
+370,Jakeem Grant Sr.,375,375,375,NA,NA,NA,29
+371,Rashard Higgins,187.5,193,217.5,NA,NA,NA,30
+372,Alex Erickson,187.5,193,217.5,NA,NA,103,30
+373,Ihmir Smith-Marsette,30,126,243,NA,NA,NA,30
+374,KaVontae Turpin,161,237,233,NA,NA,NA,30
+375,Chester Rogers,224,244,240,NA,NA,NA,30

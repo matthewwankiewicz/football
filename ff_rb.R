@@ -74,7 +74,7 @@ select_team <- function(x){
 
 ##################################################### 2020 ##############################################
 
-link <- "https://www.fantasypros.com/nfl/stats/qb.php?year=2019&scoring=HALF&range=full"
+link <- "https://www.fantasypros.com/nfl/stats/rb.php?year=2019&scoring=HALF&range=full"
 webpage <- read_html(link)
 
 table <- webpage %>% html_table()
@@ -90,12 +90,12 @@ table$player <- format_name.new(table$player)
 table %>% 
   mutate_at(vars(-player), ~ as.numeric(gsub(",", "", .))) %>% 
   mutate_at(vars(-player), ~ . / g) %>% 
-  select(-rank) -> table_qb
+  select(-rank) -> table_rb
 
 
 # GET FANTASY POINTS ------------------------------------
 
-link <- "https://www.fantasypros.com/nfl/stats/qb.php?year=2020&scoring=HALF&range=full"
+link <- "https://www.fantasypros.com/nfl/stats/rb.php?year=2020&scoring=HALF&range=full"
 page <- read_html(link)
 
 fan_pts <- html_table(page)
@@ -117,22 +117,22 @@ fan_pts <- fan_pts %>%
 
 # RE-FORMAT NAMES
 
-qb2020 <- table_qb %>% 
+rb2020 <- table_rb %>% 
   filter(player %in% fan_pts$player)
 
-qb.stats <- left_join(qb2020, fan_pts %>% select(player, fpts),
+rb.stats <- left_join(rb2020, fan_pts %>% select(player, fpts),
                       by = c("player"))
 
-final <- qb.stats
+final <- rb.stats
 
 ##################################################### 2021 ##############################################
 ## use fan pts as starting table
 
-table_qb <- fan_pts
+table_rb <- fan_pts
 
 # GET FANTASY POINTS ------------------------------------
 
-link <- "https://www.fantasypros.com/nfl/stats/qb.php?year=2021&scoring=HALF&range=full"
+link <- "https://www.fantasypros.com/nfl/stats/rb.php?year=2021&scoring=HALF&range=full"
 page <- read_html(link)
 
 fan_pts <- html_table(page)
@@ -152,22 +152,22 @@ fan_pts <- fan_pts %>%
 
 # RE-FORMAT NAMES
 
-qb2021 <- table_qb %>% 
+rb2021 <- table_rb %>% 
   filter(player %in% fan_pts$player)
 
-qb.stats <- left_join(qb2021, fan_pts %>% select(player, fpts), by = "player")
+rb.stats <- left_join(rb2021, fan_pts %>% select(player, fpts), by = "player")
 
-final <- rbind(final, qb.stats)
+final <- rbind(final, rb.stats)
 
 ####################################### 2022 ############################################
 
 
-table_qb <- fan_pts
+table_rb <- fan_pts
 
 
 # GET FANTASY POINTS ------------------------------------
 
-link <- "https://www.fantasypros.com/nfl/stats/qb.php?year=2022&scoring=HALF&range=full"
+link <- "https://www.fantasypros.com/nfl/stats/rb.php?year=2022&scoring=HALF&range=full"
 page <- read_html(link)
 
 fan_pts <- html_table(page)
@@ -187,12 +187,12 @@ fan_pts <- fan_pts %>%
 
 ## combine
 
-qb2022 <- table_qb %>% 
+rb2022 <- table_rb %>% 
   filter(player %in% fan_pts$player)
 
-qb.stats <- left_join(qb2022, fan_pts %>% select(player, fpts), by = "player")
+rb.stats <- left_join(rb2022, fan_pts %>% select(player, fpts), by = "player")
 
-final <- rbind(final, qb.stats)
+final <- rbind(final, rb.stats)
 
 ## MODEL CREATION -----------------------------------------------------------------------------
 # final <- final %>% 
@@ -214,11 +214,10 @@ train_data <- final[train_indices, ]
 test_data <- final[-train_indices, ]
 
 train_data_2 <- train_data %>% drop_na() %>% select(-player)
-mod <- lm(fpts.y ~ cmp + yds + td + td_2, 
+mod <- lm(fpts.y ~ tgt + fpts.x, 
           data = train_data_2)
 
-null_mod <- lm(fpts.y ~ (. - player - rost - fpts.x - fpts.y) + 
-                 (. - player - rost - fpts.x - fpts.y)^2,
+null_mod <- lm(fpts.y ~ (. - player - rost - fpts.x) + (. - player - rost - fpts.x)^2,
                data = train_data)
 
 aic_mod <- step(null_mod)
@@ -282,11 +281,10 @@ cbs_proj <- cbs_proj %>%
 cbs_proj[is.na(cbs_proj)] <- 0
 
 cbs_proj %>% 
-  filter(pos == "QB") %>% 
+  filter(pos == "RB") %>% 
   select(player_name, rank, tier) %>% 
   mutate(proj_rank = rank(rank)) %>% 
   select(-rank) -> cbs_proj
-
 
 
 ## combine cbs proj and model estimates
@@ -294,7 +292,7 @@ cbs_proj %>%
 table <- left_join(table, cbs_proj, by = c("player" = "player_name"))
 
 
-link <- "https://fantasyfootballcalculator.com/rankings/half-ppr/qb"
+link <- "https://fantasyfootballcalculator.com/rankings/half-ppr/rb"
 page <- read_html(link)
 
 html_table(page) %>% 
@@ -303,12 +301,10 @@ html_table(page) %>%
 adp %>% 
   mutate(adp = rank(Rank)) %>% 
   clean_names() %>% 
-  select(name, adp) -> adp_qb
-
-adp_qb[adp_qb == "Patrick Mahomes"] <- "Patrick Mahomes II"
+  select(name, adp) -> adp_rb
 
 table %>% 
-  left_join(adp_qb, by = c("player" = "name")) -> table
+  left_join(adp_rb, by = c("player" = "name")) -> table
 
 
 table <- table %>% 
@@ -347,5 +343,5 @@ table %>%
 
 #### write table
 
-write_csv(table, "qb_rankings.csv")
+write_csv(table, "rb_rankings.csv")
 
