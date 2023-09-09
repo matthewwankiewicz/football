@@ -81,7 +81,7 @@ full_data22 <- left_join(home_data, dvoa22, by = c("away_team" = "team")) %>%
 schedule <- rbind(rbind(full_data20, full_data21), full_data22) %>% 
   mutate(home_diff = home_score - away_score)
 
-
+write_rds(schedule, "schedule.rds")
 
 
 set.seed(21)

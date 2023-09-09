@@ -1,13 +1,23 @@
 #install.packages("googlesheets4")
 library(googlesheets4)
+library(tidyverse)
 
-gs4_auth()
+#gs4_auth()
+
+## read in models
+home_model <- read_rds("home_model.rds")
+away_model <- read_rds("away_model.rds")
+total_mod <- read_rds("total_mod.rds")
+model1 <- read_rds("spread_mod.rds")
+model.prob <- read_rds("win_prob.rds")
 
 ## add in sheets link
 sheet <- "https://docs.google.com/spreadsheets/d/1FkMX0BRIIG2lfxjzqWwmM8K-Z-_ngrKdrHHSVIVLKbU/edit#gid=0"
 
 #### historical schedule -------------
 ### using schedule from model_creation.R
+
+schedule <- read_rds("schedule.rds")
 
 ## add estimates for home score, away score, total, home_diff and win prob
 schedule$home_score.pred <- predict(home_model, newdata = schedule)
@@ -21,6 +31,13 @@ schedule_sheet1 <- schedule %>%
   select(c(1:11, home_score.pred, away_score.pred, total_estimate, difference_est, win_prob))
 
 sheet_write(schedule_sheet1, ss = sheet, sheet = 1)
+
+## create train and test split
+
+set.seed(21)
+dt = sort(sample(nrow(schedule), nrow(schedule)*.7))
+train<-schedule[dt,]
+test<-schedule[-dt,]
 
 #### current season ----------------
 
@@ -51,8 +68,13 @@ schedule2023$win_prob <- predict(model.prob, newdata = schedule2023,
 schedule2023 -> full_data23
 
 schedule2023 %>% 
-  select(home_team, away_team, home_score, away_score, spread_line, home_moneyline, home_score_est, visitor_score_est, "total_estimate" = est_total, difference_est, win_prob) %>% 
-  mutate(spread_line = spread_line*-1) -> schedule2023
+  select(home_team, away_team, home_score, away_score, spread_line, home_moneyline, total_line, home_score_est, visitor_score_est, "total_estimate" = est_total, difference_est, win_prob) %>% 
+  mutate(spread_line = spread_line * -1,
+         home_score_est = round(home_score_est, digits = 1),
+         visitor_score_est = round(visitor_score_est, digits = 1),
+         total_estimate = round(total_estimate, digits = 1),
+         difference_est = round(difference_est, digits = 3),
+         win_prob = round(win_prob, 3)) -> schedule2023
 
 sheet_write(schedule2023, ss = sheet, sheet = 2)
 
@@ -66,7 +88,8 @@ full_data.t$win_prob <- predict(model.prob, newdata = full_data.t, type = "respo
 
 
 full_data.t <- full_data.t %>%
-  mutate(total_est = home_score_est + visitor_score_est,
+  mutate(spread_line = spread_line*-1,
+         total_est = home_score_est + visitor_score_est,
          diff_est = home_score_est - visitor_score_est,
          est_win = ifelse(win_prob > 0.5, 1, 0),
          est_win2 = ifelse(home_score_est > visitor_score_est, 1, 0),
