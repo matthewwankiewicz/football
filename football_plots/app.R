@@ -50,10 +50,13 @@ ui <- navbarPage("Fantasy Football Data",
                          choices = unique(game_logs$player_display_name)),
     reactableOutput("player_logs")),
     tabPanel("Graphs",
-             selectInput("player_graph",
+             selectInput("player_graph", "Select a player:",
                          choices = unique(game_logs$player_display_name)),
-             selectInput("stat_choice",
-                         choices = c("")),
+             selectInput("stat_choice", "Select a stat:",
+                         choices = c("fantasy_points_half_ppr", "receptions", "interceptions",
+                                     "receiving_yards", "rushing_yards", "targets",
+                                     "target_share", "carries", "passing_yards", "air_yards_share",
+                                     "rushing_tds", "receiving_tds", "passing_tds")),
     plotlyOutput("weekly_plot"))
 )
 
@@ -131,6 +134,26 @@ server <- function(input, output) {
         mutate_if(is.numeric, list(~ round(.,3))) %>% 
         reactable(defaultPageSize = 20)
     }
+  })
+  
+  output$weekly_plot <- renderPlotly({
+    
+    
+    
+    filtered_data <- game_logs %>% 
+      filter(player_display_name == input$player_graph) %>% 
+      select(input$stat_choice, week)
+    
+    
+    plot_col <- colnames(filtered_data)[1]
+    
+    plot <- filtered_data %>% 
+      ggplot(aes(x = week, y = !!sym(plot_col))) +
+      geom_col() +
+      labs(title = paste(input$player_graph, plot_col))
+    
+    ggplotly(plot)
+    
   })
 
 }
