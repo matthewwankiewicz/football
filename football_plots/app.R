@@ -12,6 +12,7 @@ library(reactable)
 library(shiny)
 library(tidyverse)
 library(DT)
+library(plotly)
 `%ni%` <- negate(`%in%`)
 
 game_logs <- read_rds("gamelogs.rds")
@@ -48,7 +49,12 @@ ui <- navbarPage("Fantasy Football Data",
              selectInput("player", label = "Select a player:",
                          choices = unique(game_logs$player_display_name)),
     reactableOutput("player_logs")),
-    tabPanel("Graphs")
+    tabPanel("Graphs",
+             selectInput("player_graph",
+                         choices = unique(game_logs$player_display_name)),
+             selectInput("stat_choice",
+                         choices = c("")),
+    plotlyOutput("weekly_plot"))
 )
 
 
