@@ -21,14 +21,14 @@ game_logs <- game_logs %>%
   filter(week <= 18)
 
 totals_data <- game_logs %>% 
-  group_by(player_display_name, position) %>% 
+  group_by(player_display_name, position, season) %>% 
   summarise_if(is.numeric, sum) %>% 
-  select(-c(season, week))
+  select(-week)
 
 avgs_data <- game_logs %>% 
-  group_by(player_display_name, position) %>% 
+  group_by(player_display_name, position, season) %>% 
   summarise_if(is.numeric, list(~ mean(., na.rm = T))) %>% 
-  select(-c(season, week))
+  select(-week)
 
 position_table <- game_logs %>% 
   distinct(player_display_name, position)
@@ -40,9 +40,9 @@ ui <- navbarPage("Fantasy Football Data",
     tabPanel("Season Stats", 
              selectInput("position", label = "Select a position:",
                          choices = c("QB", "RB", "WR", "TE")),
+             selectInput("season_total", "Select a season:", 
+                         choices = unique(game_logs$season)),
              checkboxInput("avgs", "Per game stats"),
-             
-             
     reactableOutput("season_totals")),
     tabPanel("Player Game Logs",
              selectInput("player", label = "Select a player:",
@@ -73,6 +73,12 @@ ui <- navbarPage("Fantasy Football Data",
 server <- function(input, output) {
   
   output$season_totals <- renderReactable({
+    avgs_data <- avgs_data %>% 
+      filter(season == as.numeric(input$season_total))
+    
+    totals_data <- totals_data %>% 
+      filter(season == as.numeric(input$season_total))
+    
     if(input$avgs == "TRUE"){
       if("QB" != input$position){
         avgs_data %>% 
