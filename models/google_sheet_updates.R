@@ -5,11 +5,11 @@ library(tidyverse)
 #gs4_auth()
 
 ## read in models
-home_model <- read_rds("home_model.rds")
-away_model <- read_rds("away_model.rds")
-total_mod <- read_rds("total_mod.rds")
-model1 <- read_rds("spread_mod.rds")
-model.prob <- read_rds("win_prob.rds")
+home_model <- read_rds("models/home_model.rds")
+away_model <- read_rds("models/away_model.rds")
+total_mod <- read_rds("models/total_mod.rds")
+model1 <- read_rds("models/spread_mod.rds")
+model.prob <- read_rds("models/win_prob.rds")
 
 ## add in sheets link
 sheet <- "https://docs.google.com/spreadsheets/d/1FkMX0BRIIG2lfxjzqWwmM8K-Z-_ngrKdrHHSVIVLKbU/edit#gid=0"
@@ -30,7 +30,7 @@ schedule$win_prob <- predict(model.prob, newdata = schedule,
 schedule_sheet1 <- schedule %>% 
   select(c(1:11, home_score.pred, away_score.pred, total_estimate, difference_est, win_prob))
 
-sheet_write(schedule_sheet1, ss = sheet, sheet = 1)
+sheet_write(schedule_sheet1, ss = sheet, sheet = 2)
 
 ## create train and test split
 
@@ -50,7 +50,10 @@ dvoa23 <- read_csv("/Users/matthewwankiewicz/Downloads/total_team_dvoa.csv") %>%
   select(team, total_dvoa_rank, total_dvoa, "offense_dvoa_rank" = offense_rank, 
          offense_dvoa, "defense_dvoa_rank" = defense_rank, defense_dvoa,
          "special_teams_dvoa_rank" = special_teams_rank, special_teams_dvoa)
+
 dvoa23[dvoa23 == "JAC"] <- "JAX"
+
+write_csv(dvoa23, "models/dvoa2023.csv")
 
 schedule2023 %>% 
   left_join(dvoa23, by = c("home_team" = "team")) %>% 
@@ -76,7 +79,7 @@ schedule2023 %>%
          difference_est = round(difference_est, digits = 3),
          win_prob = round(win_prob, 3)) -> schedule2023
 
-sheet_write(schedule2023, ss = sheet, sheet = 2)
+sheet_write(schedule2023, ss = sheet, sheet = 1)
 
 
 #### accuracy ------------------
@@ -199,7 +202,7 @@ tst <- c(test_fullscore_ml.acc, test_est_ml.acc,test_fullscore_ats.acc, test_est
 
 axs <- data.frame(szn, tst)
 
-rownames(axs) <- c("Score Difference Model Moneyline Accuracy", "Home - Away Score Moneyline Accuracy", 
+rownames(axs) <- c("Win Prob Model Moneyline Accuracy", "Home - Away Score Moneyline Accuracy", 
                    "Score Difference ATS Accuracy", "Home - Away Score ATS Accuracy",
                    "Total Score Model Accuracy", "Home - Away Total Score Accuracy")
 
