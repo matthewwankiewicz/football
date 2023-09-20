@@ -30,7 +30,7 @@ schedule$win_prob <- predict(model.prob, newdata = schedule,
 schedule_sheet1 <- schedule %>% 
   select(c(1:11, home_score.pred, away_score.pred, total_estimate, difference_est, win_prob))
 
-sheet_write(schedule_sheet1, ss = sheet, sheet = 2)
+#sheet_write(schedule_sheet1, ss = sheet, sheet = 2)
 
 ## create train and test split
 
@@ -45,19 +45,34 @@ nflseedR::load_sharpe_games() %>%
   filter(season == 2023) -> schedule2023
 
 ## load in current season dvoa
-dvoa23 <- read_csv("/Users/matthewwankiewicz/Downloads/total_team_dvoa.csv") %>% 
+dvoa2023 <- read_csv("models/total_team_dvoa.csv") %>% 
   janitor::clean_names() %>% 
   select(team, total_dvoa_rank, total_dvoa, "offense_dvoa_rank" = offense_rank, 
          offense_dvoa, "defense_dvoa_rank" = defense_rank, defense_dvoa,
          "special_teams_dvoa_rank" = special_teams_rank, special_teams_dvoa)
 
-dvoa23[dvoa23 == "JAC"] <- "JAX"
+dvoa2023[dvoa2023 == "JAC"] <- "JAX"
 
-write_csv(dvoa23, "models/dvoa2023.csv")
+write_csv(dvoa2023, "models/dvoa2023.csv")
+
+
+#### TEMPORARY
+##have to combine 2022 and 2023 for first couple weeks
+dvoa2022 <- read_csv("models/dvoa2022.csv") %>% 
+  janitor::clean_names()
+
+combined_df <- bind_rows(dvoa2022, dvoa2023)
+
+# Calculate the average for each column using summarise_all
+dvoa2023 <- combined_df %>%
+  group_by(team) %>% 
+  summarise_all(.funs = mean, na.rm = TRUE)
+
+### TEMPORARY
 
 schedule2023 %>% 
-  left_join(dvoa23, by = c("home_team" = "team")) %>% 
-  left_join(dvoa23, by = c("away_team" = "team")) -> schedule2023
+  left_join(dvoa2023, by = c("home_team" = "team")) %>% 
+  left_join(dvoa2023, by = c("away_team" = "team")) -> schedule2023
 
 schedule2023[schedule2023 == ""] <- "outdoors"
 
@@ -71,7 +86,7 @@ schedule2023$win_prob <- predict(model.prob, newdata = schedule2023,
 schedule2023 -> full_data23
 
 schedule2023 %>% 
-  select(home_team, away_team, home_score, away_score, spread_line, home_moneyline, total_line, home_score_est, visitor_score_est, "total_estimate" = est_total, difference_est, win_prob) %>% 
+  select(week, home_team, away_team, home_score, away_score, spread_line, home_moneyline, total_line, home_score_est, visitor_score_est, "total_estimate" = est_total, difference_est, win_prob) %>% 
   mutate(spread_line = spread_line * -1,
          home_score_est = round(home_score_est, digits = 1),
          visitor_score_est = round(visitor_score_est, digits = 1),
@@ -214,6 +229,5 @@ axs %>%
 
 ##write sheet
 sheet_write(axs, ss = sheet, sheet = 3)
-
 
 

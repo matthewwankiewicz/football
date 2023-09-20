@@ -33,10 +33,18 @@ avgs_data <- game_logs %>%
 position_table <- game_logs %>% 
   distinct(player_display_name, position)
 
+team_defense <- game_logs %>% 
+  group_by(player_display_name, week, season) %>% 
+  filter(carries >= 5 | targets >= 5 | attempts >= 5) %>% 
+  ungroup() %>%
+  group_by(opponent_team, season, position) %>% 
+  summarise_if(is.numeric, list(~ mean(., na.rm = T))) %>% 
+  filter(position %in% c("QB", "TE", "WR", "RB"))
+
 # Define UI for application that draws a histogram
 ui <- navbarPage("Fantasy Football Data",
 
-    # Sidebar with a slider input for number of bins 
+    ## tab for season stats for each player -------
     tabPanel("Season Stats", 
              selectInput("position", label = "Select a position:",
                          choices = c("QB", "RB", "WR", "TE")),
@@ -44,34 +52,49 @@ ui <- navbarPage("Fantasy Football Data",
                          choices = unique(game_logs$season)),
              checkboxInput("avgs", "Per game stats"),
     reactableOutput("season_totals")),
+    ## tab for player game logs --------
     tabPanel("Player Game Logs",
              selectInput("player", label = "Select a player:",
-                         choices = unique(game_logs$player_display_name)),
+                         choices = unique(game_logs$player_display_name),
+                         selected = "Jordan Love"),
+             selectInput("season_log", "Select a season:", choices = c(2023, 2022),
+                         selected = 2023),
     reactableOutput("player_logs")),
-    tabPanel("Graphs",
+    ## tab for player plots -------
+    tabPanel("Player Graphs",
              selectInput("player_graph", "Select a player:",
-                         choices = unique(game_logs$player_display_name)),
+                         choices = unique(game_logs$player_display_name),
+                         selected = "Jordan Love"),
              selectInput("stat_choice", "Select a stat:",
                          choices = c("fantasy_points_half_ppr", "receptions", "interceptions",
                                      "receiving_yards", "rushing_yards", "targets",
                                      "target_share", "carries", "passing_yards", "air_yards_share",
                                      "rushing_tds", "receiving_tds", "passing_tds")),
+             selectInput("season", "Select a season:", choices = c(2023, 2022)),
              numericInput("prop", "Enter a threshold:", 0.5, step = 1),
     plotlyOutput("weekly_plot")),
+    ## tab for team weekly plot --------------
     tabPanel("Team Graph",
              selectInput("team_stat", "Select a stat to group by:",
                          choices = c("fantasy_points_half_ppr", "receptions", "interceptions",
                                      "receiving_yards", "rushing_yards", "targets",
                                      "target_share", "carries", "passing_yards", "air_yards_share",
                                      "rushing_tds", "receiving_tds", "passing_tds")),
-    plotlyOutput("team_plot"))
+    plotlyOutput("team_plot")),
+    ## tab for team defense ------------ 
+    tabPanel("Team Defense vs Position",
+             selectInput("def_position", "Select a position:",
+                         choices = c("QB", "RB", "WR", "TE")),
+             selectInput("def_season", "Select a season:",
+                         choices = c(2022:2023)),
+             reactableOutput("defense_table"))
 )
 
 
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
-  
+  ### season totals stats output--------------
   output$season_totals <- renderReactable({
     avgs_data <- avgs_data %>% 
       filter(season == as.numeric(input$season_total))
@@ -85,7 +108,7 @@ server <- function(input, output) {
           filter(position %in% input$position) %>% 
           select(player_display_name, position, receptions, targets, target_share,
                  carries, rushing_yards, receiving_tds,
-                 rushing_tds, fantasy_points_half_ppr) %>% 
+                 rushing_tds, "snap_share" = offense_pct, fantasy_points_half_ppr) %>% 
           mutate_if(is.numeric, list(~ round(.,3))) %>% 
           reactable(defaultPageSize = 20)
       }
@@ -106,7 +129,7 @@ server <- function(input, output) {
         filter(position %in% input$position) %>% 
         select(player_display_name, position, receptions, targets,
                carries, rushing_yards, receiving_tds,
-               rushing_tds, fantasy_points_half_ppr) %>% 
+               rushing_tds, "snap_share" = offense_pct, fantasy_points_half_ppr) %>% 
         mutate_if(is.numeric, list(~ round(.,3))) %>% 
         reactable(defaultPageSize = 20)
     }
@@ -122,7 +145,7 @@ server <- function(input, output) {
     }}
     
   })
-  
+  ## player game logs output ---------
   output$player_logs <- renderReactable({
     
     position <- position_table %>% 
@@ -131,8 +154,9 @@ server <- function(input, output) {
     
     if(position == "QB"){
       game_logs %>% 
-        filter(player_display_name == input$player) %>% 
-        select(player_display_name, position, week, completions, rushing_yards,
+        filter(player_display_name == input$player,
+               season == as.numeric(input$season_log)) %>% 
+        select(player_display_name, position, "team" = recent_team, week, completions, rushing_yards,
                passing_yards, passing_tds, rushing_tds,
                sacks, interceptions, fantasy_points_half_ppr) %>% 
         mutate_if(is.numeric, list(~ round(.,3))) %>% 
@@ -140,21 +164,23 @@ server <- function(input, output) {
     }
     else{
       game_logs %>% 
-        filter(player_display_name == input$player) %>% 
-        select(player_display_name, position, week, receptions, targets,
+        filter(player_display_name == input$player,
+               season == as.numeric(input$season_log)) %>% 
+        select(player_display_name, position, "team" = recent_team, week, receptions, targets,
                carries, rushing_yards, receiving_tds,
-               rushing_tds, fantasy_points_half_ppr) %>% 
+               rushing_tds, "snap_share" = offense_pct, fantasy_points_half_ppr) %>% 
         mutate_if(is.numeric, list(~ round(.,3))) %>% 
         reactable(defaultPageSize = 20)
     }
   })
-  
+  ### weekly stat plot output -------------
   output$weekly_plot <- renderPlotly({
     
     
     
     filtered_data <- game_logs %>% 
-      filter(player_display_name == input$player_graph) %>% 
+      filter(player_display_name == input$player_graph,
+             season == as.numeric(input$season)) %>% 
       select(input$stat_choice, week)
     
     threshold_value <- input$prop
@@ -178,6 +204,7 @@ server <- function(input, output) {
     
   })
   
+  ### team stat plot output ---------------
   output$team_plot <- renderPlotly({
     
     teams <- game_logs %>% filter(player_display_name == input$player_graph) %>% pull(recent_team)
@@ -186,14 +213,41 @@ server <- function(input, output) {
     focus_stat <- input$team_stat
 
     plot <- game_logs %>%
+      filter(season == as.numeric(input$season)) %>% 
       group_by(recent_team, week, player_display_name) %>%
       summarise(stat = mean(!!sym(focus_stat))) %>%
-      filter(recent_team == team) %>% 
+      filter(recent_team == team,
+             stat > 0) %>% 
       ggplot(aes(week, stat, color = player_display_name)) +
       geom_line() +
       theme_minimal()
 
     ggplotly(plot)
+  })
+  
+  ## defense vs position output ----------
+  output$defense_table <- renderReactable({
+    
+    if("QB" != input$def_position){
+      team_defense %>% 
+        filter(position == input$def_position & season == as.numeric(input$def_season)) %>% 
+        select("team" = opponent_team, receptions, targets,
+               carries, rushing_yards, receiving_yards, receiving_tds,
+               rushing_tds, "snap_share" = offense_pct, fantasy_points_half_ppr) %>% 
+        mutate_if(is.numeric, list(~ round(.,3))) %>% 
+        reactable(defaultPageSize = 32)
+    }
+    
+    else{
+      team_defense %>% 
+        filter(position == input$def_position & season == as.numeric(input$def_season)) %>%
+        select("team" = opponent_team, completions, rushing_yards,
+               passing_yards, passing_tds, rushing_tds,
+               sacks, interceptions, fantasy_points_half_ppr) %>% 
+        mutate_if(is.numeric, list(~ round(.,3))) %>% 
+        reactable(defaultPageSize = 32)
+    }
+    
   })
 
 }
