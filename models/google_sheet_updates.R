@@ -19,7 +19,7 @@ sheet <- "https://docs.google.com/spreadsheets/d/1FkMX0BRIIG2lfxjzqWwmM8K-Z-_ngr
 
 schedule <- read_rds("schedule.rds")
 
-## add estimates for home score, away score, total, home_diff and win prob
+### add estimates for home score, away score, total, home_diff and win prob
 schedule$home_score.pred <- predict(home_model, newdata = schedule)
 schedule$away_score.pred <- predict(away_model, newdata = schedule)
 schedule$total_estimate <- predict(total_mod, newdata = schedule)
@@ -30,7 +30,7 @@ schedule$win_prob <- predict(model.prob, newdata = schedule,
 schedule_sheet1 <- schedule %>% 
   select(c(1:11, home_score.pred, away_score.pred, total_estimate, difference_est, win_prob))
 
-#sheet_write(schedule_sheet1, ss = sheet, sheet = 2)
+#heet_write(schedule_sheet1, ss = sheet, sheet = 2))
 
 ## create train and test split
 
@@ -55,6 +55,16 @@ dvoa2023[dvoa2023 == "JAC"] <- "JAX"
 
 write_csv(dvoa2023, "models/dvoa2023.csv")
 
+
+dvoa2022 <- read_csv("models/dvoa2022.csv") %>% 
+  janitor::clean_names()
+
+combined_df <- bind_rows(dvoa2022, dvoa2023)
+
+# Calculate the average for each column using summarise_all
+dvoa2023 <- combined_df %>%
+  group_by(team) %>% 
+  summarise_all(.funs = mean, na.rm = TRUE)
 
 #### TEMPORARY
 ##have to combine 2022 and 2023 for first couple weeks
@@ -229,5 +239,12 @@ axs %>%
 
 ##write sheet
 sheet_write(axs, ss = sheet, sheet = 3)
+
+
+
+full_data.t %>% filter(week == 1) %>% pull(correct) %>% mean(na.rm = T)
+
+
+
 
 
