@@ -30,7 +30,7 @@ schedule$win_prob <- predict(model.prob, newdata = schedule,
 schedule_sheet1 <- schedule %>% 
   select(c(1:11, home_score.pred, away_score.pred, total_estimate, difference_est, win_prob))
 
-#heet_write(schedule_sheet1, ss = sheet, sheet = 2))
+#sheet_write(schedule_sheet1, ss = sheet, sheet = 2))
 
 ## create train and test split
 
@@ -96,13 +96,21 @@ schedule2023$win_prob <- predict(model.prob, newdata = schedule2023,
 schedule2023 -> full_data23
 
 schedule2023 %>% 
-  select(week, home_team, away_team, home_score, away_score, spread_line, home_moneyline, total_line, home_score_est, visitor_score_est, "total_estimate" = est_total, difference_est, win_prob) %>% 
+  select(week, home_team, home_score_est, away_team, visitor_score_est,
+         "home_score_actual" = home_score, "away_score_actual" = away_score, 
+         spread_line, home_moneyline, total_line, 
+         "total_estimate" = est_total, difference_est, win_prob) %>% 
   mutate(spread_line = spread_line * -1,
          home_score_est = round(home_score_est, digits = 1),
          visitor_score_est = round(visitor_score_est, digits = 1),
          total_estimate = round(total_estimate, digits = 1),
          difference_est = round(difference_est, digits = 3),
-         win_prob = round(win_prob, 3)) -> schedule2023
+         win_prob = round(win_prob, 3)) %>% 
+  relocate(home_score_actual, away_score_actual, .after = last_col()) -> schedule2023
+  
+  
+  # relocate(week, home_team, home_score_est, away_team, visitor_score_est, spread_line,
+  #          home_moneyline, total_line)-> schedule2023
 
 sheet_write(schedule2023, ss = sheet, sheet = 1)
 
