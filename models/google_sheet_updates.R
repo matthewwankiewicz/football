@@ -4,6 +4,22 @@ library(tidyverse)
 
 #gs4_auth()
 
+## function to simulate model estimates
+simulate_spreads <- function(spread, estimate, sigma){
+  n_sims = 10000 # set number of sims
+  
+  ## simulate and saved estimates
+  sims <- rnorm(n_sims, mean = estimate, sd = sigma**2)
+  
+  ## return proportion of estimates > spread line
+  return_value <- ifelse(spread < 0,
+                         sum(sims >= -1*spread),
+                         sum(sims > -1*spread))/n_sims
+  
+  
+  return(round(return_value, 3))
+}
+
 ## read in models
 home_model <- read_rds("models/home_model.rds")
 away_model <- read_rds("models/away_model.rds")
@@ -24,11 +40,16 @@ schedule$home_score.pred <- predict(home_model, newdata = schedule)
 schedule$away_score.pred <- predict(away_model, newdata = schedule)
 schedule$total_estimate <- predict(total_mod, newdata = schedule)
 schedule$difference_est <- predict(model1, newdata = schedule)
+schedule$difference_est_sd <- predict(model1, newdata = schedule, se.fit = T)$se.fit
 schedule$win_prob <- predict(model.prob, newdata = schedule,
                              type = "response")
 
+schedule <- schedule %>%
+  rowwise() %>% 
+  mutate(cover_prob = simulate_spreads(spread_line, difference_est, difference_est_sd))
+
 schedule_sheet1 <- schedule %>% 
-  select(c(1:11, home_score.pred, away_score.pred, total_estimate, difference_est, win_prob))
+  select(c(1:11, home_score.pred, away_score.pred, total_estimate, difference_est, win_prob, cover_prob))
 
 #sheet_write(schedule_sheet1, ss = sheet, sheet = 2))
 
@@ -90,6 +111,7 @@ schedule2023$home_score_est <- predict(home_model, newdata = schedule2023)
 schedule2023$visitor_score_est <- predict(away_model, newdata = schedule2023)
 schedule2023$est_total <- predict(total_mod, newdata = schedule2023)
 schedule2023$difference_est <- predict(model1, newdata = schedule2023)
+schedule2023$difference_est_sd <- predict(model1, newdata = schedule2023, se.fit = T)$se.fit
 schedule2023$win_prob <- predict(model.prob, newdata = schedule2023,
                              type = "response")
 
@@ -99,13 +121,18 @@ schedule2023 %>%
   select(week, home_team, home_score_est, away_team, visitor_score_est,
          "home_score_actual" = home_score, "away_score_actual" = away_score, 
          spread_line, home_moneyline, total_line, 
-         "total_estimate" = est_total, difference_est, win_prob) %>% 
+         "total_estimate" = est_total, difference_est, win_prob, difference_est_sd) %>% 
   mutate(spread_line = spread_line * -1,
          home_score_est = round(home_score_est, digits = 1),
          visitor_score_est = round(visitor_score_est, digits = 1),
          total_estimate = round(total_estimate, digits = 1),
          difference_est = round(difference_est, digits = 3),
          win_prob = round(win_prob, 3)) %>% 
+  rowwise() %>% 
+  mutate(cover_prob = simulate_spreads(spread = spread_line,
+                                       estimate = difference_est,
+                                       sigma = difference_est_sd)) %>% view() 
+  select(-difference_est_sd) %>% 
   relocate(home_score_actual, away_score_actual, .after = last_col()) -> schedule2023
   
   
@@ -186,7 +213,7 @@ test$est_total <- round(predict(total_mod, newdata = test))
 
 test2 <- test %>% 
   select(home_team, away_team, home_score, away_score, total, total_line, win_prob, home_win,
-         home_score_est, visitor_score_est, spread_line, result, est, est_total) %>% 
+         home_score_est, visitor_score_est, spread_line, result, est, est_total, cover_prob) %>% 
   mutate(total_est = home_score_est + visitor_score_est,
          diff_est = home_score_est - visitor_score_est,
          est_win = ifelse(win_prob > 0.5, 1, 0),
@@ -252,6 +279,10 @@ sheet_write(axs, ss = sheet, sheet = 3)
 
 full_data.t %>% filter(week == 1) %>% pull(correct) %>% mean(na.rm = T)
 
+
+test2 %>% 
+  filter(cover_prob < .25) %>% 
+  pull(correct) %>% mean(na.rm = T)
 
 
 
