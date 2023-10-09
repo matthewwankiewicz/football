@@ -77,29 +77,6 @@ dvoa2023[dvoa2023 == "JAC"] <- "JAX"
 write_csv(dvoa2023, "models/dvoa2023.csv")
 
 
-dvoa2022 <- read_csv("models/dvoa2022.csv") %>% 
-  janitor::clean_names()
-
-combined_df <- bind_rows(dvoa2022, dvoa2023)
-
-# Calculate the average for each column using summarise_all
-dvoa2023 <- combined_df %>%
-  group_by(team) %>% 
-  summarise_all(.funs = mean, na.rm = TRUE)
-
-#### TEMPORARY
-##have to combine 2022 and 2023 for first couple weeks
-dvoa2022 <- read_csv("models/dvoa2022.csv") %>% 
-  janitor::clean_names()
-
-combined_df <- bind_rows(dvoa2022, dvoa2023)
-
-# Calculate the average for each column using summarise_all
-dvoa2023 <- combined_df %>%
-  group_by(team) %>% 
-  summarise_all(.funs = mean, na.rm = TRUE)
-
-### TEMPORARY
 
 schedule2023 %>% 
   left_join(dvoa2023, by = c("home_team" = "team")) %>% 
@@ -131,7 +108,7 @@ schedule2023 %>%
   rowwise() %>% 
   mutate(cover_prob = simulate_spreads(spread = spread_line,
                                        estimate = difference_est,
-                                       sigma = difference_est_sd)) %>% view() 
+                                       sigma = difference_est_sd)) %>%
   select(-difference_est_sd) %>% 
   relocate(home_score_actual, away_score_actual, .after = last_col()) -> schedule2023
   
@@ -268,16 +245,14 @@ rownames(axs) <- c("Win Prob Model Moneyline Accuracy", "Home - Away Score Money
 
 colnames(axs) <- c("2023 Season", "Testing Data (Sample of 244 games)")
 
-axs %>% 
-  rownames_to_column() %>% 
-  rename(" " = rowname) -> axs
-
 ##write sheet
 sheet_write(axs, ss = sheet, sheet = 3)
 
 
 
-full_data.t %>% filter(week == 1) %>% pull(correct) %>% mean(na.rm = T)
+test2 %>% 
+  filter((spread_line > 0 & est_win == 1) | (spread_line < 0 & est_win == 0)) %>% 
+  pull(correct_win) %>% mean()
 
 
 test2 %>% 

@@ -18,7 +18,11 @@ library(plotly)
 game_logs <- read_rds("gamelogs.rds")
 
 game_logs <- game_logs %>% 
-  filter(week <= 18)
+  filter(week <= 18) %>% 
+  mutate(total_tds = rushing_tds + receiving_tds)
+
+game_logs <- game_logs[!duplicated(game_logs),]
+
 
 totals_data <- game_logs %>% 
   group_by(player_display_name, position, season) %>% 
@@ -60,6 +64,13 @@ ui <- navbarPage("Fantasy Football Data",
              selectInput("season_log", "Select a season:", choices = c(2023, 2022),
                          selected = 2023),
     reactableOutput("player_logs")),
+    ## tab for opponent logs --------------
+    tabPanel("Opponent Game Logs",
+             selectInput("opponent", label = "Select an opponent:",
+                         choices = unique(game_logs$opponent_team)[-1]),
+             selectInput("play_position", "Select a position:",
+                         choices = c("QB", "RB", "WR", "TE")),
+    reactableOutput("opponent_logs")),
     ## tab for player plots -------
     tabPanel("Player Graphs",
              selectInput("player_graph", "Select a player:",
@@ -69,7 +80,8 @@ ui <- navbarPage("Fantasy Football Data",
                          choices = c("fantasy_points_half_ppr", "receptions", "interceptions",
                                      "receiving_yards", "rushing_yards", "targets",
                                      "target_share", "carries", "passing_yards", "air_yards_share",
-                                     "rushing_tds", "receiving_tds", "passing_tds")),
+                                     "total_tds", "passing_tds", 
+                                     "completions")),
              selectInput("season", "Select a season:", choices = c(2023, 2022)),
              numericInput("prop", "Enter a threshold:", 0.5, step = 1),
     plotlyOutput("weekly_plot")),
@@ -79,14 +91,12 @@ ui <- navbarPage("Fantasy Football Data",
                          choices = c("fantasy_points_half_ppr", "receptions", "interceptions",
                                      "receiving_yards", "rushing_yards", "targets",
                                      "target_share", "carries", "passing_yards", "air_yards_share",
-                                     "rushing_tds", "receiving_tds", "passing_tds")),
+                                     "total_tds", "passing_tds")),
     plotlyOutput("team_plot")),
     ## tab for team defense ------------ 
     tabPanel("Team Defense vs Position",
              selectInput("def_position", "Select a position:",
                          choices = c("QB", "RB", "WR", "TE")),
-             selectInput("def_season", "Select a season:",
-                         choices = c(2022:2023)),
              reactableOutput("defense_table"))
 )
 
@@ -107,8 +117,8 @@ server <- function(input, output) {
         avgs_data %>% 
           filter(position %in% input$position) %>% 
           select(player_display_name, position, receptions, targets, target_share,
-                 carries, rushing_yards, receiving_tds,
-                 rushing_tds, "snap_share" = offense_pct, fantasy_points_half_ppr) %>% 
+                 carries, receiving_yards, rushing_yards, total_tds,
+                 "snap_share" = offense_pct, fantasy_points_half_ppr) %>% 
           mutate_if(is.numeric, list(~ round(.,3))) %>% 
           reactable(defaultPageSize = 20)
       }
@@ -128,8 +138,8 @@ server <- function(input, output) {
       totals_data %>% 
         filter(position %in% input$position) %>% 
         select(player_display_name, position, receptions, targets,
-               carries, rushing_yards, receiving_tds,
-               rushing_tds, "snap_share" = offense_pct, fantasy_points_half_ppr) %>% 
+               carries, receiving_yards, rushing_yards, total_tds,
+               "snap_share" = offense_pct, fantasy_points_half_ppr) %>% 
         mutate_if(is.numeric, list(~ round(.,3))) %>% 
         reactable(defaultPageSize = 20)
     }
@@ -145,7 +155,7 @@ server <- function(input, output) {
     }}
     
   })
-  ## player game logs output ---------
+  ### player game logs --------------
   output$player_logs <- renderReactable({
     
     position <- position_table %>% 
@@ -156,7 +166,7 @@ server <- function(input, output) {
       game_logs %>% 
         filter(player_display_name == input$player,
                season == as.numeric(input$season_log)) %>% 
-        select(player_display_name, position, "team" = recent_team, week, completions, rushing_yards,
+        select(player_display_name, position, opponent_team, week, completions, rushing_yards,
                passing_yards, passing_tds, rushing_tds,
                sacks, interceptions, fantasy_points_half_ppr) %>% 
         mutate_if(is.numeric, list(~ round(.,3))) %>% 
@@ -166,10 +176,35 @@ server <- function(input, output) {
       game_logs %>% 
         filter(player_display_name == input$player,
                season == as.numeric(input$season_log)) %>% 
+        select(player_display_name, position, opponent_team, week, receptions, targets,
+               carries, rushing_yards, total_tds, "snap_share" = offense_pct, fantasy_points_half_ppr) %>% 
+        mutate_if(is.numeric, list(~ round(.,3))) %>% 
+        reactable(defaultPageSize = 20)
+    }
+  })
+  ## opponent game logs output ---------
+  output$opponent_logs <- renderReactable({
+    
+    if(input$play_position == "QB"){
+      game_logs %>% 
+        filter(position == input$play_position,
+               opponent_team == input$opponent) %>% 
+        select(player_display_name, position, "team" = recent_team, week, completions, rushing_yards,
+               passing_yards, passing_tds, rushing_tds,
+               sacks, interceptions, fantasy_points_half_ppr) %>% 
+        mutate_if(is.numeric, list(~ round(.,3))) %>% 
+        arrange(week) %>% 
+        reactable(defaultPageSize = 20)
+    }
+    else{
+      game_logs %>% 
+        filter(position == input$play_position,
+               opponent_team == input$opponent)  %>% 
         select(player_display_name, position, "team" = recent_team, week, receptions, targets,
-               carries, rushing_yards, receiving_tds,
+               carries, rushing_yards, receiving_yards, receiving_tds,
                rushing_tds, "snap_share" = offense_pct, fantasy_points_half_ppr) %>% 
         mutate_if(is.numeric, list(~ round(.,3))) %>% 
+        arrange(week) %>% 
         reactable(defaultPageSize = 20)
     }
   })
@@ -230,7 +265,7 @@ server <- function(input, output) {
     
     if("QB" != input$def_position){
       team_defense %>% 
-        filter(position == input$def_position & season == as.numeric(input$def_season)) %>% 
+        filter(position == input$def_position & season == 2023) %>% 
         select("team" = opponent_team, receptions, targets,
                carries, rushing_yards, receiving_yards, receiving_tds,
                rushing_tds, "snap_share" = offense_pct, fantasy_points_half_ppr) %>% 
@@ -240,7 +275,7 @@ server <- function(input, output) {
     
     else{
       team_defense %>% 
-        filter(position == input$def_position & season == as.numeric(input$def_season)) %>%
+        filter(position == input$def_position & season == 2023) %>%
         select("team" = opponent_team, completions, rushing_yards,
                passing_yards, passing_tds, rushing_tds,
                sacks, interceptions, fantasy_points_half_ppr) %>% 
