@@ -5,7 +5,8 @@ library(plotly)
 game_logs <- nflfastR::load_player_stats(seasons = 2022:2023)
 
 game_logs <- game_logs %>% 
-  mutate(fantasy_points_half_ppr = fantasy_points + 0.5*receptions)
+  mutate(fantasy_points_half_ppr = fantasy_points + 0.5*receptions,
+         total_tds = rushing_tds + receiving_tds)
 
 snap_counts <- nflreadr::load_snap_counts(seasons = 2022:2023)
 
@@ -166,7 +167,7 @@ filter_leaders <- function(){
     filter(season == 2023,
            position %in% c("WR", "TE")) %>% 
     group_by(recent_team, player_display_name, position) %>% 
-    summarise(avg_share = mean(air_yards_share),
+    summarise(avg_share = mean(target_share),
               n = n()) %>%
     drop_na(avg_share) %>%
     filter(n >= 2) %>% 
@@ -224,12 +225,14 @@ game_logs %>%
   view()
 
 game_logs %>% 
-  filter(player_display_name %in% target_leaders$player_display_name,
-         opponent_team == "BAL") %>% view()
+  filter(position == "RB", carries >= 10,
+         opponent_team == "DEN") %>% 
+  select(week, player_name, carries, rushing_yards, total_tds) %>% 
+  view()
 
 
 
 
-filter_leaders() %>% view()
+filter_leaders() -> stat_leaders
 
 
