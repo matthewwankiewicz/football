@@ -225,9 +225,11 @@ game_logs %>%
 
 game_logs %>% 
   filter(player_display_name %in% target_leaders$player_display_name,
-         opponent_team == "ATL") %>% view()
+         opponent_team == "BAL") %>% view()
 
 
 
 
 filter_leaders() %>% view()
+
+

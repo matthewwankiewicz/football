@@ -18,8 +18,7 @@ library(plotly)
 game_logs <- read_rds("gamelogs.rds")
 
 game_logs <- game_logs %>% 
-  filter(week <= 18) %>% 
-  mutate(total_tds = rushing_tds + receiving_tds)
+  filter(week <= 18)
 
 game_logs <- game_logs[!duplicated(game_logs),]
 
@@ -202,7 +201,8 @@ server <- function(input, output) {
                opponent_team == input$opponent)  %>% 
         select(player_display_name, position, "team" = recent_team, week, receptions, targets,
                carries, rushing_yards, receiving_yards, receiving_tds,
-               rushing_tds, "snap_share" = offense_pct, fantasy_points_half_ppr) %>% 
+               rushing_tds, "snap_share" = offense_pct, target_share,
+               fantasy_points_half_ppr) %>% 
         mutate_if(is.numeric, list(~ round(.,3))) %>% 
         arrange(week) %>% 
         reactable(defaultPageSize = 20)
