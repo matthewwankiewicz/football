@@ -21,6 +21,26 @@ game_logs <- game_logs %>%
 write_rds(game_logs, "football_plots/gamelogs.rds")
 
 
+max_week <- ifelse(weekdays(Sys.Date()) %in% c("Friday", "Saturday",
+                                               "Sunday", "Monday"), 
+                   max(game_logs %>% 
+                         filter(season == 2023) %>% 
+                         pull(week)),
+                   max(game_logs %>% 
+                         filter(season == 2023) %>% 
+                         pull(week))+1
+                   )
+
+nflseedR::load_sharpe_games() %>% 
+  filter(season == 2023,
+         week == max_week) %>% 
+  select(away_team, home_team) %>% 
+  mutate(game = paste(away_team, "@", home_team)) %>% 
+  pull(game) -> games
+
+
+write_rds(games, "football_plots/current_week.rds")
+
 
 game_logs %>% 
   filter(position == "TE") %>% 
@@ -104,7 +124,9 @@ game_logs %>%
 
 rb_data %>% 
   ggplot(aes(target_share, avg_fppg, color = factor(cluster))) +
-  geom_point() 
+  geom_point() +
+  geom_polygon(alpha = 0.2) +
+  geom_text(aes(label = cluster), hjust = 1, size = 4)
   # geom_text(data = . %>% 
   #             filter(target_share > 0.2,
   #                    avg_fppg > 10),
@@ -226,7 +248,7 @@ game_logs %>%
 
 game_logs %>% 
   filter(position == "RB", carries >= 10,
-         opponent_team == "DEN") %>% 
+         opponent_team == "WAS") %>% 
   select(week, player_name, carries, rushing_yards, total_tds) %>% 
   view()
 
@@ -235,4 +257,5 @@ game_logs %>%
 
 filter_leaders() -> stat_leaders
 
+rec_leaders %>% view()
 
