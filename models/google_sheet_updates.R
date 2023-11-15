@@ -20,6 +20,12 @@ simulate_spreads <- function(spread, estimate, sigma){
   return(round(return_value, 3))
 }
 
+if(T %in% grepl("total_team_dvoa.csv", list.files("~/Downloads/", pattern = ".csv"))){
+  file.rename("~/Downloads/total_team_dvoa.csv", "~/Documents/football/models/total_team_dvoa.csv")
+  file.remove("~/Downloads/total_team_dvoa.csv")
+}
+
+
 ## read in models
 home_model <- read_rds("models/home_model.rds")
 away_model <- read_rds("models/away_model.rds")
@@ -247,17 +253,72 @@ tst <- c(test_fullscore_ml.acc,
 axs <- data.frame(szn, tst)
 
 rownames(axs) <- c(#"Win Prob Model Moneyline Accuracy",
-                   "Home - Away Score Moneyline Accuracy", 
+                   "Moneyline Accuracy", 
                    #"Score Difference ATS Accuracy",
-                   "Home - Away Score ATS Accuracy",
+                   "ATS Accuracy",
                    #"Total Score Model Accuracy", 
-                   "Home - Away Total Score Accuracy")
+                   "Total Score Accuracy")
 
 colnames(axs) <- c("2023 Season", "Testing Data (Sample of 244 games)")
 
-axs %>% 
-  rownames_to_column(var = " ") -> axs
+
 
 ##write sheet
-sheet_write(axs, ss = sheet, sheet = 3)
+sheet_write(axs %>% 
+              rownames_to_column() %>% 
+              rename(" " = rowname), ss = sheet, sheet = 3)
 
+
+
+
+test2 %>% 
+  group_by(week, season) %>% 
+  summarise(ml_acc = mean(correct_win),
+            ats_acc = mean(correct),
+            ou_acc = mean(correct_under)) -> weekly_acs
+  
+weekly_acs %>% 
+  ggplot(aes(week)) +
+  geom_point(aes(y = ml_acc), colour = "green") +
+  geom_line(aes(y = ats_acc), colour = "blue") +
+  geom_line(aes(y = ou_acc), colour = "red") +
+  geom_hline(yintercept = 0.55)
+
+
+
+szn_fullscore_ml.acc <- full_data.t %>% 
+  pull(correct_win) %>% mean(na.rm = T)
+
+# szn_est_ml.acc <- full_data.t %>% 
+#   pull(correct_win2) %>% mean(na.rm = T)
+
+szn_fullscore_ats.acc <- full_data.t %>% 
+  pull(correct) %>% mean(na.rm = T)
+
+# szn_est_ats.acc <- full_data.t %>% 
+#   pull(correct2) %>% mean(na.rm = T)
+
+szn_fullscore_ou.acc <- full_data.t %>% 
+  pull(correct_under) %>% mean(na.rm = T)
+
+
+
+
+nflseedR::load_sharpe_games() -> all_games
+
+all_games %>% 
+  filter(season %in% c(2020:2022)) %>% 
+  select(season, home_team, away_team, week) %>% 
+  merge(test) -> test
+
+
+
+ggplot(weekly_acs %>% filter(week <=18), aes(x = factor(week), y = ats_acc - 0.55, fill = ats_acc > 0.55)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = c("red", "green")) +
+  labs(title = "ats_acc vs. Week",
+       x = "Week",
+       y = "ats_acc") +
+  theme_minimal() +
+  scale_y_continuous(limits = c(-0.55, 0.45)) +
+  facet_wrap(~season)
