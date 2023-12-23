@@ -13,6 +13,10 @@ library(shiny)
 library(tidyverse)
 library(DT)
 library(plotly)
+
+
+current_week <- read_rds("current_week.rds")
+
 `%ni%` <- negate(`%in%`)
 
 game_logs <- read_rds("gamelogs.rds")
@@ -21,6 +25,42 @@ game_logs <- game_logs %>%
   filter(week <= 18)
 
 game_logs <- game_logs[!duplicated(game_logs),]
+
+rec_leaders <- game_logs %>% 
+  filter(season == 2023,
+         position %in% c("WR", "TE")) %>% 
+  group_by(recent_team, player_display_name, position) %>% 
+  summarise(avg_share = mean(target_share),
+            n = n()) %>%
+  drop_na(avg_share) %>%
+  filter(n >= 2) %>% 
+  select(-n) %>% 
+  group_by(position, recent_team) %>% 
+  filter(avg_share == max(avg_share, na.rm = T))
+
+rush_leaders <- game_logs %>% 
+  filter(season == 2023,
+         position == "RB") %>% 
+  group_by(recent_team, player_display_name, position) %>% 
+  summarise(avg_share = mean(carries),
+            n = n()) %>%
+  filter(n >= 2) %>% 
+  select(-n) %>% 
+  drop_na(avg_share) %>% 
+  group_by(position, recent_team) %>% 
+  filter(avg_share == max(avg_share, na.rm = T))
+
+qb_leaders <- game_logs %>% 
+  filter(season == 2023,
+         position == "QB") %>% 
+  group_by(recent_team, player_display_name, position) %>% 
+  summarise(avg_att = mean(attempts),
+            n = n()) %>%
+  filter(n >= 2) %>% 
+  select(-n) %>% 
+  drop_na(avg_att) %>% 
+  group_by(position, recent_team) %>% 
+  filter(avg_att == max(avg_att, na.rm = T))
 
 
 totals_data <- game_logs %>% 
@@ -65,11 +105,12 @@ ui <- navbarPage("Fantasy Football Data",
     reactableOutput("player_logs")),
     ## tab for opponent logs --------------
     tabPanel("Opponent Game Logs",
-             selectInput("opponent", label = "Select an opponent:",
-                         choices = unique(game_logs$opponent_team)[-1]),
+             selectInput("opponent", label = "Select an game:",
+                         choices = current_week),
              selectInput("play_position", "Select a position:",
                          choices = c("QB", "RB", "WR", "TE")),
-    reactableOutput("opponent_logs")),
+    reactableOutput("opponent_logs_away"),
+    reactableOutput("opponent_logs_home")),
     ## tab for player plots -------
     tabPanel("Player Graphs",
              selectInput("player_graph", "Select a player:",
@@ -182,28 +223,122 @@ server <- function(input, output) {
     }
   })
   ## opponent game logs output ---------
-  output$opponent_logs <- renderReactable({
+  output$opponent_logs_away <- renderReactable({
+    
     
     if(input$play_position == "QB"){
+      
       game_logs %>% 
-        filter(position == input$play_position,
-               opponent_team == input$opponent) %>% 
-        select(player_display_name, position, "team" = recent_team, week, completions, rushing_yards,
-               passing_yards, passing_tds, rushing_tds,
-               sacks, interceptions, fantasy_points_half_ppr) %>% 
-        mutate_if(is.numeric, list(~ round(.,3))) %>% 
+        filter(position == "QB", opponent_team == str_split(input$opponent, " ")[[1]][1]) %>% 
+        group_by(week) %>%
+        filter(attempts == max(attempts, na.rm = TRUE)) %>%
+        slice(1) %>%
+        select(week, 'player_team' = recent_team, opponent_team, player_display_name,
+               completions, attempts, passing_yards, rushing_yards, passing_tds, 
+               interceptions, fantasy_points_half_ppr) %>% 
+        arrange(week) %>% 
+        reactable(defaultPageSize = 20)
+    }
+    
+    else if(input$play_position == "RB"){
+      game_logs %>% 
+        filter(position == "RB",
+               opponent_team == str_split(input$opponent, " ")[[1]][1]) %>% 
+        group_by(week) %>%
+        filter(carries == max(carries, na.rm = TRUE)) %>%
+        slice(1) %>%
+        ungroup() %>%
+        select(week, 'player_team' = recent_team, opponent_team, player_name, receptions, targets, 
+               receiving_yards, carries, rushing_yards, total_tds, fantasy_points_half_ppr) %>% 
+        arrange(week) %>% 
+        reactable(defaultPageSize = 20)
+    }
+    else if (input$play_position == "WR"){
+      
+      game_logs %>% 
+        filter(position == "WR",
+               opponent_team == str_split(input$opponent, " ")[[1]][1]) %>% 
+        group_by(week) %>%
+        filter(targets == max(targets, na.rm = TRUE)) %>%
+        slice(1) %>%
+        ungroup() %>%
+        select(week, 'player_team' = recent_team, opponent_team, player_name,
+               targets, receptions, receiving_yards, total_tds, fantasy_points_half_ppr) %>% 
         arrange(week) %>% 
         reactable(defaultPageSize = 20)
     }
     else{
+      
       game_logs %>% 
-        filter(position == input$play_position,
-               opponent_team == input$opponent)  %>% 
-        select(player_display_name, position, "team" = recent_team, week, receptions, targets,
-               carries, rushing_yards, receiving_yards, receiving_tds,
-               rushing_tds, "snap_share" = offense_pct, target_share,
+        filter(position == "TE",
+               opponent_team == str_split(input$opponent, " ")[[1]][1]) %>% 
+        group_by(week) %>%
+        filter(targets == max(targets, na.rm = TRUE)) %>%
+        slice(1) %>%
+        ungroup() %>%
+        select(week, 'player_team' = recent_team, opponent_team, player_name, targets,
+               receptions, receiving_yards, total_tds, fantasy_points_half_ppr) %>% 
+        arrange(week) %>% 
+        reactable(defaultPageSize = 20)
+    }
+  })
+  
+  output$opponent_logs_home <- renderReactable({
+    
+    
+    if(input$play_position == "QB"){
+      
+      game_logs %>% 
+        filter(position == "QB", opponent_team == str_split(input$opponent, " ")[[1]][3]) %>% 
+        group_by(week) %>%
+        filter(attempts == max(attempts, na.rm = TRUE)) %>%
+        slice(1) %>%
+        select(week, 'player_team' = recent_team, opponent_team, player_display_name,
+               completions, attempts, passing_yards, rushing_yards, passing_tds,
+               interceptions, fantasy_points_half_ppr) %>% 
+        arrange(week) %>% 
+        reactable(defaultPageSize = 20)
+    }
+    
+    else if(input$play_position == "RB"){
+      game_logs %>% 
+        filter(position == "RB",
+               opponent_team == str_split(input$opponent, " ")[[1]][3]) %>% 
+        group_by(week) %>%
+        filter(carries == max(carries, na.rm = TRUE)) %>%
+        slice(1) %>%
+        ungroup() %>%
+        select(week,'player_team' = recent_team, opponent_team, player_name, receptions, targets, 
+               receiving_yards, carries, rushing_yards, total_tds, fantasy_points_half_ppr) %>% 
+        arrange(week) %>% 
+        reactable(defaultPageSize = 20)
+    }
+    else if (input$play_position == "WR"){
+      
+      game_logs %>% 
+        filter(position == "WR",
+               opponent_team == str_split(input$opponent, " ")[[1]][3]) %>% 
+        group_by(week) %>%
+        filter(targets == max(targets, na.rm = TRUE)) %>%
+        slice(1) %>%
+        ungroup() %>%
+        select(week, 'player_team' = recent_team, opponent_team, player_name, 
+               targets, receptions, receiving_yards, total_tds, fantasy_points_half_ppr) %>% 
+        arrange(week) %>% 
+        reactable(defaultPageSize = 20)
+    }
+    else{
+      
+      game_logs %>% 
+        filter(position == "TE",
+               opponent_team == str_split(input$opponent, " ")[[1]][3]) %>% 
+        group_by(week) %>%
+        filter(targets == max(targets, na.rm = TRUE)) %>%
+        slice(1) %>%
+        ungroup() %>%
+        select(week, 'player_team' = recent_team, opponent_team,
+               player_name, targets, receptions, receiving_yards, total_tds,
                fantasy_points_half_ppr) %>% 
-        mutate_if(is.numeric, list(~ round(.,3))) %>% 
         arrange(week) %>% 
         reactable(defaultPageSize = 20)
     }

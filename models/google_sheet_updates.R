@@ -268,7 +268,7 @@ sheet_write(axs %>%
               rownames_to_column() %>% 
               rename(" " = rowname), ss = sheet, sheet = 3)
 
-
+beepr::beep(4)
 
 
 test2 %>% 
@@ -322,3 +322,25 @@ ggplot(weekly_acs %>% filter(week <=18), aes(x = factor(week), y = ats_acc - 0.5
   theme_minimal() +
   scale_y_continuous(limits = c(-0.55, 0.45)) +
   facet_wrap(~season)
+
+
+full_data.t %>% 
+  group_by(away_team) %>% 
+  summarise(wins = sum(est_win)) %>% 
+  arrange((wins))
+
+
+### find the accuracy of the against the spread model for each week in the 2023 season using a line graph
+
+full_data.t %>% 
+  filter(season == 2023) %>% 
+  group_by(week) %>% 
+  summarise(games = n(),
+            ats_win = sum(correct, na.rm = T),
+            ats_loss = games - ats_win) %>% view
+  ggplot(aes(x = factor(week), y = ats_acc, group = 1)) +
+  geom_line() +
+  labs(title = "ATS Accuracy vs. Week",
+       x = "Week",
+       y = "ATS Accuracy") +
+  geom_hline(yintercept = 0.55)

@@ -259,3 +259,34 @@ filter_leaders() -> stat_leaders
 
 rec_leaders %>% view()
 
+
+
+
+#### create a rolling plot for each team to see who is improving and who is not ####
+
+
+library(dplyr)
+library(ggplot2)
+
+# Assuming your data frame is named 'fantasy_data'
+
+# Step 1: Filter the data to only include tight ends ("TE").
+tight_ends_data <- game_logs %>%
+  filter(position == "TE", season == 2023, targets>2)
+
+# Step 2: Group by week and opponent_team, then filter for the player with the most targets for each opponent per week.
+top_targets_data <- tight_ends_data 
+
+# Step 3: Calculate the rolling average of fantasy points scored using a 3-game rolling window.
+rolling_avg_data <- top_targets_data %>%
+  arrange(week) %>%
+  group_by(week, opponent_team) %>%
+  summarise(avg_points = mean(fantasy_points_half_ppr, na.rm = T)) %>% 
+  mutate(rolling_avg = zoo::rollmean(avg_points, k = 5, fill = NA, align = "right")) %>%
+  ungroup() %>% 
+  select(opponent_team, week, rolling_avg)
+
+# Step 4: Plot the rolling average of fantasy points scored by each team over weeks.
+plotly::ggplotly(ggplot(rolling_avg_data, aes(x = week, y = rolling_avg, color = opponent_team)) +
+  geom_line() +
+  labs(x = "Week", y = "Rolling Average Points", title = "Rolling Average Points Scored by Team"))
