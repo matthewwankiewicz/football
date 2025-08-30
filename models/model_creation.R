@@ -21,8 +21,11 @@ schedule2020 <- nfl_games %>%
 schedule2020 <- schedule2020 %>% 
   mutate(home_win = ifelse(home_score > away_score, 1, 0))
 
-dvoa20 <- read_csv("dvoa2020.csv") %>% 
-  janitor::clean_names()
+dvoa20 <- read_csv("models/dvoa2020.csv") %>% 
+  janitor::clean_names() %>% 
+  select(team, "total_dvoa" = tot_dvoa, "total_dvoa_rank" = rank_3, "offense_dvoa_rank" = rank_8, 
+         "offense_dvoa" = off_dvoa, "defense_dvoa_rank" = rank_10, "defense_dvoa" = def_dvoa,
+         "special_teams_dvoa_rank" = rank_12, "special_teams_dvoa" = st_dvoa)
 
 dvoa20[dvoa20 == "LAR"] <- "LA"
 dvoa20[dvoa20 == "JAC"] <- "JAX"
@@ -40,8 +43,11 @@ schedule2021 <- nfl_games %>%
 schedule2021 <- schedule2021 %>% 
   mutate(home_win = ifelse(home_score > away_score, 1, 0))
 
-dvoa21 <- read_csv("dvoa2021.csv") %>% 
-  janitor::clean_names()
+dvoa21 <- read_csv("models/dvoa2021.csv") %>% 
+  janitor::clean_names() %>% 
+  select(team, "total_dvoa" = tot_dvoa, "total_dvoa_rank" = rank_3, "offense_dvoa_rank" = rank_8, 
+         "offense_dvoa" = off_dvoa, "defense_dvoa_rank" = rank_10, "defense_dvoa" = def_dvoa,
+         "special_teams_dvoa_rank" = rank_12, "special_teams_dvoa" = st_dvoa)
 
 dvoa21[dvoa21 == "LAR"] <- "LA"
 dvoa21[dvoa21 == "JAC"] <- "JAX"
@@ -61,11 +67,11 @@ schedule2022 <- nfl_games %>%
 schedule2022 <- schedule2022 %>% 
   mutate(home_win = ifelse(home_score > away_score, 1, 0))
 
-dvoa22 <- read_csv("total_team_dvoa.csv") %>% 
+dvoa22 <- read_csv("models/dvoa2022.csv") %>% 
   janitor::clean_names() %>% 
-  select(team, total_dvoa_rank, total_dvoa, "offense_dvoa_rank" = offense_rank, 
-         offense_dvoa, "defense_dvoa_rank" = defense_rank, defense_dvoa,
-         "special_teams_dvoa_rank" = special_teams_rank, special_teams_dvoa)
+  select(team, "total_dvoa" = tot_dvoa, "total_dvoa_rank" = rank_3, "offense_dvoa_rank" = rank_8, 
+         "offense_dvoa" = off_dvoa, "defense_dvoa_rank" = rank_10, "defense_dvoa" = def_dvoa,
+         "special_teams_dvoa_rank" = rank_12, "special_teams_dvoa" = st_dvoa)
 
 dvoa22[dvoa22 == "LAR"] <- "LA"
 dvoa22[dvoa22 == "JAC"] <- "JAX"
@@ -74,11 +80,31 @@ home_data <- left_join(schedule2022, dvoa22, by = c("home_team" = "team"))
 full_data22 <- left_join(home_data, dvoa22, by = c("away_team" = "team")) %>% 
   mutate(spread_line = -1*spread_line)
 
+### ----------------------------------- download 2023 --------------------------------------------
+schedule2023 <- nfl_games %>% 
+  filter(season == 2023)
+
+schedule2023 <- schedule2023 %>% 
+  mutate(home_win = ifelse(home_score > away_score, 1, 0))
+
+dvoa23 <- read_csv("models/dvoa2023.csv") %>% 
+  janitor::clean_names() %>% 
+  select(team, "total_dvoa" = tot_dvoa, "total_dvoa_rank" = rank_3, "offense_dvoa_rank" = rank_8, 
+         "offense_dvoa" = off_dvoa, "defense_dvoa_rank" = rank_10, "defense_dvoa" = def_dvoa,
+         "special_teams_dvoa_rank" = rank_12, "special_teams_dvoa" = st_dvoa)
+
+dvoa23[dvoa23 == "LAR"] <- "LA"
+dvoa23[dvoa23 == "JAC"] <- "JAX"
+
+home_data <- left_join(schedule2023, dvoa23, by = c("home_team" = "team"))
+full_data23 <- left_join(home_data, dvoa23, by = c("away_team" = "team")) %>% 
+  mutate(spread_line = -1*spread_line)
+
 
 ## COMBINE THE DATASET --------------------------------------------------------
 
 
-schedule <- rbind(rbind(full_data20, full_data21), full_data22) %>% 
+schedule <- rbind(full_data20, full_data21, full_data22, full_data23) %>% 
   mutate(home_diff = home_score - away_score)
 
 write_rds(schedule, "schedule.rds")
@@ -284,8 +310,8 @@ library(tidyverse)
 # write_rds(model1, "spread_mod.rds")
 # write_rds(model.prob, "win_prob.rds")
 
-home_model <- read_rds("home_model.rds")
-away_model <- read_rds("away_model.rds")
+home_model <- read_rds("models/home_model.rds")
+away_model <- read_rds("models/away_model.rds")
 total_mod <- read_rds("total_mod.rds")
 model1 <- read_rds("spread_mod.rds")
 model.prob <- read_rds("win_prob.rds")

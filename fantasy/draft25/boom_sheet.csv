@@ -1,0 +1,401 @@
+strd_rk,strd_tiers,adp_sleeper,adp_rt_sports,auction_12_teams_200,drafted,player,pos,strd_pos_rk,x3rd_yr_wr,rookie,age,cuff,team,oline_pass_blk,oline_run_blk,o_line_ovrl,bye,team_depth_chart,team_d,x1st_5_games_so_s_by_position,full_so_s_by_position_1_14,playoff_so_s_by_position_15_17,most_least_improved_so_s,boom_factor,qb_and_or_wr_te_boom,prop_bet_pass_rec_tds,prop_bet_rush_tds,prop_bet_pass_yds,prop_bet_rush_yds,prop_bet_rec_yds
+1,1,1,1,$60,FALSE,Ja'Marr Chase,WR,1,-,-,25,-,CIN,BAD,BAD,BAD,10,WR1,bad,easy,average,average,-,"","",10.5,-,-,-,1428.8
+2,1,3,2,$49,FALSE,Bijan Robinson,RB,1,-,-,23,Tyler Allgeier,ATL,GREAT,ELITE,ELITE,5,-,bad,easy,easy,average,-,BOOM,"",-,12.1,-,1368,-
+3,1,2,4,$52,FALSE,Saquon Barkley,RB,2,-,-,28,Will Shipley,PHI,ELITE,ELITE,ELITE,9,-,elite,hard,average,average,-,"","",-,11.6,-,1632.9,-
+4,1,5,3,$48,FALSE,Jahmyr Gibbs,RB,3,-,-,23,David Montgomery,DET,GREAT,ELITE,GREAT,8,-,average,hard,hard,hard,least improved,"","",-,12.7,-,1213.6,-
+5,1,6,5,$43,FALSE,CeeDee Lamb,WR,2,-,-,26,-,DAL,OK,GOOD,OK,10,WR1,average,hard,hard,easy,least improved,"","",-,-,-,-,1198.5
+6,1,4,6,$48,FALSE,Justin Jefferson,WR,3,-,-,26,-,MIN,ELITE,GREAT,ELITE,6,WR1,elite,average,average,easy,-,"","",-,-,-,-,1351.4
+7,2,10,13,$44,FALSE,Derrick Henry,RB,4,-,-,31,Justice Hill,BAL,GOOD,GREAT,GREAT,7,-,elite,hard,hard,average,least improved,"","",-,13.7,-,1713.9,-
+8,2,12,14,$38,FALSE,Nico Collins,WR,4,-,-,26,-,HOU,BAD,BAD,BAD,6,WR1,elite,average,average,average,-,"","",-,-,-,-,1163.8
+9,2,13,15,$37,FALSE,Brian Thomas Jr.,WR,5,-,-,22,-,JAC,OK,BAD,BAD,8,WR1,bad,average,hard,average,-,"","",7.8,-,-,-,1224.4
+10,2,9,8,$38,FALSE,Malik Nabers,WR,6,-,-,22,-,NYG,OK,BAD,BAD,14,WR1,average,average,hard,average,least improved,"","",-,-,-,-,1467.5
+11,2,7,12,$39,FALSE,Puka Nacua,WR,7,3rd YR,-,24,-,LAR,GOOD,GREAT,GOOD,8,WR1,average,hard,average,easy,least improved,"","",-,-,-,-,1466.7
+12,3,8,10,$36,FALSE,Amon-Ra St. Brown,WR,8,-,-,25,-,DET,GREAT,ELITE,GREAT,8,WR1,average,average,average,easy,-,"","",-,-,-,-,1147.8
+13,3,14,7,$38,FALSE,Christian McCaffrey,RB,5,-,-,29,Isaac Guerendo,SF,GOOD,OK,GOOD,14,-,average,easy,easy,average,-,BOOM,"",-,-,-,949.3,-
+14,3,11,9,$34,FALSE,Ashton Jeanty,RB,6,-,rookie,21,Raheem Mostert,LV,OK,GOOD,OK,8,-,bad,average,average,average,-,"","",-,9.5,-,1251,-
+15,3,23,22,$35,FALSE,Jonathan Taylor,RB,7,-,-,26,DJ Giddens,IND,GOOD,GREAT,GREAT,11,-,bad,average,average,easy,most improved,"","",-,10.2,-,1247,-
+16,3,19,25,$33,FALSE,A.J. Brown,WR,9,-,-,28,-,PHI,ELITE,ELITE,ELITE,9,WR1,elite,easy,easy,average,-,BOOM,BOOM,-,-,-,-,1151.7
+17,3,18,19,$32,FALSE,Drake London,WR,10,-,-,24,-,ATL,GREAT,ELITE,ELITE,5,WR1,bad,easy,average,average,-,BOOM,BOOM,-,-,-,-,1159.1
+18,3,16,11,$36,FALSE,De'Von Achane,RB,8,-,-,23,Jaylen Wright,MIA,BAD,OK,BAD,12,-,bad,easy,average,average,-,"","",-,-,-,-,-
+19,3,20,16,$37,FALSE,Josh Jacobs,RB,9,-,-,27,MarShawn Lloyd,GB,GREAT,GOOD,GOOD,5,-,average,hard,average,average,-,"","",-,11.2,-,1131.1,-
+20,4,38,40,$29,FALSE,George Kittle,TE,1,-,-,31,-,SF,GOOD,OK,GOOD,14,TE1,average,average,average,average,-,"","",5.8,-,-,-,-
+21,4,15,20,$30,FALSE,Brock Bowers,TE,2,-,-,22,-,LV,OK,GOOD,OK,8,TE1,bad,average,hard,hard,least improved,"","",-,-,-,-,1023.3
+22,4,21,30,$29,FALSE,Ladd McConkey,WR,11,-,-,23,-,LAC,GOOD,GOOD,GOOD,12,WR1,average,average,average,average,-,"","",-,-,-,-,1301.8
+23,4,17,18,$30,FALSE,Bucky Irving,RB,10,-,-,22,Rachaad White,TB,ELITE,GREAT,ELITE,9,-,average,average,average,easy,-,"","",-,8.4,-,1225,-
+24,4,27,24,$33,FALSE,Kyren Williams,RB,11,-,-,24,Blake Corum,LAR,GOOD,GREAT,GOOD,8,-,average,average,average,average,most improved,"","",-,10.1,-,1178.5,-
+25,4,22,23,$31,FALSE,Josh Allen,QB,1,-,-,29,Mitch Trubisky,BUF,ELITE,GREAT,ELITE,7,"",elite,hard,average,hard,-,"","",24.4,9,3378,543,-
+26,4,25,21,$31,FALSE,Lamar Jackson,QB,2,-,-,28,Cooper Rush,BAL,GOOD,GREAT,GREAT,7,"",elite,average,average,average,-,"","",22.3,3.1,3565,855,-
+27,4,37,48,$29,FALSE,Mike Evans,WR,12,-,-,31,-,TB,ELITE,GREAT,ELITE,9,WR1,average,average,average,average,-,"","",-,-,-,-,1028.9
+28,4,28,17,$28,FALSE,Chase Brown,RB,12,-,-,25,Tahj Brooks,CIN,BAD,BAD,BAD,10,-,bad,average,average,average,-,"","",-,8.3,-,996.2,-
+29,4,31,36,$28,FALSE,Tee Higgins,WR,13,-,-,26,-,CIN,BAD,BAD,BAD,10,WR2,bad,easy,average,average,-,"","",-,-,-,-,1087.4
+30,4,24,26,$26,FALSE,Trey McBride,TE,3,-,-,25,-,ARI,OK,GOOD,GOOD,8,TE1,average,average,easy,average,most improved,"","",-,-,-,-,1058
+31,4,29,27,$31,FALSE,Tyreek Hill,WR,14,-,-,31,-,MIA,BAD,OK,BAD,12,WR1,bad,average,easy,average,most improved,"","",-,-,-,-,1027.8
+32,4,30,28,$25,FALSE,Jayden Daniels,QB,3,-,-,24,Marcus Mariota,WAS,GOOD,GOOD,GOOD,12,"",bad,average,average,average,-,"","",23,5.5,3596,852,-
+33,5,26,35,$24,FALSE,Jaxon Smith-Njigba,WR,15,3rd YR,-,23,-,SEA,BAD,BAD,BAD,8,WR1,average,average,easy,average,most improved,"","",-,-,-,-,1012.2
+34,5,35,33,$28,FALSE,James Cook,RB,13,-,-,25,Ray Davis,BUF,ELITE,GREAT,ELITE,7,-,elite,average,average,hard,-,"","",-,9.9,-,1043,-
+35,5,42,42,$27,FALSE,Davante Adams,WR,16,-,-,32,-,LAR,GOOD,GREAT,GOOD,8,WR2,average,hard,average,easy,least improved,"","",-,-,-,-,1093.8
+36,5,40,37,$25,FALSE,Jalen Hurts,QB,4,-,-,27,Tanner McKee,PHI,ELITE,ELITE,ELITE,9,"",elite,easy,average,average,-,BOOM,BOOM,18.7,11.8,3182,639,-
+37,5,32,39,$20,FALSE,Garrett Wilson,WR,17,-,-,25,-,NYJ,OK,GOOD,GOOD,9,WR1,average,average,easy,average,-,"","",-,-,-,-,1022.1
+38,5,36,43,$25,FALSE,Marvin Harrison Jr.,WR,18,-,-,22,-,ARI,OK,GOOD,GOOD,8,WR1,average,hard,average,easy,-,"","",-,-,-,-,-
+39,5,45,38,$23,FALSE,Kenneth Walker III,RB,14,-,-,24,Zach Charbonnet,SEA,BAD,BAD,BAD,8,-,average,average,average,easy,-,"","",-,-,-,-,-
+40,5,39,31,$23,FALSE,Omarion Hampton,RB,15,-,rookie,22,Najee Harris,LAC,GOOD,GOOD,GOOD,12,-,average,average,average,hard,-,"","",-,8.5,-,970.4,-
+41,5,34,46,$27,FALSE,Terry McLaurin,WR,19,-,-,29,-,WAS,GOOD,GOOD,GOOD,12,WR1,bad,average,average,average,-,"","",-,-,-,-,997.4
+42,5,33,29,$23,FALSE,Breece Hall,RB,16,-,-,24,Braelon Allen,NYJ,OK,GOOD,GOOD,9,-,average,average,easy,easy,-,"","",-,-,-,1019.3,-
+43,5,49,51,$25,FALSE,DK Metcalf,WR,20,-,-,27,-,PIT,OK,GOOD,OK,5,WR1,elite,average,easy,average,most improved,"","",7.6,-,-,-,-
+44,5,47,41,$21,FALSE,Chuba Hubbard,RB,17,-,-,26,Rico Dowdle,CAR,OK,GOOD,GOOD,14,-,bad,easy,easy,average,most improved,"","",-,9,-,987.8,-
+45,5,51,49,$23,FALSE,James Conner,RB,18,-,-,30,Trey Benson,ARI,OK,GOOD,GOOD,8,-,average,easy,easy,average,-,"","",-,8.2,-,1021.3,-
+46,5,43,32,$20,FALSE,Joe Burrow,QB,5,-,-,28,Jake Browning,CIN,BAD,BAD,BAD,10,"",bad,average,hard,average,-,"","",33,-,4348,-,-
+47,5,57,63,$19,FALSE,Jameson Williams,WR,21,-,-,24,-,DET,GREAT,ELITE,GREAT,8,WR2,average,average,average,easy,-,"","",-,-,-,-,899.4
+48,5,44,34,$22,FALSE,Alvin Kamara,RB,19,-,-,30,Kendre Miller,NO,OK,OK,OK,11,-,bad,easy,easy,easy,-,"","",-,-,-,827.7,-
+49,5,48,45,$20,FALSE,DJ Moore,WR,22,-,-,28,-,CHI,GOOD,GREAT,GREAT,5,WR1,average,easy,average,hard,-,BOOM,"",6,-,-,-,-
+50,6,50,50,$20,FALSE,Courtland Sutton,WR,23,-,-,29,-,DEN,ELITE,GREAT,ELITE,12,WR1,elite,average,hard,average,-,"","",-,-,-,-,946.7
+51,6,63,44,$16,FALSE,TreVeyon Henderson,RB,20,-,rookie,22,Rhamondre Stevenson,NE,OK,BAD,BAD,14,-,average,easy,average,average,most improved,"","",-,-,-,-,-
+52,6,56,61,$21,FALSE,Xavier Worthy,WR,24,-,-,22,-,KC,GOOD,OK,OK,10,WR2,average,average,average,average,-,"","",-,-,-,-,-
+53,6,53,70,$20,FALSE,Zay Flowers,WR,25,3rd YR,-,24,-,BAL,GOOD,GREAT,GREAT,7,WR1,elite,easy,average,average,most improved,BOOM,"",-,-,-,-,952.3
+54,6,55,59,$17,FALSE,David Montgomery,RB,21,-,-,28,-,DET,GREAT,ELITE,GREAT,8,-,average,hard,hard,hard,least improved,"","",-,-,-,-,-
+55,6,77,56,$19,FALSE,Calvin Ridley,WR,26,-,-,30,-,TEN,OK,OK,OK,10,WR1,bad,average,average,average,-,"","",-,-,-,-,-
+56,6,54,55,$17,FALSE,DeVonta Smith,WR,27,-,-,26,-,PHI,ELITE,ELITE,ELITE,9,WR2,elite,easy,easy,average,-,BOOM,BOOM,-,-,-,-,889.5
+57,6,61,68,$17,FALSE,George Pickens,WR,28,-,-,24,-,DAL,OK,GOOD,OK,10,WR2,average,hard,hard,easy,least improved,"","",-,-,-,-,915.3
+58,6,75,47,$18,FALSE,D'Andre Swift,RB,22,-,-,26,Roschon Johnson,CHI,GOOD,GREAT,GREAT,5,-,average,average,average,average,-,"","",-,-,-,-,-
+59,6,60,53,$12,FALSE,Tetairoa McMillan,WR,29,-,rookie,22,-,CAR,OK,GOOD,GOOD,14,WR1,bad,average,easy,average,-,"","",-,-,-,-,916.4
+60,6,52,66,$16,FALSE,Sam LaPorta,TE,4,-,-,24,-,DET,GREAT,ELITE,GREAT,8,TE1,average,average,average,easy,most improved,"","",-,-,-,-,753.8
+61,6,73,57,$15,FALSE,Tony Pollard,RB,23,-,-,28,Tyjae Spears,TEN,OK,OK,OK,10,-,bad,average,average,average,-,"","",-,-,-,1012.9,-
+62,6,62,58,$12,FALSE,Isiah Pacheco,RB,24,-,-,26,Kareem Hunt,KC,GOOD,OK,OK,10,-,average,average,average,average,-,"","",-,-,-,-,-
+63,6,64,54,$16,FALSE,Patrick Mahomes II,QB,6,-,-,29,Gardner Minshew,KC,GOOD,OK,OK,10,"",average,average,average,average,-,"","",25.2,-,3747,-,-
+64,6,58,52,$12,FALSE,RJ Harvey,RB,25,-,rookie,24,J.K. Dobbins,DEN,ELITE,GREAT,ELITE,12,-,elite,average,average,average,-,"","",-,-,-,-,-
+65,6,68,77,$12,FALSE,Jaylen Waddle,WR,30,-,-,26,-,MIA,BAD,OK,BAD,12,WR2,bad,average,easy,average,most improved,"","",-,-,-,-,946
+66,6,82,91,$17,FALSE,Mark Andrews,TE,5,-,-,29,-,BAL,GOOD,GREAT,GREAT,7,TE1,elite,average,average,easy,most improved,"","",5.4,-,-,-,-
+67,7,67,60,$16,FALSE,Aaron Jones Sr.,RB,26,-,-,30,Jordan Mason,MIN,ELITE,GREAT,ELITE,6,-,elite,average,hard,average,least improved,"","",-,-,-,-,-
+68,7,74,67,$14,FALSE,Baker Mayfield,QB,7,-,-,30,Kyle Trask,TB,ELITE,GREAT,ELITE,9,"",average,average,average,easy,-,"","",26.4,-,3809,-,-
+69,7,41,64,$10,FALSE,Rashee Rice,WR,31,3rd YR,-,25,-,KC,GOOD,OK,OK,10,WR1,average,average,average,average,-,"","",-,-,-,-,-
+70,7,81,81,$11,FALSE,Brian Robinson Jr.,RB,27,-,-,26,Austin Ekeler,WAS,GOOD,GOOD,GOOD,12,-,bad,easy,average,average,-,BOOM,"",-,-,-,-,-
+71,7,79,62,$12,FALSE,Kaleb Johnson,RB,28,-,rookie,21,Jaylen Warren,PIT,OK,GOOD,OK,5,-,elite,average,average,hard,-,"","",-,-,-,-,-
+72,7,65,72,$10,FALSE,Travis Hunter,WR,32,-,rookie,22,-,JAC,OK,BAD,BAD,8,WR2,bad,average,hard,average,-,"","",-,-,-,-,924.3
+73,7,85,73,$10,FALSE,Bo Nix,QB,8,-,-,25,Jarrett Stidham,DEN,ELITE,GREAT,ELITE,12,"",elite,average,average,average,-,"","",23,-,3342,-,-
+74,7,59,75,$12,FALSE,T.J. Hockenson,TE,6,-,-,28,-,MIN,ELITE,GREAT,ELITE,6,TE1,elite,average,hard,hard,least improved,"","",-,-,-,-,-
+75,7,80,74,$11,FALSE,Tyrone Tracy Jr.,RB,29,-,-,25,Cam Skattebo,NYG,OK,BAD,BAD,14,-,average,hard,hard,average,-,"","",-,-,-,-,-
+76,7,96,85,$13,FALSE,Kyler Murray,QB,9,-,-,28,Jacoby Brissett,ARI,OK,GOOD,GOOD,8,"",average,average,easy,easy,most improved,"","",20.9,-,3590,443,-
+77,7,78,83,$9,FALSE,Rome Odunze,WR,33,-,-,23,-,CHI,GOOD,GREAT,GREAT,5,WR2,average,easy,average,hard,-,BOOM,"",-,-,-,-,-
+78,7,46,71,$14,FALSE,Joe Mixon,RB,30,-,-,29,Nick Chubb,HOU,BAD,BAD,BAD,6,-,elite,average,average,average,-,"","",-,8,-,1051.2,-
+79,7,69,76,$9,FALSE,Chris Olave,WR,34,-,-,25,-,NO,OK,OK,OK,11,WR1,bad,average,average,hard,least improved,"","",-,-,-,-,-
+80,7,71,69,$15,FALSE,Jerry Jeudy,WR,35,-,-,26,-,CLE,OK,BAD,BAD,9,WR1,average,easy,hard,hard,-,"","",-,-,-,-,1030.9
+81,7,97,89,$9,FALSE,Ricky Pearsall,WR,36,-,-,24,-,SF,GOOD,OK,GOOD,14,WR3,average,average,average,hard,-,"","",-,-,-,-,-
+82,7,70,90,$8,FALSE,Jordan Addison,WR,37,3rd YR,-,23,-,MIN,ELITE,GREAT,ELITE,6,WR2,elite,average,average,easy,-,"","",-,-,-,-,-
+83,7,121,92,$4,FALSE,Dak Prescott,QB,10,-,-,32,Joe Milton III,DAL,OK,GOOD,OK,10,"",average,hard,hard,average,least improved,"","",26.6,-,3906,-,-
+84,7,76,65,$12,FALSE,Travis Kelce,TE,7,-,-,35,-,KC,GOOD,OK,OK,10,TE1,average,hard,hard,hard,least improved,"","",5.8,-,-,-,-
+85,7,116,86,$6,FALSE,Jordan Mason,RB,31,-,-,26,-,MIN,ELITE,GREAT,ELITE,6,-,elite,average,hard,average,least improved,"","",-,-,-,-,-
+86,8,88,80,$15,FALSE,Deebo Samuel Sr.,WR,38,-,-,29,-,WAS,GOOD,GOOD,GOOD,12,WR2,bad,average,average,average,-,"","",-,-,-,-,-
+87,8,111,110,$11,FALSE,Brock Purdy,QB,11,-,-,25,Mac Jones,SF,GOOD,OK,GOOD,14,"",average,average,easy,average,-,"","",20.9,-,3821,-,-
+88,8,87,78,$10,FALSE,Jaylen Warren,RB,32,-,-,26,-,PIT,OK,GOOD,OK,5,-,elite,average,average,hard,-,"","",-,-,-,-,-
+89,8,114,117,$6,FALSE,Tucker Kraft,TE,8,-,-,24,-,GB,GREAT,GOOD,GOOD,5,TE1,average,hard,average,average,-,"","",-,-,-,-,-
+90,8,99,108,$10,FALSE,David Njoku,TE,9,-,-,29,-,CLE,OK,BAD,BAD,9,TE1,average,easy,average,average,-,"","",-,-,-,-,643.1
+91,8,124,103,$7,FALSE,Justin Fields,QB,12,-,-,26,Tyrod Taylor,NYJ,OK,GOOD,GOOD,9,"",average,average,average,easy,-,"","",13.7,-,2712,-,-
+92,8,102,98,$13,FALSE,Jauan Jennings,WR,39,-,-,28,-,SF,GOOD,OK,GOOD,14,WR2,average,average,average,hard,-,"","",-,-,-,-,-
+93,8,95,115,$11,FALSE,Jayden Reed,WR,40,3rd YR,-,25,-,GB,GREAT,GOOD,GOOD,5,WR1,average,easy,average,hard,-,BOOM,BOOM,-,-,-,-,-
+94,8,90,87,$6,FALSE,Travis Etienne Jr.,RB,33,-,-,26,Tank Bigsby,JAC,OK,BAD,BAD,8,-,bad,average,average,average,-,"","",-,-,-,-,-
+95,8,109,114,$4,FALSE,Justin Herbert,QB,13,-,-,27,Taylor Heinicke,LAC,GOOD,GOOD,GOOD,12,"",average,average,average,average,-,"","",21.2,-,3777,-,-
+96,8,84,93,$13,FALSE,Jakobi Meyers,WR,41,-,-,28,-,LV,OK,GOOD,OK,8,WR1,bad,average,average,average,-,"","",-,-,-,-,-
+97,8,94,79,$8,FALSE,Stefon Diggs,WR,42,-,-,31,-,NE,OK,BAD,BAD,14,WR1,average,average,average,average,-,"","",-,-,-,-,752.4
+98,8,115,100,$3,FALSE,Caleb Williams,QB,14,-,-,23,Tyson Bagent,CHI,GOOD,GREAT,GREAT,5,"",average,easy,hard,hard,least improved,BOOM,BOOM,22.3,-,3589,-,-
+99,8,98,101,$3,FALSE,Jared Goff,QB,15,-,-,30,Hendon Hooker,DET,GREAT,ELITE,GREAT,8,"",average,hard,average,hard,least improved,"","",24.6,-,3997,-,-
+100,8,132,96,$7,FALSE,J.K. Dobbins,RB,34,-,-,26,-,DEN,ELITE,GREAT,ELITE,12,-,elite,average,average,average,-,"","",-,-,-,-,-
+101,8,131,109,$4,FALSE,Tank Bigsby,RB,35,-,-,22,-,JAC,OK,BAD,BAD,8,-,bad,average,average,average,-,"","",-,-,-,-,-
+102,8,130,119,$1,FALSE,Drake Maye,QB,16,-,-,22,Joshua Dobbs,NE,OK,BAD,BAD,14,"",average,average,average,average,-,"","",19.9,-,3200,-,-
+103,8,105,111,$6,FALSE,Rhamondre Stevenson,RB,36,-,-,27,-,NE,OK,BAD,BAD,14,-,average,easy,average,average,most improved,"","",-,-,-,-,-
+104,8,108,97,$5,FALSE,Zach Charbonnet,RB,37,-,-,24,-,SEA,BAD,BAD,BAD,8,-,average,average,average,easy,-,"","",-,-,-,-,-
+105,8,117,99,$0,FALSE,Emeka Egbuka,WR,43,-,rookie,22,-,TB,ELITE,GREAT,ELITE,9,WR3,average,average,average,average,-,"","",-,-,-,-,-
+106,8,101,104,$5,FALSE,Tyler Warren,TE,10,-,rookie,23,-,IND,GOOD,GREAT,GREAT,11,TE1,bad,average,average,average,-,"","",-,-,-,-,606.2
+107,8,104,95,$7,FALSE,Javonte Williams,RB,38,-,-,25,Jaydon Blue,DAL,OK,GOOD,OK,10,-,average,average,average,hard,-,"","",-,-,-,-,-
+108,8,91,88,$3,FALSE,Evan Engram,TE,11,-,-,30,-,DEN,ELITE,GREAT,ELITE,12,TE1,elite,average,average,easy,most improved,"","",-,-,-,-,-
+109,8,72,94,$9,FALSE,Chris Godwin,WR,44,-,-,29,-,TB,ELITE,GREAT,ELITE,9,WR2,average,average,average,average,-,"","",-,-,-,-,-
+110,8,123,139,$1,FALSE,Jordan Love,QB,17,-,-,26,Malik Willis,GB,GREAT,GOOD,GOOD,5,"",average,average,average,hard,least improved,"","",25.4,-,3596,-,-
+111,8,83,106,$6,FALSE,Khalil Shakir,WR,45,-,-,25,-,BUF,ELITE,GREAT,ELITE,7,WR1,elite,average,average,average,-,"","",-,-,-,-,826
+112,9,100,82,$9,FALSE,Matthew Golden,WR,46,-,rookie,22,-,GB,GREAT,GOOD,GOOD,5,WR2,average,easy,average,hard,-,BOOM,BOOM,-,-,-,-,617.4
+113,9,145,136,$0,FALSE,Trevor Lawrence,QB,18,-,-,25,Nick Mullens,JAC,OK,BAD,BAD,8,"",bad,easy,average,average,most improved,"","",22.9,-,3853,-,-
+114,9,103,120,$3,FALSE,Josh Downs,WR,47,3rd YR,-,23,-,IND,GOOD,GREAT,GREAT,11,WR3,bad,hard,average,average,-,"","",-,-,-,-,802.8
+115,9,89,122,$5,FALSE,Najee Harris,RB,39,-,-,27,-,LAC,GOOD,GOOD,GOOD,12,-,average,average,average,hard,-,"","",-,-,-,-,-
+116,9,66,102,$6,FALSE,Quinshon Judkins,RB,40,-,rookie,21,-,CLE,OK,BAD,BAD,9,-,average,average,average,average,-,"","",-,-,-,944.2,-
+117,9,127,131,$1,FALSE,C.J. Stroud,QB,19,-,-,23,Davis Mills,HOU,BAD,BAD,BAD,6,"",elite,easy,easy,average,-,"","",20.9,-,3719,-,-
+118,9,106,107,$4,FALSE,Cam Skattebo,RB,41,-,rookie,23,-,NYG,OK,BAD,BAD,14,-,average,hard,hard,average,-,"","",-,-,-,-,-
+119,9,113,143,$3,FALSE,Dalton Kincaid,TE,12,-,-,25,-,BUF,ELITE,GREAT,ELITE,7,TE1,elite,average,average,hard,-,"","",-,-,-,-,-
+120,9,92,84,$7,FALSE,Cooper Kupp,WR,48,-,-,32,-,SEA,BAD,BAD,BAD,8,WR2,average,average,easy,average,most improved,"","",-,-,-,-,-
+121,9,125,156,$4,FALSE,Dallas Goedert,TE,13,-,-,30,-,PHI,ELITE,ELITE,ELITE,9,TE1,elite,average,average,average,-,"","",-,-,-,-,-
+122,9,107,135,$6,FALSE,Darnell Mooney,WR,49,-,-,27,-,ATL,GREAT,ELITE,ELITE,5,WR2,bad,easy,average,average,-,BOOM,BOOM,-,-,-,-,-
+123,9,118,125,$9,FALSE,Keon Coleman,WR,50,-,-,22,-,BUF,ELITE,GREAT,ELITE,7,WR2,elite,average,average,average,-,"","",-,-,-,-,624.2
+124,9,110,116,$5,FALSE,Michael Pittman Jr.,WR,51,-,-,27,-,IND,GOOD,GREAT,GREAT,11,WR1,bad,hard,average,average,-,"","",-,-,-,-,-
+125,9,136,137,$3,FALSE,Kyle Pitts Sr.,TE,14,-,-,24,-,ATL,GREAT,ELITE,ELITE,5,TE1,bad,easy,easy,average,-,BOOM,BOOM,-,-,-,-,-
+126,9,146,132,$3,FALSE,Ray Davis,RB,42,-,-,25,-,BUF,ELITE,GREAT,ELITE,7,-,elite,average,average,hard,-,"","",-,-,-,-,-
+127,9,112,113,$5,FALSE,Tyjae Spears,RB,43,-,-,24,-,TEN,OK,OK,OK,10,-,bad,average,average,average,-,"","",-,-,-,-,-
+128,9,140,129,$4,FALSE,J.J. McCarthy,QB,20,-,-,22,Sam Howell,MIN,ELITE,GREAT,ELITE,6,"",elite,average,average,average,-,"","",24.5,-,3929,-,-
+129,9,93,140,$0,FALSE,Brandon Aiyuk,WR,52,-,-,27,-,SF,GOOD,OK,GOOD,14,WR1,average,average,average,hard,-,"","",-,-,-,-,-
+130,9,149,126,$4,FALSE,Trey Benson,RB,44,-,-,23,-,ARI,OK,GOOD,GOOD,8,-,average,easy,easy,average,-,"","",-,-,-,-,-
+131,9,129,150,$7,FALSE,Rashid Shaheed,WR,53,-,-,26,-,NO,OK,OK,OK,11,WR2,bad,average,average,hard,least improved,"","",-,-,-,-,-
+132,9,126,123,$5,FALSE,Rachaad White,RB,45,-,-,26,-,TB,ELITE,GREAT,ELITE,9,-,average,average,average,easy,-,"","",-,-,-,-,-
+133,9,120,105,$0,FALSE,Colston Loveland,TE,15,-,rookie,21,-,CHI,GOOD,GREAT,GREAT,5,TE1,average,average,average,average,-,"","",-,-,-,-,682.7
+134,9,174,121,$2,FALSE,Braelon Allen,RB,46,-,-,21,-,NYJ,OK,GOOD,GOOD,9,-,average,average,easy,easy,-,"","",-,-,-,-,-
+135,9,153,145,$3,FALSE,Tyler Allgeier,RB,47,-,-,25,-,ATL,GREAT,ELITE,ELITE,5,-,bad,easy,easy,average,-,BOOM,"",-,-,-,-,-
+136,9,162,142,$0,FALSE,Tua Tagovailoa,QB,21,-,-,27,Zach Wilson,MIA,BAD,OK,BAD,12,"",bad,average,average,average,-,"","",24.7,-,3980,-,-
+137,9,122,127,$2,FALSE,Jake Ferguson,TE,16,-,-,26,-,DAL,OK,GOOD,OK,10,TE1,average,hard,hard,average,least improved,"","",-,-,-,-,-
+138,9,148,188,$4,FALSE,Rashod Bateman,WR,54,-,-,25,-,BAL,GOOD,GREAT,GREAT,7,WR2,elite,easy,average,average,most improved,BOOM,"",-,-,-,-,-
+139,9,139,112,$3,FALSE,Jaydon Blue,RB,48,-,rookie,21,-,DAL,OK,GOOD,OK,10,-,average,average,average,hard,-,"","",-,-,-,-,-
+140,9,144,133,$2,FALSE,Isaac Guerendo,RB,49,-,-,25,-,SF,GOOD,OK,GOOD,14,-,average,easy,easy,average,-,BOOM,"",-,-,-,-,-
+141,9,172,134,$3,FALSE,Nick Chubb,RB,50,-,-,29,-,HOU,BAD,BAD,BAD,6,-,elite,average,average,average,-,"","",-,-,-,-,-
+142,9,138,152,$0,FALSE,Christian Kirk,WR,55,-,-,28,-,HOU,BAD,BAD,BAD,6,WR2,elite,average,average,average,-,"","",-,-,-,-,-
+143,9,171,151,$0,FALSE,Bryce Young,QB,22,-,-,24,Andy Dalton,CAR,OK,GOOD,GOOD,14,"",bad,easy,average,average,-,"","",20.7,-,3218,-,-
+144,9,142,124,$6,FALSE,Austin Ekeler,RB,51,-,-,30,-,WAS,GOOD,GOOD,GOOD,12,-,bad,easy,average,average,-,BOOM,"",-,-,-,-,-
+145,10,135,138,$5,FALSE,Marvin Mims Jr.,WR,56,-,-,23,-,DEN,ELITE,GREAT,ELITE,12,WR2,elite,average,hard,average,-,"","",-,-,-,-,-
+146,10,166,158,$0,FALSE,Michael Penix Jr.,QB,23,-,-,25,Kirk Cousins,ATL,GREAT,ELITE,ELITE,5,"",bad,easy,average,easy,-,BOOM,BOOM,-,-,-,-,-
+147,10,152,118,$4,FALSE,Jerome Ford,RB,52,-,-,25,Dylan Sampson,CLE,OK,BAD,BAD,9,-,average,average,average,average,-,"","",-,-,-,-,-
+148,10,156,153,$2,FALSE,Hunter Henry,TE,17,-,-,30,-,NE,OK,BAD,BAD,14,TE1,average,easy,average,average,-,"","",-,-,-,-,-
+149,10,134,146,$2,FALSE,Rico Dowdle,RB,53,-,-,27,-,CAR,OK,GOOD,GOOD,14,-,bad,easy,easy,average,most improved,"","",-,-,-,-,-
+150,10,133,148,$0,FALSE,Luther Burden III,WR,57,-,rookie,21,-,CHI,GOOD,GREAT,GREAT,5,WR3,average,easy,average,hard,-,BOOM,"",-,-,-,-,-
+151,10,86,144,$0,FALSE,Jonnu Smith,TE,18,-,-,29,-,PIT,OK,GOOD,OK,5,TE1,elite,easy,average,easy,most improved,"","",-,-,-,-,-
+152,10,176,170,$1,FALSE,Cedric Tillman,WR,58,3rd YR,-,25,-,CLE,OK,BAD,BAD,9,WR2,average,easy,hard,hard,-,"","",-,-,-,-,-
+153,10,175,149,$3,FALSE,Jaylen Wright,RB,54,-,-,22,-,MIA,BAD,OK,BAD,12,-,bad,easy,average,average,-,"","",-,-,-,-,-
+154,10,155,163,$2,FALSE,Denver Broncos,DST,1,-,-,-,-,DEN,ELITE,GREAT,ELITE,12,-,elite,"","","","","","",-,-,-,-,-
+155,10,137,141,$2,FALSE,Bhayshul Tuten,RB,55,-,rookie,23,-,JAC,OK,BAD,BAD,8,-,bad,average,average,average,-,"","",-,-,-,-,-
+156,10,163,173,$0,FALSE,Matthew Stafford,QB,24,-,-,37,Jimmy Garoppolo,LAR,GOOD,GREAT,GOOD,8,"",average,average,easy,average,most improved,"","",24.5,-,3868,-,-
+157,10,185,189,$0,FALSE,Romeo Doubs,WR,59,-,-,25,-,GB,GREAT,GOOD,GOOD,5,WR3,average,easy,average,hard,-,BOOM,BOOM,-,-,-,-,-
+158,10,154,196,$1,FALSE,Isaiah Likely,TE,19,-,-,25,-,BAL,GOOD,GREAT,GREAT,7,TE2,elite,average,average,easy,most improved,"","",-,-,-,-,-
+159,10,119,130,$0,FALSE,Jayden Higgins,WR,60,-,rookie,22,-,HOU,BAD,BAD,BAD,6,-,elite,average,average,average,-,"","",-,-,-,-,-
+160,10,168,147,$2,FALSE,Dylan Sampson,RB,56,-,rookie,20,-,CLE,OK,BAD,BAD,9,-,average,average,average,average,-,"","",-,-,-,-,-
+161,10,158,159,$3,FALSE,Zach Ertz,TE,20,-,-,34,-,WAS,GOOD,GOOD,GOOD,12,TE1,bad,average,hard,hard,least improved,"","",5.5,-,-,-,-
+162,10,150,161,$1,FALSE,Marquise Brown,WR,61,-,-,28,-,KC,GOOD,OK,OK,10,WR3,average,average,average,average,-,"","",-,-,-,-,-
+163,10,186,165,$0,FALSE,Geno Smith,QB,25,-,-,34,Aidan O'Connell,LV,OK,GOOD,OK,8,"",bad,hard,average,average,-,"","",20.9,-,3777,-,-
+164,10,178,206,$2,FALSE,Roschon Johnson,RB,57,-,-,24,-,CHI,GOOD,GREAT,GREAT,5,-,average,average,average,average,-,"","",-,-,-,-,-
+165,10,128,162,$0,FALSE,Tre' Harris,WR,62,-,rookie,23,-,LAC,GOOD,GOOD,GOOD,12,WR3,average,average,average,average,-,"","",-,-,-,-,-
+166,10,141,187,$0,FALSE,Jalen McMillan,WR,63,-,-,23,-,TB,ELITE,GREAT,ELITE,9,-,average,average,average,average,-,"","",-,-,-,-,-
+167,10,151,171,$2,FALSE,Philadelphia Eagles,DST,2,-,-,-,-,PHI,ELITE,ELITE,ELITE,9,-,elite,"","","","","","",-,-,-,-,-
+168,10,143,202,$0,FALSE,Kyle Williams,WR,64,-,rookie,22,-,NE,OK,BAD,BAD,14,-,average,average,average,average,-,"","",-,-,-,-,-
+169,10,173,238,$0,FALSE,Quentin Johnston,WR,65,3rd YR,-,23,-,LAC,GOOD,GOOD,GOOD,12,WR2,average,average,average,average,-,"","",-,-,-,-,-
+170,10,191,190,$2,FALSE,Baltimore Ravens,DST,3,-,-,-,-,BAL,GOOD,GREAT,GREAT,7,-,elite,"","","","","","",-,-,-,-,-
+171,10,160,185,$1,FALSE,Pittsburgh Steelers,DST,4,-,-,-,-,PIT,OK,GOOD,OK,5,-,elite,"","","","","","",-,-,-,-,-
+172,10,187,191,$0,FALSE,Joshua Palmer,WR,66,-,-,25,-,BUF,ELITE,GREAT,ELITE,7,-,elite,average,average,average,-,"","",-,-,-,-,-
+173,10,177,220,$0,FALSE,Blake Corum,RB,58,-,-,24,-,LAR,GOOD,GREAT,GOOD,8,-,average,average,average,average,most improved,"","",-,-,-,-,-
+174,10,165,192,$1,FALSE,Adam Thielen,WR,67,-,-,34,-,CAR,OK,GOOD,GOOD,14,WR2,bad,average,easy,average,-,"","",-,-,-,-,-
+175,10,184,128,$1,FALSE,Keenan Allen,WR,68,-,-,33,-,FA,-,-,-,-,-,#N/A,average,average,average,-,"","",-,-,-,-,-
+176,10,167,194,$1,FALSE,Minnesota Vikings,DST,5,-,-,-,-,MIN,ELITE,GREAT,ELITE,6,-,elite,"","","","","","",-,-,-,-,-
+177,11,183,157,$0,FALSE,DeAndre Hopkins,WR,69,-,-,33,-,BAL,GOOD,GREAT,GREAT,7,WR3,elite,easy,average,average,most improved,BOOM,"",-,-,-,-,-
+178,11,192,169,$0,FALSE,Sam Darnold,QB,26,-,-,28,Jalen Milroe,SEA,BAD,BAD,BAD,8,"",average,average,easy,easy,most improved,"","",20.3,-,3487,-,-
+179,11,205,218,$1,FALSE,MarShawn Lloyd,RB,59,-,-,24,-,GB,GREAT,GOOD,GOOD,5,-,average,hard,average,average,-,"","",-,-,-,-,-
+180,11,198,172,$0,FALSE,DeMario Douglas,WR,70,3rd YR,-,24,-,NE,OK,BAD,BAD,14,WR2,average,average,average,average,-,"","",-,-,-,-,-
+181,11,161,168,$0,FALSE,Cam Ward,QB,27,-,-,23,Brandon Allen,TEN,OK,OK,OK,10,"",bad,average,average,average,-,"","",20.1,-,-,-,-
+182,11,182,182,$0,FALSE,Xavier Legette,WR,71,-,-,24,-,CAR,OK,GOOD,GOOD,14,WR3,bad,average,easy,average,-,"","",-,-,-,-,-
+183,11,202,184,$2,FALSE,Houston Texans,DST,6,-,-,-,-,HOU,BAD,BAD,BAD,6,-,elite,"","","","","","",-,-,-,-,-
+184,11,181,179,$0,FALSE,Wan'Dale Robinson,WR,72,-,-,24,-,NYG,OK,BAD,BAD,14,WR2,average,average,hard,average,least improved,"","",-,-,-,-,-
+185,11,238,175,$2,FALSE,Buffalo Bills,DST,7,-,-,-,-,BUF,ELITE,GREAT,ELITE,7,-,elite,"","","","","","",-,-,-,-,-
+186,11,229,155,$1,FALSE,Brandon Aubrey,K,1,-,-,30,-,DAL,OK,GOOD,OK,10,-,average,"","","","","","",-,-,-,-,-
+187,11,197,219,$0,FALSE,Alec Pierce,WR,73,-,-,25,-,IND,GOOD,GREAT,GREAT,11,WR2,bad,hard,average,average,-,"","",-,-,-,-,-
+188,11,204,214,$0,FALSE,Kansas City Chiefs,DST,8,-,-,-,-,KC,GOOD,OK,OK,10,-,average,"","","","","","",-,-,-,-,-
+189,11,199,221,$1,FALSE,Detroit Lions,DST,9,-,-,-,-,DET,GREAT,ELITE,GREAT,8,-,average,"","","","","","",-,-,-,-,-
+190,11,179,160,$0,FALSE,Brenton Strange,TE,21,-,-,24,-,JAC,OK,BAD,BAD,8,TE1,bad,easy,average,average,-,"","",-,-,-,-,-
+191,11,233,186,$1,FALSE,Jake Bates,K,2,-,-,26,-,DET,GREAT,ELITE,GREAT,8,-,average,"","","","","","",-,-,-,-,-
+192,11,230,174,$1,FALSE,Cameron Dicker,K,3,-,-,25,-,LAC,GOOD,GOOD,GOOD,12,-,average,"","","","","","",-,-,-,-,-
+193,11,195,318,$0,FALSE,Seattle Seahawks,DST,10,-,-,-,-,SEA,BAD,BAD,BAD,8,-,average,"","","","","","",-,-,-,-,-
+194,11,253,273,$0,FALSE,Los Angeles Chargers,DST,11,-,-,-,-,LAC,GOOD,GOOD,GOOD,12,-,average,"","","","","","",-,-,-,-,-
+195,11,309,200,$0,FALSE,Wil Lutz,K,4,-,-,31,-,DEN,ELITE,GREAT,ELITE,12,-,elite,"","","","","","",-,-,-,-,-
+196,11,256,222,$0,FALSE,Los Angeles Rams,DST,12,-,-,-,-,LAR,GOOD,GREAT,GOOD,8,-,average,"","","","","","",-,-,-,-,-
+197,11,169,225,$0,FALSE,Mike Gesicki,TE,22,-,-,29,-,CIN,BAD,BAD,BAD,10,TE1,bad,average,average,average,-,"","",-,-,-,-,-
+198,11,264,264,$0,FALSE,Kendre Miller,RB,60,-,-,23,-,NO,OK,OK,OK,11,-,bad,easy,easy,easy,-,"","",-,-,-,-,-
+199,11,159,239,$0,FALSE,Pat Freiermuth,TE,23,-,-,26,-,PIT,OK,GOOD,OK,5,TE2,elite,easy,average,easy,most improved,"","",-,-,-,-,-
+200,11,276,199,$1,FALSE,Chase McLaughlin,K,5,-,-,29,-,TB,ELITE,GREAT,ELITE,9,-,average,"","","","","","",-,-,-,-,-
+201,11,250,251,$1,FALSE,Green Bay Packers,DST,13,-,-,-,-,GB,GREAT,GOOD,GOOD,5,-,average,"","","","","","",-,-,-,-,-
+202,11,275,223,$0,FALSE,Chris Boswell,K,6,-,-,34,-,PIT,OK,GOOD,OK,5,-,elite,"","","","","","",-,-,-,-,-
+203,11,242,314,$0,FALSE,Jalen Coker,WR,74,-,-,23,-,CAR,OK,GOOD,GOOD,14,-,bad,average,easy,average,-,"","",-,-,-,-,-
+204,11,180,178,$0,FALSE,Cade Otton,TE,24,-,-,26,-,TB,ELITE,GREAT,ELITE,9,TE1,average,hard,average,average,-,"","",-,-,-,-,-
+205,11,231,195,$1,FALSE,Ka'imi Fairbairn,K,7,-,-,31,-,HOU,BAD,BAD,BAD,6,-,elite,"","","","","","",-,-,-,-,-
+206,11,208,154,$0,FALSE,Kyle Monangai,RB,61,-,rookie,23,-,CHI,GOOD,GREAT,GREAT,5,-,average,average,average,average,-,"","",-,-,-,-,-
+207,11,223,203,$0,FALSE,Will Shipley,RB,62,-,-,22,-,PHI,ELITE,ELITE,ELITE,9,-,elite,hard,average,average,-,"","",-,-,-,-,-
+208,11,194,176,$0,FALSE,Aaron Rodgers,QB,28,-,-,41,Mason Rudolph,PIT,OK,GOOD,OK,5,"",elite,average,average,average,-,"","",-,-,-,-,-
+209,11,239,207,$0,FALSE,Miles Sanders,RB,63,-,-,28,-,DAL,OK,GOOD,OK,10,-,average,average,average,hard,-,"","",-,-,-,-,-
+210,11,207,177,$0,FALSE,Chig Okonkwo,TE,25,-,-,25,-,TEN,OK,OK,OK,10,TE1,bad,average,average,average,-,"","",-,-,-,-,-
+211,11,214,285,$0,FALSE,Michael Wilson,WR,75,3rd YR,-,25,-,ARI,OK,GOOD,GOOD,8,WR2,average,hard,average,easy,-,"","",-,-,-,-,-
+212,11,254,252,$0,FALSE,Darius Slayton,WR,76,-,-,28,-,NYG,OK,BAD,BAD,14,WR3,average,average,hard,average,least improved,"","",-,-,-,-,-
+213,11,216,180,$1,FALSE,Kareem Hunt,RB,64,-,-,30,-,KC,GOOD,OK,OK,10,-,average,average,average,average,-,"","",-,-,-,-,-
+214,11,235,212,$1,FALSE,Harrison Butker,K,8,-,-,30,-,KC,GOOD,OK,OK,10,-,average,"","","","","","",-,-,-,-,-
+215,11,243,278,$0,FALSE,New York Jets,DST,14,-,-,-,-,NYJ,OK,GOOD,GOOD,9,-,average,"","","","","","",-,-,-,-,-
+216,11,170,198,$0,FALSE,Mason Taylor,TE,26,-,rookie,21,-,NYJ,OK,GOOD,GOOD,9,TE1,average,average,easy,average,-,"","",-,-,-,-,-
+217,11,209,217,$0,FALSE,DJ Giddens,RB,65,-,rookie,21,-,IND,GOOD,GREAT,GREAT,11,-,bad,average,average,easy,most improved,"","",-,-,-,-,-
+218,11,236,259,$1,FALSE,Evan McPherson,K,9,-,-,26,-,CIN,BAD,BAD,BAD,10,-,bad,"","","","","","",-,-,-,-,-
+219,11,265,205,$0,FALSE,Keaton Mitchell,RB,66,-,-,23,-,BAL,GOOD,GREAT,GREAT,7,-,elite,hard,hard,average,least improved,"","",-,-,-,-,-
+220,11,221,286,$0,FALSE,Adonai Mitchell,WR,77,-,-,22,-,IND,GOOD,GREAT,GREAT,11,-,bad,hard,average,average,-,"","",-,-,-,-,-
+221,11,234,249,$1,FALSE,Tyler Bass,K,10,-,-,28,-,BUF,ELITE,GREAT,ELITE,7,-,elite,"","","","","","",-,-,-,-,-
+222,11,224,306,$0,FALSE,Dontayvion Wicks,WR,78,3rd YR,-,24,-,GB,GREAT,GOOD,GOOD,5,-,average,easy,average,hard,-,BOOM,BOOM,-,-,-,-,-
+223,11,164,242,$1,FALSE,San Francisco 49ers,DST,15,-,-,-,-,SF,GOOD,OK,GOOD,14,-,average,"","","","","","",-,-,-,-,-
+224,11,147,166,$0,FALSE,Jack Bech,WR,79,-,rookie,22,-,LV,OK,GOOD,OK,8,-,bad,average,average,average,-,"","",-,-,-,-,-
+225,12,203,164,$0,FALSE,Justice Hill,RB,67,-,-,27,-,BAL,GOOD,GREAT,GREAT,7,-,elite,hard,hard,average,least improved,"","",-,-,-,-,-
+226,12,188,183,$0,FALSE,Daniel Jones,QB,29,-,-,28,Anthony Richardson Sr.,IND,GOOD,GREAT,GREAT,11,"",bad,average,average,average,most improved,"","",-,-,-,-,-
+227,12,201,210,$0,FALSE,Dalton Schultz,TE,27,-,-,29,-,HOU,BAD,BAD,BAD,6,TE1,elite,easy,average,average,-,DESPERATION BOOM,"",-,-,-,-,-
+228,12,288,283,$0,FALSE,Andrei Iosivas,WR,80,3rd YR,-,25,-,CIN,BAD,BAD,BAD,10,WR3,bad,easy,average,average,-,"","",-,-,-,-,-
+229,12,284,167,$0,FALSE,Jacory Croskey-Merritt,RB,68,-,rookie,24,-,WAS,GOOD,GOOD,GOOD,12,-,bad,easy,average,average,-,BOOM,"",-,-,-,-,-
+230,12,278,224,$1,FALSE,Jake Elliott,K,11,-,-,30,-,PHI,ELITE,ELITE,ELITE,9,-,elite,"","","","","","",-,-,-,-,-
+231,12,252,181,$0,FALSE,Woody Marks,RB,69,-,rookie,24,-,HOU,BAD,BAD,BAD,6,-,elite,average,average,average,-,"","",-,-,-,-,-
+232,12,257,215,$0,FALSE,Ollie Gordon II,RB,70,-,rookie,21,-,MIA,BAD,OK,BAD,12,-,bad,easy,average,average,-,"","",-,-,-,-,-
+233,12,249,308,$0,FALSE,Calvin Austin III,WR,81,-,-,26,-,PIT,OK,GOOD,OK,5,WR2,elite,average,easy,average,most improved,"","",-,-,-,-,-
+234,12,210,267,-,FALSE,Jaylin Noel,WR,82,-,rookie,22,-,HOU,BAD,BAD,BAD,6,-,elite,average,average,average,-,"","",-,-,-,-,-
+235,12,280,231,$1,FALSE,Jason Sanders,K,12,-,-,29,-,MIA,BAD,OK,BAD,12,-,bad,"","","","","","",-,-,-,-,-
+236,12,258,201,$0,FALSE,Tahj Brooks,RB,71,-,rookie,23,-,CIN,BAD,BAD,BAD,10,-,bad,average,average,average,-,"","",-,-,-,-,-
+237,12,225,307,-,FALSE,Elic Ayomanor,WR,83,-,rookie,22,-,TEN,OK,OK,OK,10,-,bad,average,average,average,-,"","",-,-,-,-,-
+238,12,217,322,$0,FALSE,Tyler Lockett,WR,84,-,-,32,-,TEN,OK,OK,OK,10,WR2,bad,average,average,average,-,"","",-,-,-,-,-
+239,12,228,257,$0,FALSE,Juwan Johnson,TE,28,-,-,28,-,NO,OK,OK,OK,11,TE1,bad,hard,average,average,-,"","",-,-,-,-,-
+240,12,277,272,$0,FALSE,Younghoe Koo,K,13,-,-,31,-,ATL,GREAT,ELITE,ELITE,5,-,bad,"","","","","","",-,-,-,-,-
+241,12,200,235,-,FALSE,Pat Bryant,WR,85,-,rookie,22,-,DEN,ELITE,GREAT,ELITE,12,-,elite,average,hard,average,-,"","",-,-,-,-,-
+242,12,241,204,$0,FALSE,Elijah Arroyo,TE,29,-,rookie,22,-,SEA,BAD,BAD,BAD,8,TE1,average,average,easy,easy,-,"","",-,-,-,-,-
+243,12,218,197,$0,FALSE,Jarquez Hunter,RB,72,-,rookie,22,-,LAR,GOOD,GREAT,GOOD,8,-,average,average,average,average,most improved,"","",-,-,-,-,-
+244,12,287,236,$1,FALSE,Dallas Cowboys,DST,16,-,-,-,-,DAL,OK,GOOD,OK,10,-,average,"","","","","","",-,-,-,-,-
+245,12,189,284,$0,FALSE,Devin Neal,RB,73,-,rookie,21,-,NO,OK,OK,OK,11,-,bad,easy,easy,easy,-,"","",-,-,-,-,-
+246,12,215,234,$0,FALSE,Ja'Tavion Sanders,TE,30,-,-,22,-,CAR,OK,GOOD,GOOD,14,TE1,bad,average,average,average,-,"","",-,-,-,-,-
+247,12,220,270,-,FALSE,Cole Kmet,TE,31,-,-,26,-,CHI,GOOD,GREAT,GREAT,5,TE2,average,average,average,average,-,"","",-,-,-,-,-
+248,12,-,-,$0,FALSE,Sean Tucker,RB,74,-,-,23,-,TB,ELITE,GREAT,ELITE,9,-,average,average,average,easy,-,"","",-,-,-,-,-
+249,12,-,-,$0,FALSE,Russell Wilson,QB,30,-,-,36,Jameis Winston,NYG,OK,BAD,BAD,14,"",average,average,hard,average,least improved,"","",-,-,-,-,-
+250,12,-,-,-,FALSE,Jalen Royals,WR,86,-,rookie,22,-,KC,GOOD,OK,OK,10,-,average,average,average,average,-,"","",-,-,-,-,-
+251,12,-,-,$0,FALSE,Diontae Johnson,WR,87,-,-,29,-,CLE,OK,BAD,BAD,9,WR3,average,easy,hard,hard,-,"","",-,-,-,-,-
+252,12,-,-,$1,FALSE,Matt Gay,K,14,-,-,31,-,WAS,GOOD,GOOD,GOOD,12,-,bad,"","","","","","",-,-,-,-,-
+253,12,-,-,$0,FALSE,Raheem Mostert,RB,75,-,-,33,-,LV,OK,GOOD,OK,8,-,bad,average,average,average,-,"","",-,-,-,-,-
+254,12,-,-,$0,FALSE,Jaleel McLaughlin,RB,76,-,-,24,-,DEN,ELITE,GREAT,ELITE,12,-,elite,average,average,average,-,"","",-,-,-,-,-
+255,12,-,-,$0,FALSE,Elijah Mitchell,RB,77,-,-,27,-,KC,GOOD,OK,OK,10,-,average,average,average,average,-,"","",-,-,-,-,-
+256,12,-,-,-,FALSE,Roman Wilson,WR,88,-,-,24,-,PIT,OK,GOOD,OK,5,-,elite,average,easy,average,most improved,"","",-,-,-,-,-
+257,12,-,-,$0,FALSE,Dyami Brown,WR,89,-,-,25,-,JAC,OK,BAD,BAD,8,WR3,bad,average,hard,average,-,"","",-,-,-,-,-
+258,12,-,-,$0,FALSE,Tampa Bay Buccaneers,DST,17,-,-,-,-,TB,ELITE,GREAT,ELITE,9,-,average,"","","","","","",-,-,-,-,-
+259,12,-,-,-,FALSE,Devaughn Vele,WR,90,-,-,27,-,DEN,ELITE,GREAT,ELITE,12,WR3,elite,average,hard,average,-,"","",-,-,-,-,-
+260,12,-,-,$0,FALSE,Brashard Smith,RB,78,-,rookie,22,-,KC,GOOD,OK,OK,10,-,average,average,average,average,-,"","",-,-,-,-,-
+261,12,-,-,$0,FALSE,Jalen Tolbert,WR,91,-,-,26,-,DAL,OK,GOOD,OK,10,WR3,average,hard,hard,easy,least improved,"","",-,-,-,-,-
+262,12,-,-,$0,FALSE,Audric Estime,RB,79,-,-,21,-,DEN,ELITE,GREAT,ELITE,12,-,elite,average,average,average,-,"","",-,-,-,-,-
+263,12,-,-,$0,FALSE,Joshua Karty,K,15,-,-,23,-,LAR,GOOD,GREAT,GOOD,8,-,average,"","","","","","",-,-,-,-,-
+264,12,-,-,$0,FALSE,Nick Westbrook-Ikhine,WR,92,-,-,28,-,MIA,BAD,OK,BAD,12,WR3,bad,average,easy,average,most improved,"","",-,-,-,-,-
+265,12,-,-,$0,FALSE,Brandin Cooks,WR,93,-,-,31,-,NO,OK,OK,OK,11,WR3,bad,average,average,hard,least improved,"","",-,-,-,-,-
+266,12,-,-,$0,FALSE,Ty Johnson,RB,80,-,-,27,-,BUF,ELITE,GREAT,ELITE,7,-,elite,average,average,hard,-,"","",-,-,-,-,-
+267,12,-,-,$0,FALSE,Dont'e Thornton Jr.,WR,94,-,rookie,22,-,LV,OK,GOOD,OK,8,WR3,bad,average,average,average,-,"","",-,-,-,-,-
+268,12,-,-,$0,FALSE,Trevor Etienne,RB,81,-,rookie,21,-,CAR,OK,GOOD,GOOD,14,-,bad,easy,easy,average,most improved,"","",-,-,-,-,-
+269,12,-,-,$0,FALSE,Devin Singletary,RB,82,-,-,27,-,NYG,OK,BAD,BAD,14,-,average,hard,hard,average,-,"","",-,-,-,-,-
+270,12,-,-,-,FALSE,Kayshon Boutte,WR,95,3rd YR,-,23,-,NE,OK,BAD,BAD,14,-,average,average,average,average,-,"","",-,-,-,-,-
+271,12,-,-,$0,FALSE,Kenneth Gainwell,RB,83,-,-,26,-,PIT,OK,GOOD,OK,5,-,elite,average,average,hard,-,"","",-,-,-,-,-
+272,12,-,-,-,FALSE,Elijah Moore,WR,96,-,-,25,-,BUF,ELITE,GREAT,ELITE,7,-,elite,average,average,average,-,"","",-,-,-,-,-
+273,12,-,-,-,FALSE,Noah Gray,TE,32,-,-,26,-,KC,GOOD,OK,OK,10,TE2,average,hard,hard,hard,least improved,"","",-,-,-,-,-
+274,12,-,-,$0,FALSE,Theo Johnson,TE,33,-,-,24,-,NYG,OK,BAD,BAD,14,TE1,average,average,average,average,-,"","",-,-,-,-,-
+275,13,-,-,$0,FALSE,Tory Horton,WR,97,-,rookie,22,-,SEA,BAD,BAD,BAD,8,-,average,average,easy,average,most improved,"","",-,-,-,-,-
+276,13,-,-,$0,FALSE,Antonio Gibson,RB,84,-,-,27,-,NE,OK,BAD,BAD,14,-,average,easy,average,average,most improved,"","",-,-,-,-,-
+277,13,-,-,$0,FALSE,Tre Tucker,WR,98,3rd YR,-,24,-,LV,OK,GOOD,OK,8,WR2,bad,average,average,average,-,"","",-,-,-,-,-
+278,13,-,-,$0,FALSE,Anthony Richardson Sr.,QB,31,-,-,23,Daniel Jones,IND,GOOD,GREAT,GREAT,11,"",bad,average,average,average,most improved,"","",-,-,-,-,-
+279,13,-,-,-,FALSE,Malik Washington,WR,99,-,-,24,-,MIA,BAD,OK,BAD,12,-,bad,average,easy,average,most improved,"","",-,-,-,-,-
+280,13,-,-,-,FALSE,Harold Fannin Jr.,TE,34,-,rookie,21,-,CLE,OK,BAD,BAD,9,TE2,average,easy,average,average,-,"","",-,-,-,-,-
+281,13,-,-,$0,FALSE,Isaiah Davis,RB,85,-,-,23,-,NYJ,OK,GOOD,GOOD,9,-,average,average,easy,easy,-,"","",-,-,-,-,-
+282,13,-,-,$0,FALSE,Cleveland Browns,DST,18,-,-,-,-,CLE,OK,BAD,BAD,9,-,average,"","","","","","",-,-,-,-,-
+283,13,-,-,-,FALSE,Isaac TeSlaa,WR,100,-,rookie,23,-,DET,GREAT,ELITE,GREAT,8,-,average,average,average,easy,-,"","",-,-,-,-,-
+284,13,-,-,$0,FALSE,Jordan James,RB,86,-,rookie,21,-,SF,GOOD,OK,GOOD,14,-,average,easy,easy,average,-,BOOM,"",-,-,-,-,-
+285,13,-,-,$0,FALSE,Jalen Nailor,WR,101,-,-,26,-,MIN,ELITE,GREAT,ELITE,6,WR3,elite,average,average,easy,-,"","",-,-,-,-,-
+286,13,-,-,$1,FALSE,Darren Waller,TE,35,-,-,32,-,MIA,BAD,OK,BAD,12,TE1,bad,average,average,average,-,"","",-,-,-,-,-
+287,13,-,-,$0,FALSE,Joe Flacco,QB,32,-,-,40,Kenny Pickett,CLE,OK,BAD,BAD,9,"",average,average,hard,hard,-,"","",-,-,-,-,-
+288,13,-,-,-,FALSE,Taysom Hill,TE,36,-,-,34,-,NO,OK,OK,OK,11,TE2,bad,hard,average,average,-,"","",-,-,-,-,-
+289,13,-,-,-,FALSE,Dameon Pierce,RB,87,-,-,25,-,HOU,BAD,BAD,BAD,6,-,elite,average,average,average,-,"","",-,-,-,-,-
+290,13,-,-,$0,FALSE,Khalil Herbert,RB,88,-,-,27,-,IND,GOOD,GREAT,GREAT,11,-,bad,average,average,easy,most improved,"","",-,-,-,-,-
+291,13,-,-,$0,FALSE,Tyler Shough,QB,33,-,-,25,Spencer Rattler,NO,OK,OK,OK,11,"",bad,hard,average,average,-,"","",-,-,-,-,-
+292,13,-,-,-,FALSE,Tim Patrick,WR,102,-,-,31,-,DET,GREAT,ELITE,GREAT,8,WR3,average,average,average,easy,-,"","",-,-,-,-,-
+293,13,-,-,-,FALSE,Amari Cooper,WR,103,-,-,31,-,FA,-,-,-,-,-,#N/A,average,average,average,-,"","",-,-,-,-,-
+294,13,-,-,-,FALSE,Kimani Vidal,RB,89,-,-,23,-,LAC,GOOD,GOOD,GOOD,12,-,average,average,average,hard,-,"","",-,-,-,-,-
+295,13,-,-,$0,FALSE,Christian Watson,WR,104,-,-,26,-,GB,GREAT,GOOD,GOOD,5,-,average,easy,average,hard,-,BOOM,BOOM,-,-,-,-,-
+296,13,-,-,-,FALSE,Jaxson Dart,QB,34,-,-,22,-,NYG,OK,BAD,BAD,14,"",average,average,hard,average,least improved,"","",-,-,-,-,-
+297,13,-,-,$0,FALSE,Chicago Bears,DST,19,-,-,-,-,CHI,GOOD,GREAT,GREAT,5,-,average,"","","","","","",-,-,-,-,-
+298,13,-,-,$0,FALSE,Daniel Carlson,K,16,-,-,30,-,LV,OK,GOOD,OK,8,-,bad,"","","","","","",-,-,-,-,-
+299,13,-,-,-,FALSE,Terrance Ferguson,TE,37,-,rookie,22,-,LAR,GOOD,GREAT,GOOD,8,TE2,average,average,average,average,-,"","",-,-,-,-,-
+300,13,-,-,-,FALSE,Sincere McCormick,RB,90,-,-,24,-,LV,OK,GOOD,OK,8,-,bad,average,average,average,-,"","",-,-,-,-,-
+301,13,-,-,-,FALSE,Parker Washington,WR,105,3rd YR,-,23,-,JAC,OK,BAD,BAD,8,-,bad,average,hard,average,-,"","",-,-,-,-,-
+302,13,-,-,$1,FALSE,Tyler Loop,K,17,-,-,-,-,BAL,GOOD,GREAT,GREAT,7,-,elite,"","","","","","",-,-,-,-,-
+303,13,-,-,$0,FALSE,Noah Fant,TE,38,-,-,27,-,CIN,BAD,BAD,BAD,10,TE2,bad,average,average,average,-,"","",-,-,-,-,-
+304,13,-,-,-,FALSE,Xavier Restrepo,WR,106,-,rookie,23,-,TEN,OK,OK,OK,10,-,bad,average,average,average,-,"","",-,-,-,-,-
+305,13,-,-,-,FALSE,Damien Martinez,RB,91,-,rookie,21,-,SEA,BAD,BAD,BAD,8,-,average,average,average,easy,-,"","",-,-,-,-,-
+306,13,-,-,-,FALSE,Jermaine Burton,WR,107,-,-,24,-,CIN,BAD,BAD,BAD,10,-,bad,easy,average,average,-,"","",-,-,-,-,-
+307,13,-,-,$0,FALSE,Will Reichard,K,18,-,-,24,-,MIN,ELITE,GREAT,ELITE,6,-,elite,"","","","","","",-,-,-,-,-
+308,13,-,-,$0,FALSE,Emanuel Wilson,RB,92,-,-,26,-,GB,GREAT,GOOD,GOOD,5,-,average,hard,average,average,-,"","",-,-,-,-,-
+309,13,-,-,-,FALSE,Luke McCaffrey,WR,108,-,-,24,-,WAS,GOOD,GOOD,GOOD,12,-,bad,average,average,average,-,"","",-,-,-,-,-
+310,13,-,-,-,FALSE,Oronde Gadsden II,TE,39,-,rookie,22,-,LAC,GOOD,GOOD,GOOD,12,TE2,average,average,easy,average,-,"","",-,-,-,-,-
+311,13,-,-,-,FALSE,Shedeur Sanders,QB,35,-,-,23,-,CLE,OK,BAD,BAD,9,"",average,average,hard,hard,-,"","",-,-,-,-,-
+312,13,-,-,-,FALSE,Phil Mafah,RB,93,-,rookie,22,-,DAL,OK,GOOD,OK,10,-,average,average,average,hard,-,"","",-,-,-,-,-
+313,13,-,-,-,FALSE,Chris Brooks,RB,94,-,-,25,-,GB,GREAT,GOOD,GOOD,5,-,average,hard,average,average,-,"","",-,-,-,-,-
+314,13,-,-,$0,FALSE,New England Patriots,DST,20,-,-,-,-,NE,OK,BAD,BAD,14,-,average,"","","","","","",-,-,-,-,-
+315,13,-,-,$0,FALSE,Tyler Higbee,TE,40,-,-,32,-,LAR,GOOD,GREAT,GOOD,8,TE1,average,average,average,average,-,"","",-,-,-,-,-
+316,13,-,-,-,FALSE,Ty Chandler,RB,95,-,-,27,-,MIN,ELITE,GREAT,ELITE,6,-,elite,average,hard,average,least improved,"","",-,-,-,-,-
+317,13,-,-,-,FALSE,Tez Johnson,WR,109,-,rookie,23,-,TB,ELITE,GREAT,ELITE,9,-,average,average,average,average,-,"","",-,-,-,-,-
+318,13,-,-,$0,FALSE,Tutu Atwell,WR,110,-,-,25,-,LAR,GOOD,GREAT,GOOD,8,WR3,average,hard,average,easy,least improved,"","",-,-,-,-,-
+319,13,-,-,$0,FALSE,Arizona Cardinals,DST,21,-,-,-,-,ARI,OK,GOOD,GOOD,8,-,average,"","","","","","",-,-,-,-,-
+320,14,-,-,$0,FALSE,Ray-Ray McCloud III,WR,111,-,-,28,-,ATL,GREAT,ELITE,ELITE,5,-,bad,easy,average,average,-,BOOM,BOOM,-,-,-,-,-
+321,14,-,-,-,FALSE,Gabe Davis,WR,112,-,-,26,-,FA,-,-,-,-,-,#N/A,average,average,average,-,"","",-,-,-,-,-
+322,14,-,-,-,FALSE,Raheim Sanders,RB,96,-,rookie,23,-,LAC,GOOD,GOOD,GOOD,12,-,average,average,average,hard,-,"","",-,-,-,-,-
+323,14,-,-,-,FALSE,Ben Sinnott,TE,41,-,-,23,-,WAS,GOOD,GOOD,GOOD,12,TE2,bad,average,hard,hard,least improved,"","",-,-,-,-,-
+324,14,-,-,-,FALSE,Chris Rodriguez Jr.,RB,97,-,-,25,-,WAS,GOOD,GOOD,GOOD,12,-,bad,easy,average,average,-,BOOM,"",-,-,-,-,-
+325,14,-,-,$0,FALSE,Will Dissly,TE,42,-,-,29,-,LAC,GOOD,GOOD,GOOD,12,-,average,average,easy,average,-,"","",-,-,-,-,-
+326,14,-,-,$0,FALSE,Zamir White,RB,98,-,-,25,-,LV,OK,GOOD,OK,8,-,bad,average,average,average,-,"","",-,-,-,-,-
+327,14,-,-,$0,FALSE,Miami Dolphins,DST,22,-,-,-,-,MIA,BAD,OK,BAD,12,-,bad,"","","","","","",-,-,-,-,-
+328,14,-,-,$0,FALSE,Jason Myers,K,19,-,-,34,-,SEA,BAD,BAD,BAD,8,-,average,"","","","","","",-,-,-,-,-
+329,14,-,-,$0,FALSE,Josh Reynolds,WR,113,-,-,30,-,NYJ,OK,GOOD,GOOD,9,WR2,average,average,easy,average,-,"","",-,-,-,-,-
+330,14,-,-,$2,FALSE,Zack Moss,RB,99,-,-,27,-,FA,-,-,-,-,-,#N/A,average,average,average,-,"","",-,-,-,-,-
+331,14,-,-,$0,FALSE,A.J. Dillon,RB,100,-,-,27,-,PHI,ELITE,ELITE,ELITE,9,-,elite,hard,average,average,-,"","",-,-,-,-,-
+332,14,-,-,-,FALSE,Tyler Conklin,TE,43,-,-,30,-,LAC,GOOD,GOOD,GOOD,12,-,average,average,easy,average,-,"","",-,-,-,-,-
+333,14,-,-,$0,FALSE,Jordan Whittington,WR,114,-,-,24,-,LAR,GOOD,GREAT,GOOD,8,-,average,hard,average,easy,least improved,"","",-,-,-,-,-
+334,14,-,-,-,FALSE,Demarcus Robinson,WR,115,-,-,30,-,SF,GOOD,OK,GOOD,14,-,average,average,average,hard,-,"","",-,-,-,-,-
+335,14,-,-,$0,FALSE,Noah Brown,WR,116,-,-,29,-,WAS,GOOD,GOOD,GOOD,12,WR3,bad,average,average,average,-,"","",-,-,-,-,-
+336,14,-,-,$0,FALSE,Samaje Perine,RB,101,-,-,29,-,CIN,BAD,BAD,BAD,10,-,bad,average,average,average,-,"","",-,-,-,-,-
+337,14,-,-,-,FALSE,Spencer Rattler,QB,36,-,-,24,-,NO,OK,OK,OK,11,"",bad,hard,average,average,-,"","",-,-,-,-,-
+338,14,-,-,-,FALSE,Justin Tucker,K,20,-,-,35,-,FA,-,-,-,-,-,#N/A,"","","","","","",-,-,-,-,-
+339,14,-,-,-,FALSE,Cam Akers,RB,102,-,-,26,-,NO,OK,OK,OK,11,-,bad,easy,easy,easy,-,"","",-,-,-,-,-
+340,14,-,-,-,FALSE,KaVontae Turpin,WR,117,-,-,29,-,DAL,OK,GOOD,OK,10,-,average,hard,hard,easy,least improved,"","",-,-,-,-,-
+341,14,-,-,$0,FALSE,Troy Franklin,WR,118,-,-,22,-,DEN,ELITE,GREAT,ELITE,12,-,elite,average,hard,average,-,"","",-,-,-,-,-
+342,14,-,-,-,FALSE,Tai Felton,WR,119,-,rookie,22,-,MIN,ELITE,GREAT,ELITE,6,-,elite,average,average,easy,-,"","",-,-,-,-,-
+343,14,-,-,-,FALSE,Dawson Knox,TE,44,-,-,28,-,BUF,ELITE,GREAT,ELITE,7,TE2,elite,average,average,hard,-,"","",-,-,-,-,-
+344,14,-,-,-,FALSE,Jalen Milroe,QB,37,-,-,22,-,SEA,BAD,BAD,BAD,8,"",average,average,easy,easy,most improved,"","",-,-,-,-,-
+345,14,-,-,-,FALSE,John Metchie III,WR,120,-,-,25,-,HOU,BAD,BAD,BAD,6,-,elite,average,average,average,-,"","",-,-,-,-,-
+346,14,-,-,$0,FALSE,Marquez Valdes-Scantling,WR,121,-,-,30,-,SEA,BAD,BAD,BAD,8,WR3,average,average,easy,average,most improved,"","",-,-,-,-,-
+347,14,-,-,-,FALSE,Isaiah Bond,WR,122,-,rookie,-,-,FA,-,-,-,-,-,#N/A,average,average,average,-,"","",-,-,-,-,-
+348,14,-,-,-,FALSE,AJ Barner,TE,45,-,-,23,-,SEA,BAD,BAD,BAD,8,TE2,average,average,easy,easy,-,"","",-,-,-,-,-
+349,14,-,-,-,FALSE,Gus Edwards,RB,103,-,-,30,-,FA,-,-,-,-,-,#N/A,average,average,average,-,"","",-,-,-,-,-
+350,14,-,-,$0,FALSE,Cam Little,K,21,-,-,21,-,JAC,OK,BAD,BAD,8,-,bad,"","","","","","",-,-,-,-,-
+351,14,-,-,-,FALSE,Michael Mayer,TE,46,-,-,24,-,LV,OK,GOOD,OK,8,TE2,bad,average,hard,hard,least improved,"","",-,-,-,-,-
+352,14,-,-,-,FALSE,Savion Williams,WR,123,-,rookie,23,-,GB,GREAT,GOOD,GOOD,5,-,average,easy,average,hard,-,BOOM,BOOM,-,-,-,-,-
+353,14,-,-,-,FALSE,Donovan Edwards,RB,104,-,rookie,22,-,NYJ,OK,GOOD,GOOD,9,-,average,average,easy,easy,-,"","",-,-,-,-,-
+354,14,-,-,$1,FALSE,New York Giants,DST,23,-,-,-,-,NYG,OK,BAD,BAD,14,-,average,"","","","","","",-,-,-,-,-
+355,14,-,-,-,FALSE,Luke Musgrave,TE,47,-,-,24,-,GB,GREAT,GOOD,GOOD,5,TE2,average,hard,average,average,-,"","",-,-,-,-,-
+356,14,-,-,$0,FALSE,Brandon McManus,K,22,-,-,34,-,GB,GREAT,GOOD,GOOD,5,-,average,"","","","","","",-,-,-,-,-
+357,14,-,-,-,FALSE,Chimere Dike,WR,124,-,rookie,23,-,TEN,OK,OK,OK,10,-,bad,average,average,average,-,"","",-,-,-,-,-
+358,14,-,-,-,FALSE,Jaylin Lane,WR,125,-,rookie,23,-,WAS,GOOD,GOOD,GOOD,12,-,bad,average,average,average,-,"","",-,-,-,-,-
+359,14,-,-,-,FALSE,Curtis Samuel,WR,126,-,-,28,-,BUF,ELITE,GREAT,ELITE,7,-,elite,average,average,average,-,"","",-,-,-,-,-
+360,14,-,-,-,FALSE,Kirk Cousins,QB,38,-,-,36,-,ATL,GREAT,ELITE,ELITE,5,"",bad,easy,average,easy,-,BOOM,BOOM,-,-,-,-,-
+361,14,-,-,-,FALSE,KeAndre Lambert-Smith,WR,127,-,rookie,23,-,LAC,GOOD,GOOD,GOOD,12,-,average,average,average,average,-,"","",-,-,-,-,-
+362,14,-,-,-,FALSE,LeQuint Allen Jr.,RB,105,-,rookie,21,-,JAC,OK,BAD,BAD,8,-,bad,average,average,average,-,"","",-,-,-,-,-
+363,14,-,-,$0,FALSE,Washington Commanders,DST,24,-,-,-,-,WAS,GOOD,GOOD,GOOD,12,-,bad,"","","","","","",-,-,-,-,-
+364,14,-,-,-,FALSE,Gunnar Helm,TE,48,-,rookie,22,-,TEN,OK,OK,OK,10,TE2,bad,average,average,average,-,"","",-,-,-,-,-
+365,14,-,-,-,FALSE,Jameis Winston,QB,39,-,-,31,-,NYG,OK,BAD,BAD,14,"",average,average,hard,average,least improved,"","",-,-,-,-,-
+366,14,-,-,-,FALSE,Eddy Pineiro,K,23,-,-,29,-,FA,-,-,-,-,-,#N/A,"","","","","","",-,-,-,-,-
+367,14,-,-,$0,FALSE,Jake Moody,K,24,-,-,25,-,SF,GOOD,OK,GOOD,14,-,average,"","","","","","",-,-,-,-,-
+368,14,-,-,-,FALSE,Kalel Mullings,RB,106,-,rookie,22,-,TEN,OK,OK,OK,10,-,bad,average,average,average,-,"","",-,-,-,-,-
+369,14,-,-,$0,FALSE,Allen Lazard,WR,128,-,-,29,-,NYJ,OK,GOOD,GOOD,9,-,average,average,easy,average,-,"","",-,-,-,-,-
+370,14,-,-,-,FALSE,Mack Hollins,WR,129,-,-,31,-,NE,OK,BAD,BAD,14,WR3,average,average,average,average,-,"","",-,-,-,-,-
+371,14,-,-,-,FALSE,Tank Dell,WR,130,3rd YR,-,25,-,HOU,BAD,BAD,BAD,6,WR3,elite,average,average,average,-,"","",-,-,-,-,-
+372,14,-,-,-,FALSE,Austin Hooper,TE,49,-,-,30,-,NE,OK,BAD,BAD,14,TE2,average,easy,average,average,-,"","",-,-,-,-,-
+373,14,-,-,-,FALSE,Matt Prater,K,25,-,-,-,-,FA,-,-,-,-,-,#N/A,"","","","","","",-,-,-,-,-
+374,15,-,-,-,FALSE,Greg Dortch,WR,131,-,-,27,-,ARI,OK,GOOD,GOOD,8,WR3,average,hard,average,easy,-,"","",-,-,-,-,-
+375,15,-,-,$0,FALSE,Atlanta Falcons,DST,25,-,-,-,-,ATL,GREAT,ELITE,ELITE,5,-,bad,"","","","","","",-,-,-,-,-
+376,15,-,-,-,FALSE,Kenny Pickett,QB,40,-,-,27,-,CLE,OK,BAD,BAD,9,"",average,average,hard,hard,-,"","",-,-,-,-,-
+377,15,-,-,-,FALSE,Olamide Zaccheaus,WR,132,-,-,-,-,CHI,GOOD,GREAT,GREAT,5,-,average,easy,average,hard,-,BOOM,"",-,-,-,-,-
+378,15,-,-,-,FALSE,Trey Sermon,RB,107,-,-,26,-,PIT,OK,GOOD,OK,5,-,elite,average,average,hard,-,"","",-,-,-,-,-
+379,15,-,-,-,FALSE,Emari Demercado,RB,108,-,-,26,-,ARI,OK,GOOD,GOOD,8,-,average,easy,easy,average,-,"","",-,-,-,-,-
+380,15,-,-,-,FALSE,Zay Jones,WR,133,-,-,30,-,ARI,OK,GOOD,GOOD,8,-,average,hard,average,easy,-,"","",-,-,-,-,-
+381,15,-,-,-,FALSE,Jahan Dotson,WR,134,-,-,25,-,PHI,ELITE,ELITE,ELITE,9,WR3,elite,easy,easy,average,-,BOOM,BOOM,-,-,-,-,-
+382,15,-,-,-,FALSE,Foster Moreau,TE,50,-,-,28,-,NO,OK,OK,OK,11,-,bad,hard,average,average,-,"","",-,-,-,-,-
+383,15,-,-,-,FALSE,Dillon Gabriel,QB,41,-,-,24,-,CLE,OK,BAD,BAD,9,"",average,average,hard,hard,-,"","",-,-,-,-,-
+384,15,-,-,-,FALSE,Van Jefferson,WR,135,-,-,-,-,TEN,OK,OK,OK,10,WR3,bad,average,average,average,-,"","",-,-,-,-,-
+385,15,-,-,-,FALSE,Jacob Cowing,WR,136,-,-,24,-,SF,GOOD,OK,GOOD,14,-,average,average,average,hard,-,"","",-,-,-,-,-
+386,15,-,-,-,FALSE,Antwane Wells Jr.,WR,137,-,rookie,-,-,NYG,OK,BAD,BAD,14,-,average,average,hard,average,least improved,"","",-,-,-,-,-
+387,15,-,-,-,FALSE,Theo Wease Jr.,WR,138,-,rookie,-,-,MIA,BAD,OK,BAD,12,-,bad,average,easy,average,most improved,"","",-,-,-,-,-
+388,15,-,-,-,FALSE,Hunter Renfrow,WR,139,-,-,-,-,CAR,OK,GOOD,GOOD,14,-,bad,average,easy,average,-,"","",-,-,-,-,-
+389,15,-,-,-,FALSE,Tommy Tremble,TE,51,-,-,25,-,CAR,OK,GOOD,GOOD,14,-,bad,average,average,average,-,"","",-,-,-,-,-
+390,15,-,-,$0,FALSE,Blake Grupe,K,26,-,-,26,-,NO,OK,OK,OK,11,-,bad,"","","","","","",-,-,-,-,-
+391,15,-,-,-,FALSE,Luke Schoonmaker,TE,52,-,-,26,-,DAL,OK,GOOD,OK,10,TE2,average,hard,hard,average,least improved,"","",-,-,-,-,-
+392,15,-,-,-,FALSE,Cade Stover,TE,53,-,-,25,-,HOU,BAD,BAD,BAD,6,TE2,elite,easy,average,average,-,DESPERATION BOOM,"",-,-,-,-,-
+393,15,-,-,-,FALSE,Ja'Quinden Jackson,RB,109,-,-,-,-,JAC,OK,BAD,BAD,8,-,bad,average,average,average,-,"","",-,-,-,-,-
+394,15,-,-,$0,FALSE,Indianapolis Colts,DST,26,-,-,-,-,IND,GOOD,GREAT,GREAT,11,-,bad,"","","","","","",-,-,-,-,-
+395,15,-,-,-,FALSE,Robert Woods,WR,140,-,-,-,-,PIT,OK,GOOD,OK,5,WR3,elite,average,easy,average,most improved,"","",-,-,-,-,-
+396,15,-,-,-,FALSE,Mason Rudolph,QB,42,-,-,30,-,PIT,OK,GOOD,OK,5,"",elite,average,average,average,-,"","",-,-,-,-,-
+397,15,-,-,-,FALSE,Tyrod Taylor,QB,43,-,-,-,-,NYJ,OK,GOOD,GOOD,9,"",average,average,average,easy,-,"","",-,-,-,-,-
+398,15,-,-,$0,FALSE,Chad Ryland,K,27,-,-,25,-,ARI,OK,GOOD,GOOD,8,-,average,"","","","","","",-,-,-,-,-
+399,15,-,-,$0,FALSE,Cincinnati Bengals,DST,27,-,-,-,-,CIN,BAD,BAD,BAD,10,-,bad,"","","","","","",-,-,-,-,-
+400,15,-,-,-,FALSE,Jonathon Brooks,RB,110,-,-,22,-,CAR,OK,GOOD,GOOD,14,-,bad,easy,easy,average,most improved,"","",-,-,-,-,-

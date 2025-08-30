@@ -20,9 +20,9 @@ simulate_spreads <- function(spread, estimate, sigma){
   return(round(return_value, 3))
 }
 
-if(T %in% grepl("total_team_dvoa.csv", list.files("~/Downloads/", pattern = ".csv"))){
-  file.rename("~/Downloads/total_team_dvoa.csv", "~/Documents/football/models/total_team_dvoa.csv")
-  file.remove("~/Downloads/total_team_dvoa.csv")
+if(T %in% grepl("Total Team DVOA.csv", list.files("~/Downloads/", pattern = ".csv"))){
+  file.rename("~/Downloads/Total Team DVOA.csv", "~/Documents/football/models/total_team_dvoa.csv")
+  file.remove("~/Downloads/Total Team DVOA.csv")
 }
 
 
@@ -37,7 +37,7 @@ model.prob <- read_rds("models/win_prob.rds")
 sheet <- "https://docs.google.com/spreadsheets/d/1FkMX0BRIIG2lfxjzqWwmM8K-Z-_ngrKdrHHSVIVLKbU/edit#gid=0"
 
 #### historical schedule -------------
-### using schedule from model_creation.R
+### using schedule from models/model_creation.R
 
 schedule <- read_rds("schedule.rds")
 
@@ -57,7 +57,7 @@ schedule$win_prob <- predict(model.prob, newdata = schedule,
 schedule_sheet1 <- schedule %>% 
   select(c(1:11, home_score.pred, away_score.pred, win_prob))
 
-#sheet_write(schedule_sheet1, ss = sheet, sheet = 2))
+#sheet_write(schedule_sheet1, ss = sheet, sheet = 2)
 
 ## create train and test split
 
@@ -69,38 +69,39 @@ test<-schedule[-dt,]
 #### current season ----------------
 
 nflseedR::load_sharpe_games() %>% 
-  filter(season == 2023) -> schedule2023
+  filter(season == 2024) -> schedule2024
 
 ## load in current season dvoa
-dvoa2023 <- read_csv("models/total_team_dvoa.csv") %>% 
+dvoa2024 <- read_csv("models/total_team_dvoa.csv") %>% 
   janitor::clean_names() %>% 
-  select(team, total_dvoa_rank, total_dvoa, "offense_dvoa_rank" = offense_rank, 
-         offense_dvoa, "defense_dvoa_rank" = defense_rank, defense_dvoa,
-         "special_teams_dvoa_rank" = special_teams_rank, special_teams_dvoa)
+  select(team, "total_dvoa" = tot_dvoa, "total_dvoa_rank" = rank_3, "offense_dvoa_rank" = rank_8, 
+         "offense_dvoa" = off_dvoa, "defense_dvoa_rank" = rank_10, "defense_dvoa" = def_dvoa,
+         "special_teams_dvoa_rank" = rank_12, "special_teams_dvoa" = st_dvoa)
 
-dvoa2023[dvoa2023 == "JAC"] <- "JAX"
+dvoa2024[dvoa2024 == "JAC"] <- "JAX"
+dvoa2024[dvoa2024 == "LAR"] <- "LA"
 
-write_csv(dvoa2023, "models/dvoa2023.csv")
+write_csv(dvoa2024, "models/dvoa2024.csv")
 
 
 
-schedule2023 %>% 
-  left_join(dvoa2023, by = c("home_team" = "team")) %>% 
-  left_join(dvoa2023, by = c("away_team" = "team")) -> schedule2023
+schedule2024 %>% 
+  left_join(dvoa2024, by = c("home_team" = "team")) %>% 
+  left_join(dvoa2024, by = c("away_team" = "team")) -> schedule2024
 
-schedule2023[schedule2023 == ""] <- "outdoors"
+schedule2024[schedule2024 == ""] <- "outdoors"
 
-schedule2023$home_score_est <- predict(home_model, newdata = schedule2023)
-schedule2023$visitor_score_est <- predict(away_model, newdata = schedule2023)
+schedule2024$home_score_est <- predict(home_model, newdata = schedule2024)
+schedule2024$visitor_score_est <- predict(away_model, newdata = schedule2024)
 # schedule2023$est_total <- predict(total_mod, newdata = schedule2023)
 # schedule2023$difference_est <- predict(model1, newdata = schedule2023)
 # schedule2023$difference_est_sd <- predict(model1, newdata = schedule2023, se.fit = T)$se.fit
-schedule2023$win_prob <- predict(model.prob, newdata = schedule2023,
+schedule2024$win_prob <- predict(model.prob, newdata = schedule2024,
                              type = "response")
 
-schedule2023 -> full_data23
+schedule2024 -> full_data23
 
-schedule2023 %>% 
+schedule2024 %>% 
   select(week, home_team, home_score_est, away_team, visitor_score_est,
          "home_score_actual" = home_score, "away_score_actual" = away_score, 
          spread_line, home_moneyline, away_moneyline, total_line, win_prob) %>% 
@@ -113,25 +114,26 @@ schedule2023 %>%
   #                                      estimate = difference_est,
   #                                      sigma = difference_est_sd)) %>%
   # select(-difference_est_sd) %>% 
-  relocate(home_score_actual, away_score_actual, .after = last_col()) -> schedule2023
+  relocate(home_score_actual, away_score_actual, .after = last_col()) -> schedule2024
   
   
   # relocate(week, home_team, home_score_est, away_team, visitor_score_est, spread_line,
   #          home_moneyline, total_line)-> schedule2023
 
-sheet_write(schedule2023, ss = sheet, sheet = 1)
+sheet_write(schedule2024, ss = sheet, sheet = 1)
 
 
 #### accuracy ------------------
-full_data.t <-full_data23 %>% drop_na(spread_line) %>% 
-  mutate(home_diff = home_score - away_score,
-         home_win = ifelse(home_score > away_score, 1, 0))
-#full_data.t$est <- predict(model1, newdata = full_data.t %>% drop_na(spread_line))
-full_data.t$win_prob <- predict(model.prob, newdata = full_data.t, type = "response")
+metrics <- read_sheet(ss = sheet, sheet = 3)
 
 
-full_data.t <- full_data.t %>%
-  mutate(spread_line = spread_line*-1,
+
+
+## record results for current season
+schedule2024 <- schedule %>% 
+  mutate(result = home_score_actual - away_score_actual,
+         total = home_score_actual + away_score_actual,
+         home_win = home_score_actual > away_score_actual,
          total_est = home_score_est + visitor_score_est,
          diff_est = home_score_est - visitor_score_est,
          est_win = ifelse(win_prob > 0.5, 1, 0),
@@ -139,127 +141,81 @@ full_data.t <- full_data.t %>%
          cover = ifelse(spread_line < 0, ifelse(result*-1 < spread_line, 1, 0),
                         ifelse(result >= -1*spread_line, 1, 0)),
          est_cover = ifelse(spread_line < 0, ifelse(diff_est*-1 < spread_line, 1, 0),
-                            ifelse(diff_est >= -1*spread_line, 1, 0)),
-         # est_cover2 = ifelse(spread_line < 0, ifelse(est*-1 < spread_line, 1, 0),
-         #                     ifelse(est >= -1*spread_line, 1, 0)),
-         correct = ifelse(cover == est_cover, 1, 0),
-         #agree = ifelse(est_cover == est_cover2, 1, 0),
-         # correct2 = ifelse(cover == est_cover2, 1, 0),
+                            ifelse(diff_est >= -1*spread_line, 1, 0)),correct = ifelse(cover == est_cover, 1, 0),
          under = ifelse(total < total_line, 1, 0),
          est_under = ifelse(home_score_est + visitor_score_est < total_line, 1, 0),
          correct_under = ifelse(under == est_under, 1, 0),
-         # est_under2 = ifelse(est_total < total_line, 1, 0),
-         # correct_under2 = ifelse(under == est_under2, 1, 0),
-         correct_win = ifelse(home_win == est_win, 1, 0))
-         # correct_win2 = ifelse(home_win == est_win2, 1, 0))
+         correct_win = ifelse(est_win == home_win, 1, 0))
+  
 
-
-# 
-# view(full_data.t %>% 
-#        select(home_team, away_team,
-#               spread_line, total_line, est, est_total, win_prob, home_score_est, visitor_score_est,
-#               est_under, est_under2) %>% 
-#        mutate(win_prob = ifelse(win_prob >= 0.5,
-#                                 win_prob*100/(1-(win_prob))*-1,
-#                                 100/win_prob-100)))
-
-szn_fullscore_ml.acc <- full_data.t %>% 
-  pull(correct_win) %>% mean(na.rm = T)
-
-# szn_est_ml.acc <- full_data.t %>% 
-#   pull(correct_win2) %>% mean(na.rm = T)
-
-szn_fullscore_ats.acc <- full_data.t %>% 
-  pull(correct) %>% mean(na.rm = T)
-
-# szn_est_ats.acc <- full_data.t %>% 
-#   pull(correct2) %>% mean(na.rm = T)
-
-szn_fullscore_ou.acc <- full_data.t %>% 
-  pull(correct_under) %>% mean(na.rm = T)
-
-# szn_est_ou.acc <- full_data.t %>% 
-#   pull(correct_under2) %>% mean(na.rm = T)
-
-
-### add data for test
-test$home_score_est <- round(predict(home_model, newdata = test))
-test$visitor_score_est <- round(predict(away_model, newdata = test))
-#test$est <- predict(model1, newdata = test, allow.new.levels = T)
-test$win_prob <- predict(model.prob, newdata = test, type = "response")
-
-
-#test$est_total <- round(predict(total_mod, newdata = test))
-
-test2 <- test %>% 
-  select(home_team, away_team, home_score, away_score, total, total_line, win_prob, home_win,
-         home_score_est, visitor_score_est, spread_line, result) %>% 
-  mutate(total_est = home_score_est + visitor_score_est,
+stats <- schedule %>% 
+  mutate(home_score_actual = home_score,
+         away_score_actual = away_score,
+         home_score_est = home_score.pred,
+         visitor_score_est = away_score.pred,
+         result = home_score_actual - away_score_actual,
+         total = home_score_actual + away_score_actual,
+         home_win = home_score_actual > away_score_actual,
+         total_est = home_score_est + visitor_score_est,
          diff_est = home_score_est - visitor_score_est,
          est_win = ifelse(win_prob > 0.5, 1, 0),
          est_win2 = ifelse(home_score_est > visitor_score_est, 1, 0),
          cover = ifelse(spread_line < 0, ifelse(result*-1 < spread_line, 1, 0),
                         ifelse(result >= -1*spread_line, 1, 0)),
          est_cover = ifelse(spread_line < 0, ifelse(diff_est*-1 < spread_line, 1, 0),
-                            ifelse(diff_est >= -1*spread_line, 1, 0)),
-         # est_cover2 = ifelse(spread_line < 0, ifelse(est*-1 < spread_line, 1, 0),
-         #                     ifelse(est >= -1*spread_line, 1, 0)),
-         correct = ifelse(cover == est_cover, 1, 0),
-         #agree = ifelse(est_cover == est_cover2, 1, 0),
-         #correct2 = ifelse(cover == est_cover2, 1, 0),
+                            ifelse(diff_est >= -1*spread_line, 1, 0)),correct = ifelse(cover == est_cover, 1, 0),
          under = ifelse(total < total_line, 1, 0),
          est_under = ifelse(home_score_est + visitor_score_est < total_line, 1, 0),
          correct_under = ifelse(under == est_under, 1, 0),
-         #est_under2 = ifelse(est_total < total_line, 1, 0),
-         #correct_under2 = ifelse(under == est_under2, 1, 0),
-         correct_win = ifelse(est_win == home_win, 1, 0))
-         #correct_win2 = ifelse(home_win == est_win2, 1, 0))
+         correct_win = ifelse(est_win2 == home_win, 1, 0))
 
 
 
-test_fullscore_ml.acc <- test2 %>% 
+stats %>% pull(correct_win) %>% mean(na.rm=T)
+
+
+
+## moneyline
+moneyline_accuracy <- schedule2024 %>% 
   pull(correct_win) %>% mean(na.rm = T)
 
-# test_est_ml.acc <- test2 %>% 
-#   pull(correct_win2) %>% mean(na.rm = T)
-
-test_fullscore_ats.acc <- test2 %>% 
+## ats
+test_fullscore_ats.acc <- schedule2024 %>% 
   pull(correct) %>% mean(na.rm = T)
 
-# test_est_ats.acc <- test2 %>% 
-#   pull(correct2) %>% mean(na.rm = T)
-
-test_fullscore_ou.acc <- test2 %>% 
+## o/u
+test_fullscore_ou.acc <- schedule2024 %>% 
   pull(correct_under) %>% mean(na.rm = T)
 
-# test_est_ou.acc <- test2 %>% 
-#   pull(correct_under2) %>% mean(na.rm = T)
+#### 2023 season -------
+## moneyline
+moneyline_accuracy.23_pres <- stats %>% filter(season==2023) %>%
+  pull(correct_win) %>% mean(na.rm = T)
+
+## ats
+test_fullscore_ats.acc.23_pres <- stats %>% filter(season==2023) %>% 
+  pull(correct) %>% mean(na.rm = T)
+
+## o/u
+test_fullscore_ou.acc_.23pres <- stats %>% filter(season==2023) %>% 
+  pull(correct_under) %>% mean(na.rm = T)
 
 
-szn <- c(szn_fullscore_ml.acc, 
-         #szn_est_ml.acc, 
-         szn_fullscore_ats.acc, 
-         #szn_est_ats.acc, 
-         szn_fullscore_ou.acc)
-         #szn_est_ou.acc)
-
-tst <- c(test_fullscore_ml.acc, 
-         #test_est_ml.acc,
+szn <- c(moneyline_accuracy, 
          test_fullscore_ats.acc, 
-         #test_est_ats.acc, 
          test_fullscore_ou.acc)
-         #test_est_ou.acc)
+
+tst <- c(moneyline_accuracy.23_pres, 
+         test_fullscore_ats.acc.23_pres, 
+         test_fullscore_ou.acc_.23pres)
 
 axs <- data.frame(szn, tst)
 
-rownames(axs) <- c(#"Win Prob Model Moneyline Accuracy",
-                   "Moneyline Accuracy", 
-                   #"Score Difference ATS Accuracy",
+rownames(axs) <- c("Moneyline Accuracy", 
                    "ATS Accuracy",
-                   #"Total Score Model Accuracy", 
                    "Total Score Accuracy")
 
-colnames(axs) <- c("2023 Season", "Testing Data (Sample of 244 games)")
+colnames(axs) <- c("2024 Season", "2023 Season (285 games)")
 
 
 

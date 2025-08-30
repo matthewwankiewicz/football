@@ -31,6 +31,8 @@ max_week <- ifelse(weekdays(Sys.Date()) %in% c("Friday", "Saturday",
                          pull(week))+1
                    )
 
+max_week = 19
+
 nflseedR::load_sharpe_games() %>% 
   filter(season == 2023,
          week == max_week) %>% 
