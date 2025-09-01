@@ -11,7 +11,7 @@ library(stringr)
 library(shinyjs)
 
 # ---------- SETTINGS ----------
-DATA_PATH <- "/Users/matthewwankiewicz/Documents/football/fantasy/draft25/output_rankings.csv"
+DATA_PATH <- "/Users/matthew/Documents/football/fantasy/draft25/output_rankings.csv"
 LEAGUE <- list(
   teams = 12,
   roster = c(QB=1, RB=2, WR=2, TE=1, FLEX=2, SUPERFLEX=0, BENCH=6)
