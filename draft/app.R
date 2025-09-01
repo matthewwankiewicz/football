@@ -11,7 +11,7 @@ library(stringr)
 library(shinyjs)
 
 # ---------- SETTINGS ----------
-DATA_PATH <- "/Users/matthew/Documents/football/fantasy/draft25/output_rankings.csv"
+DATA_PATH <- "/Users/matthewwankiewicz/Documents/football/fantasy/draft25/output_rankings.csv"
 LEAGUE <- list(
   teams = 12,
   roster = c(QB=1, RB=2, WR=2, TE=1, FLEX=2, SUPERFLEX=0, BENCH=6)
@@ -68,7 +68,7 @@ ui <- page_navbar(
     "))
   ),
   
-  # -------- Board TAB (Sidebar with filters + actions; main = table) --------
+  # -------- Board TAB --------
   nav_panel(
     "Board",
     layout_sidebar(
@@ -76,7 +76,8 @@ ui <- page_navbar(
         width = 360,
         fileInput("file_csv", "Upload rankings CSV (optional)", accept = ".csv"),
         h4("Positions"),
-        selectInput("filter_pos", NULL, choices = c("QB","RB","WR","TE"), multiple = TRUE, selected = c("RB","WR","QB","TE")),
+        selectInput("filter_pos", NULL, choices = c("QB","RB","WR","TE"), multiple = TRUE,
+                    selected = c("RB","WR","QB","TE")),
         h4("Tiers"),
         selectInput("filter_tier", NULL, choices = 1:10, multiple = TRUE),
         h4("Search player/team"),
@@ -90,6 +91,10 @@ ui <- page_navbar(
         actionButton("btn_undo", "Undo", class = "btn btn-outline-dark btn-wide")
       ),
       card(
+        card_header("Tier Tracker — Remaining by Position"),
+        DTOutput("tbl_tiers")
+      ),
+      card(
         full_screen = TRUE,
         card_header("Available Players"),
         DTOutput("tbl_board")
@@ -97,7 +102,7 @@ ui <- page_navbar(
     )
   ),
   
-  # -------- Team TAB (My Team & Needs + Recommendations) --------
+  # -------- Team TAB (Needs-focused) --------
   nav_panel(
     "Team",
     layout_columns(
@@ -105,11 +110,29 @@ ui <- page_navbar(
       card(
         card_header("My Team & Needs"),
         htmlOutput("needs_boxes"),
+        DTOutput("tbl_needs"),     # NEW needs table
+        tags$hr(),
         DTOutput("tbl_myteam")
       ),
       card(
-        card_header("Top Recommendations"),
-        DTOutput("tbl_reco")
+        card_header("Best Available for Your Needs"),
+        helpText("Top options for each slot you still need (strict positions first, then FLEX / SUPERFLEX)."),
+        DTOutput("tbl_need_reco")
+      )
+    )
+  ),
+  
+  # -------- My Players TAB --------
+  nav_panel(
+    "My Players",
+    layout_columns(
+      col_widths = c(12),
+      card(
+        card_header(
+          "My Players",
+          div(style="float:right;", downloadButton("btn_dl_myteam", "Download CSV"))
+        ),
+        DTOutput("tbl_myteam_simple")
       )
     )
   ),
@@ -122,7 +145,8 @@ ui <- page_navbar(
       card(
         card_header("League Settings"),
         numericInput("num_teams", "Teams", value = LEAGUE$teams, min=4, max=16),
-        textInput("roster_str", "Roster (YAML-like)", value = "QB:1, RB:2, WR:2, TE:1, FLEX:2, SUPERFLEX:0, BENCH:6"),
+        textInput("roster_str", "Roster (YAML-like)",
+                  value = "QB:1, RB:2, WR:2, TE:1, FLEX:2, SUPERFLEX:0, BENCH:6"),
         helpText("Format: POS:n,POS:n,...  (FLEX accepts RB/WR/TE; SUPERFLEX accepts QB/RB/WR/TE)")
       ),
       card(
@@ -160,7 +184,8 @@ server <- function(input, output, session) {
   
   rankings <- reactive({
     df <- rankings_raw()
-    needed <- c("player","team","pos","Score","Tier","overall_ecr","pos_ecr","adp_combined","boom_factor","x1st_5_games_so_s_by_position")
+    needed <- c("player","team","pos","Score","Tier","overall_ecr","pos_ecr",
+                "adp_combined","boom_factor","x1st_5_games_so_s_by_position")
     missing <- setdiff(needed, names(df))
     if (length(missing)) stop(paste("Missing columns in CSV:", paste(missing, collapse=", ")))
     df %>%
@@ -192,10 +217,20 @@ server <- function(input, output, session) {
     showNotification("Loaded saved state from this device.", type="message")
   })
   
-  available <- reactive({
+  # -------- Remaining pool (GLOBAL; excludes both drafted & myteam explicitly) --------
+  remaining_pool_all <- reactive({
     df <- rankings()
-    d  <- drafted()
-    if (nrow(d)) df <- anti_join(df, d, by="player")
+    taken <- bind_rows(
+      drafted(),
+      myteam()
+    ) %>% distinct(player)
+    if (nrow(taken)) df <- anti_join(df, taken, by = "player")
+    df
+  })
+  
+  # -------- Available (respects sidebar filters) --------
+  available <- reactive({
+    df <- remaining_pool_all()
     if (length(input$filter_pos))  df <- df %>% filter(pos %in% input$filter_pos)
     if (length(input$filter_tier)) df <- df %>% filter(!is.na(Tier) & Tier %in% input$filter_tier)
     if (nzchar(input$filter_search)) {
@@ -211,30 +246,62 @@ server <- function(input, output, session) {
     df %>% arrange(overall_ecr)
   })
   
+  # For Tier Tracker (no sidebar filters)
+  available_all <- reactive({
+    remaining_pool_all() %>% filter(!is.na(Tier))
+  })
+  
+  # -------- Tier Tracker --------
+  output$tbl_tiers <- renderDT({
+    df <- available_all()
+    if (!nrow(df)) {
+      return(datatable(data.frame(Note = "No players available"), options = list(dom='t')))
+    }
+    max_tier <- max(df$Tier, na.rm = TRUE)
+    tiers <- df %>%
+      mutate(Tier = factor(Tier, levels = 1:max_tier)) %>%
+      count(pos, Tier, name = "remain") %>%
+      tidyr::complete(pos, Tier, fill = list(remain = 0)) %>%
+      tidyr::pivot_wider(names_from = Tier, values_from = remain, names_prefix = "T", values_fill = 0) %>%
+      arrange(pos)
+    
+    totals <- tiers %>% summarise(across(-pos, sum)) %>% mutate(pos = "ALL") %>% relocate(pos)
+    tiers <- bind_rows(tiers, totals)
+    
+    datatable(tiers, rownames = FALSE, options = list(dom = 't', paging = FALSE, ordering = FALSE, scrollX = TRUE))
+  })
+  
+  # -------- Stacking helper --------
   stack_teams <- reactive({
     mt <- myteam() %>% left_join(rankings(), by="player")
     unique(mt$team[mt$pos %in% c("QB","WR","TE")])
   })
   
+  # -------- Board table --------
   output$tbl_board <- renderDT({
     df <- available()
     st <- stack_teams()
     df$TierBadge <- badge_tier(df$Tier)
     
     dat <- df %>%
+      mutate(floor_ceiling = paste(round(floor, 2), "-", round(ceiling, 2)),
+             points = round(points, 2),
+             points_vor = round(points_vor, 2)) %>% 
       transmute(
         Select = "",
         Tier = TierBadge,
         Player = player,
         Team = team,
         Pos = pos,
-        Score = round(Score, 3),
         ADP = adp_combined,
         overall_ecr,
         pos_ecr,
-        boom_factor,
+        points,
+        floor_ceiling,
         x1st_5_games_so_s_by_position,
-        points_vor
+        points_vor,
+        x3rd_yr_wr,
+        boom_factor
       ) %>%
       arrange(overall_ecr)
     
@@ -243,11 +310,7 @@ server <- function(input, output, session) {
       escape = FALSE,
       selection = "single",
       rownames = FALSE,
-      options = list(
-        pageLength = 100,
-        scrollX = TRUE,
-        order = list(list(7, "asc"))  # 0-based index -> overall_ecr
-      ),
+      options = list(pageLength = 100, scrollX = TRUE, order = list(list(7, "asc"))),
       callback = JS("table.on('click', 'tbody tr', function(){ $(this).toggleClass('selected'); });")
     ) %>%
       formatStyle(
@@ -260,15 +323,7 @@ server <- function(input, output, session) {
       formatStyle("Tier", "text-align" = "center")
   })
   
-  output$tbl_myteam <- renderDT({
-    mt <- myteam() %>% left_join(rankings(), by="player")
-    if (!nrow(mt)) mt <- tibble(player=character(), team=character(), pos=character(), Tier=numeric(), Score=numeric())
-    dat <- mt %>%
-      arrange(pos, Tier, desc(Score)) %>%
-      transmute(Player = player, Team = team, Pos = pos, Tier = Tier, Score = round(Score,3))
-    datatable(dat, rownames = FALSE, options = list(pageLength = 100, dom = 't'))
-  })
-  
+  # -------- Needs UI (progress bars) --------
   output$needs_boxes <- renderUI({
     mt <- myteam() %>% left_join(rankings(), by="player")
     need <- compute_needs(mt, parse_roster())
@@ -294,31 +349,94 @@ server <- function(input, output, session) {
     )
   })
   
-  output$tbl_reco <- renderDT({
-    df <- available()
-    mt <- myteam() %>% left_join(rankings(), by="player")
+  # -------- Needs table (POS / need / filled / remaining) --------
+  # output$tbl_needs <- renderDT({
+  #   mt <- myteam() %>% left_join(rankings(), by="player")
+  #   need <- compute_needs(mt, parse_roster()) %>%
+  #     mutate(filled = pmax(need - remaining, 0L)) %>%
+  #     select(Pos = pos, Need = need, Filled = filled, Remaining = remaining)
+  #   datatable(need, rownames = FALSE, options = list(dom='t', paging=FALSE))
+  # })
+  
+  # -------- Team roster table --------
+  # output$tbl_myteam <- renderDT({
+  #   mt <- myteam() %>% left_join(rankings(), by="player")
+  #   if (!nrow(mt)) mt <- tibble(player=character(), team=character(), pos=character(), Tier=numeric(), Score=numeric())
+  #   dat <- mt %>% arrange(pos, Tier, desc(Score)) %>%
+  #     transmute(Player = player, Team = team, Pos = pos, Tier = Tier, Score = round(Score,3))
+  #   datatable(dat, rownames = FALSE, options = list(pageLength = 100, dom = 't'))
+  # })
+  
+  # -------- Need-focused recommendations (strict slots + FLEX/SFLEX) --------
+  output$tbl_need_reco <- renderDT({
+    pool <- remaining_pool_all()    # EXCLUDES both drafted() and myteam()
+    mt   <- myteam() %>% left_join(rankings(), by="player")
     need <- compute_needs(mt, parse_roster())
     
     flex_left  <- need$remaining[match("FLEX", need$pos)];      if (is.na(flex_left))  flex_left  <- 0
     sflex_left <- need$remaining[match("SUPERFLEX", need$pos)]; if (is.na(sflex_left)) sflex_left <- 0
     
-    df <- df %>%
-      mutate(
-        need_bonus = case_when(
-          (pos %in% need$pos) & (need$remaining[match(pos, need$pos)] > 0) ~ 0.20,
-          (pos %in% POS_FOR_FLEX)  & flex_left  > 0 ~ 0.10,
-          (pos %in% POS_FOR_SFLEX) & sflex_left > 0 ~ 0.05,
-          TRUE ~ 0
-        ),
-        rec_score = -1*(overall_ecr - need_bonus)
-      ) %>%
-      arrange(desc(rec_score)) %>%
-      slice_head(n = 12) %>%
-      transmute(Rank = row_number(), Player = player, Team = team, Pos = pos, Tier = Tier, Score = round(Score,3))
+    slots <- names(parse_roster())
+    strict_slots <- setdiff(slots, c("FLEX","SUPERFLEX","BENCH"))
+    out <- list()
+    top_n <- 6
     
-    datatable(df, rownames = FALSE, options = list(pageLength = 12, dom = 't'))
+    pick_top <- function(df, n = top_n) df %>% arrange(overall_ecr) %>% slice_head(n = n)
+    
+    for (p in strict_slots) {
+      left <- need$remaining[match(p, need$pos)]; if (is.na(left)) left <- 0
+      if (left > 0) {
+        cand <- pool %>% filter(pos == p)
+        if (nrow(cand)) out[[length(out)+1]] <- pick_top(cand) %>% mutate(Slot = p)
+      }
+    }
+    if (flex_left > 0) {
+      cand <- pool %>% filter(pos %in% POS_FOR_FLEX)
+      if (nrow(cand)) out[[length(out)+1]] <- pick_top(cand) %>% mutate(Slot = "FLEX")
+    }
+    if (sflex_left > 0) {
+      cand <- pool %>% filter(pos %in% POS_FOR_SFLEX)
+      if (nrow(cand)) out[[length(out)+1]] <- pick_top(cand) %>% mutate(Slot = "SUPERFLEX")
+    }
+    
+    rec <- if (length(out)) bind_rows(out) else tibble()
+    
+    if (!nrow(rec)) {
+      return(datatable(data.frame(Note="All required slots filled."), options = list(dom='t')))
+    }
+    
+    rec <- rec %>%
+      transmute(
+        Slot,
+        Player = player, Team = team, Pos = pos,
+        Tier, Score = round(Score, 3),
+        ECR = overall_ecr, ADP = adp_combined
+      ) %>%
+      arrange(factor(Slot, levels = c(strict_slots, "FLEX", "SUPERFLEX")), ECR)
+    
+    datatable(rec, rownames = FALSE, options = list(pageLength = 25, dom = 't', scrollX = TRUE))
   })
   
+  # -------- My Players tab --------
+  output$tbl_myteam_simple <- renderDT({
+    mt <- myteam() %>% left_join(rankings(), by="player")
+    if (!nrow(mt)) mt <- tibble(player=character(), team=character(), pos=character(), Tier=numeric(), Score=numeric())
+    dat <- mt %>% arrange(pos, Tier, desc(Score)) %>%
+      transmute(Player = player, Team = team, Pos = pos, Tier = Tier, Score = round(Score,3))
+    datatable(dat, rownames = FALSE, options = list(pageLength = 100, dom = 't', scrollX = TRUE))
+  })
+  
+  output$btn_dl_myteam <- downloadHandler(
+    filename = function() paste0("my_players_", format(Sys.time(), "%Y%m%d_%H%M%S"), ".csv"),
+    content = function(file) {
+      mt <- myteam() %>% left_join(rankings(), by="player")
+      mt <- mt %>% arrange(pos, Tier, desc(Score)) %>%
+        transmute(Player = player, Team = team, Pos = pos, Tier = Tier, Score = Score)
+      readr::write_csv(mt, file)
+    }
+  )
+  
+  # -------- Selection + Actions --------
   selected_player <- reactive({
     idx <- input$tbl_board_rows_selected
     if (is.null(idx) || length(idx)==0) return(NULL)
